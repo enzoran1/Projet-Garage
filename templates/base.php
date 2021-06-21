@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/prestations.css">
+    <link rel="stylesheet" href="css/compte.css">
+    <link rel="stylesheet" href="css/inscription.css">
+    <link rel="stylesheet" href="css/contact.css">
     <title><?= $title ?? '' ?></title>
   </head>
   <body>
@@ -31,7 +34,7 @@
               <a href="/">Accueil</a>
           </li>
           <li class="navbar-menu__item">
-              <a href="/prestation">Prestations</a>
+              <a href="/Prestation">Prestations</a>
           </li>
           <li class="navbar-menu__item">
               <a href="">Rendez-vous</a>
@@ -40,10 +43,10 @@
               <a href="">Achat véhicules</a>
           </li>
           <li class="navbar-menu__item">
-              <a href="">Compte</a>
+              <a href="/Compte">Compte</a>
           </li>
           <li class="navbar-menu__item">
-              <a href="">Contacts</a>
+              <a href="/Contact">Contacts</a>
           </li>
         </ul>
       </nav>
@@ -59,7 +62,7 @@
             <li class="navbar2__menu-item"><a href="">Rendez-vous</a></li>
             <li class="navbar2__menu-item"><a href="">Achat véhicules</a></li>
             <li class="navbar2__menu-item"><a href="/compte">Compte</a></li>
-            <li class="navbar2__menu-item"><a href="">Contacts</a></li>
+            <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
           </ul>
           <div class="navbar2__panier">
             <a href=""> <img src="image/icons8-shopping-cart-48.png" alt="icon shopping"></a>

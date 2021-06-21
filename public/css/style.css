@@ -178,11 +178,17 @@ body{
 
 
 
+<<<<<<< HEAD
 .photoA{
     background-image: url(../image/pexels-oziel-gómez-849835.jpg);
 }
 .ban{
     
+=======
+
+.ban{
+    background-image: url(../image/pexels-oziel-gómez-849835.jpg);
+>>>>>>> enzo
     background-position: center center;
     
     background-size: cover;

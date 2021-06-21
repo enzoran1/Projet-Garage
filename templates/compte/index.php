@@ -1,9 +1,16 @@
-<div class="ban3">
-  <h1>Mon Compte</h1>
-</div>
+
+    <div class="ban" id="ban__compte">
+        <h1>Mon Compte</h1>
+        
+
+    </div>
+
+
 <div class="compte-titre">
     <h2>Veuillez-vous<br>connecter</h2>
 </div>
+
+
 <form action="POST" class="form">
 <div class="form__container">
     <div class="form__content">
