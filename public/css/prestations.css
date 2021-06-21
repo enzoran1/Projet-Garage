@@ -1,0 +1,136 @@
+<<<<<<< HEAD
+.prestation{
+    background-image: url(../image/pexels-oziel-gómez-845406.jpg);
+}
+=======
+#ban__prestation{
+    background-image: url(../image/pexels-oziel-gómez-849835.jpg);
+    
+}
+
+#prestation__point{
+    width: 50px;
+}
+
+
+>>>>>>> enzo
+.prestation-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+
+.prestation-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 300px;
+    transition: 1s;
+    
+
+}
+.prestation-content h2{
+    color: #EEC47A;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    transition: 1s;
+}
+.prestation-content img{
+    width: 250px;
+    height: 280px;
+    margin-bottom: 10px;
+    transition: 1s;
+}
+
+.content-prestation{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 250px;
+    margin-bottom: 50px;
+    transition: 1s;
+}
+.content-prestation a{
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10px;
+    transition: 1s;
+}
+.content-prestation a:hover{
+
+    color: #EEC47A;
+    transition: 1s;
+
+}
+
+@media screen and (min-width:688px){
+
+
+    .prestation-container{
+
+        flex-direction: initial;
+        justify-content: space-around;
+        transition: 1s;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .prestation-content{
+        width: 250px;
+        margin-left: 10px;
+        margin-right: 10px;
+        transition: 1s;
+    }
+    .prestation-content img{
+        width: 200px;
+        height: 250px;
+        transition: 1s;
+    }
+    .prestation-content h2{
+        font-size: 100%;
+        transition: 1s;
+    }
+    .content-prestation{
+        width: 200px;
+        transition: 1s;
+    }
+}
+
+@media screen and (min-width:988px){
+    .prestation-content h2{
+        font-size: 130%;
+        transition: 1s;
+    }
+    .content-prestation{
+        width: 250px;
+        transition: 1s;
+    }
+    .prestation-content img{
+        width: 250px;
+        height: 280px;
+        transition: 1s;
+    }
+
+}
+
+@media screen and (min-width:1300px){
+    .prestation-content h2{
+        font-size: 140%;
+        transition: 1s;
+    }
+    .content-prestation{
+        width: 270px;
+        transition: 1s;
+    }
+    .prestation-content img{
+        width: 270px;
+        height: 300px;
+        transition: 1s;
+    }
+
+}
+
