@@ -1,0 +1,157 @@
+#ban__contact{
+    background-image: url(../image/photo-contact-ban.jpg);
+}
+
+.titre-contact{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titre-contact h2{
+
+    color: white;
+    letter-spacing: 2px;
+    margin-top: 50px;
+
+}
+
+.form3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.form3__container{
+    width: 250px;
+    transition: 1s;
+    background-color: #489897;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+    
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+}
+.form3__content{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.form3__content label{
+    font-size: 110%;
+    margin-bottom: 10px;
+    color: #EEC47A;
+    transition: 1s;
+}
+.form3__content input{
+    font-size: 140%;
+    margin-bottom: 25px;
+    transition: 1s;
+}
+.form3__btn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    
+    
+    
+}
+.form3__btn button{
+    background-color: #2f3d4abe;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 10%/50%;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 130%;
+    cursor: pointer;
+    transition: 1s;
+    
+}
+.form3__btn button:hover{
+    background-color: #2f3d4a;
+    transition: 1s;
+}
+@media screen and (min-width:688px){
+    
+    .form3__container{
+        width: 420px;
+        transition: 1s;
+    }
+    .form3__content input{
+        font-size: 170%;
+        margin-bottom: 30px;
+        transition: 1s;
+    }
+
+    .form3__content label{
+        font-size: 130%;
+        transition: 1s;
+        
+    }
+    .form3__btn button{
+        font-size: 130%;
+        transition: 1s;
+    }
+
+}
+
+@media screen and (min-width:788px){
+
+    .form3__flex{
+        display: flex;
+        justify-content: space-between;
+    }
+    .form3__container{
+        width: 650px;
+        transition: 1s;
+    }
+
+    
+
+}
+
+@media screen and (min-width:988px){
+
+   
+
+    .form3__container{
+        width: 750px;
+        transition: 1s;
+    }
+
+    .form3__content input{
+        font-size: 200%;
+        margin-bottom: 30px;
+        transition: 1s;
+    }
+
+    .form3__content label{
+        font-size: 150%;
+        transition: 1s;
+        
+    }
+
+    .form3__btn button{
+        font-size: 150%;
+        transition: 1s;
+    }
+
+   
+}
+@media screen and (min-width:1300px){
+
+    .form3__container{
+        width: 730px;
+        transition: 1s;
+    }
+}
