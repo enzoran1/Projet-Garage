@@ -1,12 +1,22 @@
+
+
 #ban__contact{
     background-image: url(../image/photo-contact-ban.jpg);
 }
 
 .titre-contact{
 
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .titre-contact h2{
 
@@ -17,29 +27,46 @@
 }
 
 .form3{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 50px;
     margin-top: 50px;
 }
 
 .form3__container{
     width: 250px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
     background-color: #489897;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
     
     margin-top: 50px;
     margin-bottom: 50px;
     
 }
 .form3__content{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     
     
 }
@@ -47,16 +74,24 @@
     font-size: 110%;
     margin-bottom: 10px;
     color: #EEC47A;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 .form3__content input{
     font-size: 140%;
     margin-bottom: 25px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 .form3__btn{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     margin-top: 20px;
     
@@ -74,32 +109,44 @@
     padding-right: 25px;
     font-size: 130%;
     cursor: pointer;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
     
 }
 .form3__btn button:hover{
     background-color: #2f3d4a;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 @media screen and (min-width:688px){
     
     .form3__container{
         width: 420px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
     .form3__content input{
-        font-size: 170%;
+        font-size: 140%;
         margin-bottom: 30px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form3__content label{
         font-size: 130%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
         
     }
     .form3__btn button{
         font-size: 130%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
@@ -108,11 +155,17 @@
 @media screen and (min-width:788px){
 
     .form3__flex{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
     }
     .form3__container{
         width: 650px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
@@ -126,23 +179,31 @@
 
     .form3__container{
         width: 750px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form3__content input{
-        font-size: 200%;
+        font-size: 170%;
         margin-bottom: 30px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form3__content label{
         font-size: 150%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
         
     }
 
     .form3__btn button{
         font-size: 150%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
@@ -152,6 +213,8 @@
 
     .form3__container{
         width: 730px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 }
