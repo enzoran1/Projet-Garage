@@ -1,0 +1,1 @@
+Controllers : contiendra, comme son nom l'indique, les contrôleurs, dont le nom commencera par une majuscule, par convention.

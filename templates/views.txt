@@ -1,0 +1,1 @@
+Views : contiendra nos fichiers de vues, dans des dossiers, un dossier par contrôleur.
