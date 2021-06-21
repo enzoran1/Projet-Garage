@@ -4,11 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/prestations.css">
-    <link rel="stylesheet" href="css/compte.css">
-    <link rel="stylesheet" href="css/inscription.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/prestations.css">
+    <link rel="stylesheet" href="/css/compte.css">
+    <link rel="stylesheet" href="/css/inscription.css">
+    <link rel="stylesheet" href="/css/contact.css">
     <title><?= $title ?? '' ?></title>
   </head>
   <body>
