@@ -1,4 +1,4 @@
-<div class="ban">
+<div class="ban" id="banhero">
   <h1>Garage Jovanic</h1>
   <p>Depuis 1996</p>
 </div>
