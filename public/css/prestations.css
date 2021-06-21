@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-.prestation{
-    background-image: url(../image/pexels-oziel-gómez-845406.jpg);
-}
-=======
 #ban__prestation{
     background-image: url(../image/pexels-oziel-gómez-849835.jpg);
     
@@ -13,7 +8,6 @@
 }
 
 
->>>>>>> enzo
 .prestation-container{
     display: flex;
     flex-direction: column;
