@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/contact.css">
     <title><?= $title ?? '' ?></title>
   </head>
+
+<!-- Les différentes navbar -->
   <body>
     <header>
       <nav class="navbar">
@@ -70,9 +72,13 @@
         </div>
       </nav>
     </header>
+
+    <!-- Contenu de la page suite au render view  -->
     <main>
         <?= $body ?>
     </main>
+
+    <!-- Footer de la page  -->
     <footer class="footer">
       <div class="footer__top">
         <img src="image/logo-nav.png" alt="">
