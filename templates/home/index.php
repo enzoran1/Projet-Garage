@@ -14,17 +14,17 @@
     <div class="carte__container-content">
       <img src="image/icons8-vol-de-voiture-100.png" alt="">
       <p>Découvrez nos préstations</p>
-      <a href="">Découvrire</a>
+      <a href="">Découvrir</a>
     </div>
     <div class="carte__container-content">
       <img src="image/icons8-liste-de-vérification-100.png" alt="">
       <p>Prendre Rendez-vous</p>
-      <a href="">Découvrire</a>
+      <a href="">Découvrir</a>
     </div>
     <div class="carte__container-content">
       <img src="image/icons8-embouteillage-100.png" alt="">
       <p>Acheter un véhicules</p>
-      <a href="">Découvrire</a>
+      <a href="">Découvrir</a>
     </div>
   </div>
 </div>

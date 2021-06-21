@@ -17,7 +17,7 @@
     <header>
       <nav class="navbar">
         <div class="navbar__logo">
-          <a href=""> <img src="image/logo-nav.png" alt="logo"></a> 
+          <a href="/"> <img src="image/logo-nav.png" alt="logo"></a> 
         </div>
         <div class="navbar__container">
           <div class="navbar__container-panier">
@@ -54,9 +54,9 @@
       </nav>
       <nav class="navbar2">
         <div class="navbar2__flex">
-          <div class="navbar2__logo">
-            <img src="image/logo-nav.png" alt="logo">
-            <a href=""><p>Garage Jovanic</p></a>
+         <div class="navbar2__logo">
+          <a href="/" id="imagelink"> <img src="image/logo-nav.png" alt="logo"> </a>
+            <a href="/"><p>Garage Jovanic</p></a>
           </div>
           <ul class="navbar2__menu">
             <li class="navbar2__menu-item"><a href="/">Accueil</a></li>
