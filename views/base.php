@@ -45,7 +45,7 @@
           <a href="">Achat véhicules</a>
         </li>
         <li class="navbar-menu__item">
-          <a href="/Compte">Compte</a>
+          <a href="/Utilisateurs">Compte</a>
         </li>
         <li class="navbar-menu__item">
           <a href="/Contact">Contacts</a>
