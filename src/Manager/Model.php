@@ -1,4 +1,5 @@
 <?php
+namespace App\Model;
 
 use App\Core\Db;
 
@@ -120,7 +121,7 @@ class Model extends Db
      * @param array $donnees Tableau associatif des données
      * @return self Retourne l'objet hydraté
      */
-    public function hydrate(array $donnees)
+    public function hydrate($donnees)
     {
         foreach ($donnees as $key => $value){
             // On récupère le nom du setter correspondant à l'attribut.
