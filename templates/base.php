@@ -4,18 +4,20 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/prestations.css">
-    <link rel="stylesheet" href="css/compte.css">
-    <link rel="stylesheet" href="css/inscription.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/prestations.css">
+    <link rel="stylesheet" href="/css/compte.css">
+    <link rel="stylesheet" href="/css/inscription.css">
+    <link rel="stylesheet" href="/css/contact.css">
     <title><?= $title ?? '' ?></title>
   </head>
+
+<!-- Les différentes navbar -->
   <body>
     <header>
       <nav class="navbar">
         <div class="navbar__logo">
-          <a href=""> <img src="image/logo-nav.png" alt="logo"></a> 
+          <a href="/"> <img src="image/logo-nav.png" alt="logo"></a> 
         </div>
         <div class="navbar__container">
           <div class="navbar__container-panier">
@@ -40,7 +42,7 @@
               <a href="">Rendez-vous</a>
           </li>
           <li class="navbar-menu__item">
-              <a href="">Achat véhicules</a>
+              <a href="/achat">Achat véhicules</a>
           </li>
           <li class="navbar-menu__item">
               <a href="/Compte">Compte</a>
@@ -52,15 +54,15 @@
       </nav>
       <nav class="navbar2">
         <div class="navbar2__flex">
-          <div class="navbar2__logo">
-            <img src="image/logo-nav.png" alt="logo">
-            <a href=""><p>Garage Jovanic</p></a>
+         <div class="navbar2__logo">
+          <a href="/" id="imagelink"> <img src="image/logo-nav.png" alt="logo"> </a>
+            <a href="/"><p>Garage Jovanic</p></a>
           </div>
           <ul class="navbar2__menu">
             <li class="navbar2__menu-item"><a href="/">Accueil</a></li>
             <li class="navbar2__menu-item"><a href="/prestation">Prestations</a></li>
             <li class="navbar2__menu-item"><a href="">Rendez-vous</a></li>
-            <li class="navbar2__menu-item"><a href="">Achat véhicules</a></li>
+            <li class="navbar2__menu-item"><a href="/achat">Achat véhicules</a></li>
             <li class="navbar2__menu-item"><a href="/compte">Compte</a></li>
             <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
           </ul>
@@ -70,9 +72,13 @@
         </div>
       </nav>
     </header>
+
+    <!-- Contenu de la page suite au render view  -->
     <main>
         <?= $body ?>
     </main>
+
+    <!-- Footer de la page  -->
     <footer class="footer">
       <div class="footer__top">
         <img src="image/logo-nav.png" alt="">

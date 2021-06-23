@@ -41,6 +41,7 @@ class Db extends PDO
     }
 
     //méthode qui vérifie si il y a une instance, si il y en a pas -> créer sinon la retourne
+    // :self fait réferance a la class
     public static function getInstance():self
     {
         if(self::$instance === null){
