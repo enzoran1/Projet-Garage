@@ -8,4 +8,10 @@ class CompteController extends Controller
         $this->render('compte/index');
         
     }
-}
+
+    public function connexion()
+    { 
+    
+    }
+} 
+

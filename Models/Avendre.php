@@ -8,6 +8,7 @@ class Avendre extends Model
 {
   public function __construct()
   {
-    $this->table = 'utilisateur';
+    $this->table = 'vehicule';
+    $this->table->findAll();
   }
 }
