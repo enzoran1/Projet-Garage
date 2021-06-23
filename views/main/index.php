@@ -13,11 +13,7 @@
   <div class="carte__container">
     <div class="carte__container-content">
       <img src="image/icons8-vol-de-voiture-100.png" alt="">
-<<<<<<< HEAD:templates/home/index.php
-      <p>Découvrez nos préstations</p>
-=======
       <p>Découvrez nos prestations</p>
->>>>>>> enzo:views/main/index.php
       <a href="">Découvrir</a>
     </div>
     <div class="carte__container-content">
