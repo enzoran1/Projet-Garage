@@ -8,11 +8,11 @@ class CompteController extends Controller
     public function index(){
         if(empty($_SESSION))
         { 
-            $this->render('compte/connexion/index');
+            $this->render('compte/index');
         }
         else 
         { 
-            $this->render('compte/dashboard/index');
+            $this->render('compte/dashboard');
         }
     }
 
