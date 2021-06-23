@@ -34,3 +34,4 @@
         <div class="form3__btn">
             <button type="submit">Envoyer</button>
         </div>
+    </div>

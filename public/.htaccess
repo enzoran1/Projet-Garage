@@ -1,12 +1,5 @@
-# protection de la lecture des répertoires
-Options All -Indexes
+# on démarre le moteur de réecriture
+RewriteEngine On
 
-# enable apache rewrite engine
-RewriteEngine on
-
-# Deliver the folder or file directly if it exists on the server
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
- 
-# Push every request to index.php
-RewriteRule ^(.*)$ index.php [QSA,L]
+# On réecrit l'url
+RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1

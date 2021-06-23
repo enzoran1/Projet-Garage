@@ -19,16 +19,16 @@
         </div>
         <div class="form2__content">
             <label for="">Adresse :</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="" require minlength="1">
         </div>
         <div class="form2__flex">
             <div class="form2__content">
                 <label for="">Téléphone :</label>
-                <input type="tel" name="" id="" pattern="[0-9]{10}" required>
+                <input type="text" name="" id="" require maxlength="10" require minlength="10">
             </div>
             <div class="form2__content">
                 <label for="">Email :</label>
-                <input type="email" name="" id="">
+                <input type="email" name="" id="" require minlength="3" require maxlength="64">
             </div>
         </div>
         <div class="form2__flex">

@@ -67,6 +67,7 @@
           <li class="navbar2__menu-item"><a href="">Achat véhicules</a></li>
           <li class="navbar2__menu-item"><a href="/compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
+          
         </ul>
         <div class="navbar2__panier">
           <a href=""> <img src="image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
@@ -74,9 +75,11 @@
       </div>
     </nav>
   </header>
-  <main>
-    <?= $body ?>
-  </main>
+  <div class="container">
+
+  <?= $contenu ?>
+  
+  </div>
   <footer class="footer">
     <div class="footer__top">
       <img src="image/logo-nav.png" alt="">

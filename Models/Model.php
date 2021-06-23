@@ -1,8 +1,13 @@
 <?php
 
+namespace App\Models;
+
 use App\Core\Db;
 
 //différentes méthodes utilisables par défaut pour les manipulations de la base
+
+
+
 class Model extends Db
 {
   // Table de la base de données

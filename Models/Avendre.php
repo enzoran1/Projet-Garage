@@ -1,9 +1,13 @@
 <?php
 
+namespace App\src\Manager;
+
+
+
 class Avendre extends Model
 {
   public function __construct()
   {
-    $this->table = 'a_vendre';
+    $this->table = 'utilisateur';
   }
 }

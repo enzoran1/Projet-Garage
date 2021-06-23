@@ -1,47 +1,25 @@
 <?php
-/* 
-    IMPLEMENTATION DU MVC EN PHP
-*/
-define('BASE_DIR','../');
 
-/* Autoloader */
-require BASE_DIR . 'core/Autoloader.php';
 
-try
-{
-    $request_uri = trim($_SERVER['REQUEST_URI'], '/'); // ex: blog/article/2
-    $request_uri_exploded = explode('/',$request_uri); // ex: ['blog','article','2']
-    $route = array(
-        'controller' => !empty($request_uri_exploded[0]) ? $request_uri_exploded[0] : 'home',
-        'action' => $request_uri_exploded[1] ?? 'index',
-        'param' => $request_uri_exploded[2] ?? null
-    );
+use App\Autoloader;
+use App\Core\Main;
 
-    $controllerClassName = ucfirst($route['controller']) . 'Controller';
-    // On défini l'action
-    $action = $route['action'];
+// on definit une constante contenant le dossier racine du projet
+// la fonction dirname permet d'accédé au dossier parent
+// __DIR__ est le dossier dans le quel on se trouve
 
-    // On inclue le fichier de la classse du contrôleur
-    if(!file_exists(BASE_DIR . 'src/Controller/' . $controllerClassName . '.php'))
-        throw new Exception("Le fichier contrôleur $controllerClassName.php n'existe pas.", 1);
+define('ROOT', dirname(__DIR__));
 
-    // On test si la classe du contrôleur existe, si non alors on "jètte" une exception
-    if(!class_exists($controllerClassName))
-        throw new Exception("Le contrôleur $controllerClassName n'existe pas.", 1);
+//on importe l'autoloader
+require_once ROOT.'/Autoloader.php';
+Autoloader::register();
 
-    // On instancie notre contrôleur
-    $controller = new $controllerClassName();
 
-    // On test si la classe du contrôleur existe, si non alors on "jètte" une exception
-    if(!method_exists($controller, $action))
-        throw new Exception("L'action $action du contrôleur $controllerClassName n'existe pas.", 1);
+//On instancie Main (qui est notre routeur)
 
-    // On execute l'action
-    $controller->$action($route['param']);
+$app = new Main();
 
-}
-catch(Exception $e)
-{
-    echo $e->getMessage();
-    die;
-}
+//on démarre l'application
+
+$app->start();
+
