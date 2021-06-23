@@ -22,7 +22,7 @@ class CompteController extends Controller
         $connexion = new Model;
         if($connexion->findBy($_POST['email'], $_POST['password']) !== false)
         { 
-            echo 'ok';
+            echo 'ok'; // automatiquement sa 
         }
         else
         { 
@@ -31,4 +31,3 @@ class CompteController extends Controller
         
     }
 } 
-
