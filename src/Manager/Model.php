@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
 namespace App\src\Manager;
+=======
+namespace App\Model;
+
+>>>>>>> 443bfb8bd42f4cdd0daecb3ef201127c3d54d846
 use App\Core\Db;
 
 //différentes méthodes utilisables par défaut pour les manipulations de la base
