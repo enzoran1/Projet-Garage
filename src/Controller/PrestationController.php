@@ -1,9 +1,11 @@
 <?php
 
-class PrestationController extends AbstractController
+use App\Controller\MainController;
+
+class PrestationController extends MainController
 {    
     public function index()
     {
-        return $this->renderView('prestation/index.php');
+        return $this->render('prestation/index.php');
     }
 }

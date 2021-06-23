@@ -6,14 +6,18 @@
   <div class="presentation-container__content">
     <h2>Qui sommes nous <span id="color">?</span></h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed repellendus architecto autem maiores libero delectus et optio aut sapiente nesciunt accusantium, quia eum dolore placeat nihil minus voluptatem. Temporibus, nulla.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi vel ut enim. Voluptates adipisci voluptas non perspiciatis totam! Eveniet illum totam unde molestias esse inventore rerum deleniti modi odit ex!</p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi vel ut enim. Voluptates adipisci voluptas non perspiciatis totam! Eveniet illum totam unde molestias esse inventore rerum deleniti modi odit ex!</p>
   </div>
 </div>
 <div class="carte">
   <div class="carte__container">
     <div class="carte__container-content">
       <img src="image/icons8-vol-de-voiture-100.png" alt="">
+<<<<<<< HEAD:templates/home/index.php
       <p>Découvrez nos préstations</p>
+=======
+      <p>Découvrez nos prestations</p>
+>>>>>>> enzo:views/main/index.php
       <a href="">Découvrir</a>
     </div>
     <div class="carte__container-content">

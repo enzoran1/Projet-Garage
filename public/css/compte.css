@@ -1,4 +1,3 @@
-
 #ban__compte{
     background-image: url(../image/pexels-oziel-gómez-845406.jpg);
   
@@ -10,30 +9,49 @@
     text-align: center;
     color: white;
     margin-top: 35px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 .form{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 50px;
     margin-top: 50px;
 }
 .form__container{
     width: 250px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
     background-color: #489897;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
     
     margin-top: 50px;
     margin-bottom: 50px;
 }
 .form__content{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     
     
 }
@@ -41,16 +59,24 @@
     font-size: 110%;
     margin-bottom: 10px;
     color: #EEC47A;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 .form__content input{
     font-size: 170%;
     margin-bottom: 25px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 .form__btn{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     margin-top: 20px;
     
@@ -68,11 +94,15 @@
     padding-right: 25px;
     font-size: 130%;
     cursor: pointer;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
     
 }
 .form__btn button:hover{
     background-color: #2F3D4A;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 .form__inscription{
@@ -84,6 +114,8 @@
     color: #EEC47A;
     text-decoration: none;
     font-weight: bold;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 
@@ -94,30 +126,42 @@
         font-size: 200%;
         letter-spacing: 2px;
         margin-bottom: 35px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form__container{
         width: 300px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
     .form__content input{
         font-size: 200%;
         margin-bottom: 30px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form__content label{
         font-size: 150%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
         
     }
     .form__btn button{
         font-size: 150%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
     .form__inscription a{
         font-size: 120%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
@@ -127,33 +171,45 @@
 
     .compte-titre h2{
         font-size: 220%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form__container{
         width: 350px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form__content input{
         font-size: 220%;
         margin-bottom: 30px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form__content label{
         font-size: 170%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
         
     }
 
     .form__btn button{
         font-size: 170%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 
     .form__inscription a{
         font-size: 140%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
         transition: 1s;
     }
 }
