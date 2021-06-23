@@ -1,4 +1,6 @@
 <?php
+// on démarre la session
+session_start();
 /* 
     IMPLEMENTATION DU MVC EN PHP
 */

@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Form;
+
 class CompteController extends AbstractController
 {    
     /**
@@ -13,4 +15,5 @@ class CompteController extends AbstractController
     {
         return $this->renderView('compte/index.php');
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Form;
+
 class InscriptionController extends AbstractController
 {    
     /**
@@ -13,4 +15,6 @@ class InscriptionController extends AbstractController
     {
         return $this->renderView('inscription/index.php');
     }
+
+    
 }
