@@ -4,4 +4,4 @@
 
 <!-- faire appel au model -> getAll() pour afficher tous les produits en vente -->
 
-<a href="">Voir plus</a>
+<a href="" class="customButton">Voir plus</a>
