@@ -2,7 +2,7 @@
 
 namespace App\src\Manager;
 
-
+use App\Models\Model;
 
 class Avendre extends Model
 {
