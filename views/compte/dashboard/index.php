@@ -24,9 +24,12 @@
     <p>Marque:</p>
   </div>
 </div>
-<div class="dashboard__btn">
-  <a href="">MODIFIER PROFIL</a>
-</div>
-<div class="dashboard__btn">
-  <a href="Compte/logout">DECONNEXION</a>
+
+<div class="button__container">
+  <div class="dashboard__btn">
+    <a href="">MODIFIER PROFIL</a>
+  </div>
+  <div class="dashboard__btn">
+    <a href="Compte/logout">DECONNEXION</a>
+  </div>
 </div>
