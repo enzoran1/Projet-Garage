@@ -203,13 +203,4 @@ class UtilisateursModel extends Model
   {
     return $this->requete("SELECT * FROM $this->table WHERE mdp = ?", [$password])->fetch();
   }
-
-  // //permet d'ajouter une session rapidement
-  // public function setSession()
-  // {
-  //   $_SESSION['user'] = [
-  //       'id' => $this->id,
-  //       'email' => $this->email
-  //   ];
-  // }
 }

@@ -48,7 +48,7 @@ class CompteController extends Controller
                     ];
 
                     // on redirige sur le dashboard
-                    return $this->render('Compte/dashboard/index');
+                    header('Location: ../Compte');
 
                 }
                 else 
@@ -75,9 +75,8 @@ class CompteController extends Controller
     public function logout()
     {
         unset($_SESSION['utilisateur']);
-        //redirige l'utilisateur vers la page d'où il vient
-        header('Location: '. $_SERVER['HTTP_REFERER']);
-        exit;
+        session_destroy();
+        header('Location: /Main');
     }
 
 } 
