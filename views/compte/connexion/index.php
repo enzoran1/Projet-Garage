@@ -8,15 +8,15 @@
   <h2>Veuillez-vous<br>connecter</h2>
 </div>
 
-<form action="POST" class="form">
+<form action="/Compte/login" method="POST" class="form">
 <div class="form__container">
     <div class="form__content">
         <label for="">Votre email :</label>
-        <input type="text" name="" id="">
+        <input type="text" name="email" id="email">
     </div>
     <div class="form__content">
         <label for="">Votre mot de passe :</label>
-        <input type="password" name="" id="">
+        <input type="password" name="mdp" id="mdp">
     </div>
 <div class="form__btn">
     <button type="submit">Connexion</button>

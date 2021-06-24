@@ -196,7 +196,7 @@ class UtilisateursModel extends Model
    */
   public function findOneByEmail(string $email)
   {
-      return $this->requete("SELECT * FROM {$this->table} WHERE email = ?", [$email])->fetch();
+      return $this->requete("SELECT * FROM $this->table WHERE email = ?", [$email])->fetch();
   }
 
   //permet d'ajouter une session rapidement
