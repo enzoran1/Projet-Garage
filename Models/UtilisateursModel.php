@@ -152,9 +152,9 @@ class UtilisateursModel extends Model
   public function getRole()
   {
     return $this->role;
-    $role[] = 'ROLE_USER';
-
-      return array_unique($role);
+    $role[] = 'utilisateur';
+  
+    return array_unique($role);
   }
 
   /**
@@ -196,15 +196,20 @@ class UtilisateursModel extends Model
    */
   public function findOneByEmail(string $email)
   {
-      return $this->requete("SELECT * FROM $this->table WHERE email = ?", [$email])->fetch();
+    return $this->requete("SELECT * FROM $this->table WHERE email = ?", [$email])->fetch();
   }
 
-  //permet d'ajouter une session rapidement
-  public function setSession()
+  public function findOneByPassword(string $password)
   {
-    $_SESSION['user'] = [
-        'id' => $this->id,
-        'email' => $this->email
-    ];
+    return $this->requete("SELECT * FROM $this->table WHERE mdp = ?", [$password])->fetch();
   }
+
+  // //permet d'ajouter une session rapidement
+  // public function setSession()
+  // {
+  //   $_SESSION['user'] = [
+  //       'id' => $this->id,
+  //       'email' => $this->email
+  //   ];
+  // }
 }

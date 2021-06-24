@@ -20,35 +20,53 @@ class CompteController extends Controller
     //connexion
    public function login()
     {
-        echo " c'est bon";
-        exit;
         //Vérifie si le formulaire est complet
         if(Form::validate($_POST, ['email', 'mdp']))
         {
+            // si complet : on initialise les variables récupérées par le formulaire 
+            $email = $_POST['email'];
+            $password = $_POST['mdp'];
             //formulaire complet
-            // on va chercher dans la base de données l'utilisateur avec l'email entré
+            // On instancie l'utilisateur model pour obtenir les méthodes de récupération
             $utilisateurModel = new UtilisateursModel;
-            // strip_tags = nettoie l'e-mail pour éviter les failles XSS
-            $utilisateurArray = $utilisateurModel->findOneByEmail(strip_tags($_POST['email']));
 
-            // si l'utilisateur n'existe pas
-            if(!$utilisateurArray)
-            {
-                // On envoie un message de session
-                echo " L'email ou le mot de passe est incorrecte";
-                return $this->render('/Compte');
-                exit;
+            // récupère un utilisateur en prenant en argument son email
+             // strip_tags = nettoie l'e-mail pour éviter les failles XSS
+            $testEmail = $utilisateurModel->findOneByEmail(strip_tags($email));
+
+            // Si le testEmail est bon on test le password : 
+            if($testEmail)
+            { 
+                $testPassword = $utilisateurModel->findOneByPassword($password);
+
+                if($testPassword)
+                { 
+                    // on créée la session 
+                    $_SESSION['user'] = 
+                    [
+                        'email' => $email
+                    ];
+
+                    // on redirige sur le dashboard
+                    return $this->render('Compte/dashboard/index');
+
+                }
+                else 
+                { 
+                    echo 'Mot de passe ou email incorrect';
+                }
             }
-            // l'utilisateur existe
-            // on verifie si mdp est correcte
-            if(password_verify($_POST['mdp'], $utilisateurModel->getMdp()))
-            {
-                //mdp correcte, on créé la session
-                $utilisateurModel->setSession();
-                return $this->render('/Compte/dashboard');
+            else 
+            { 
+                echo 'Email ou mot de passe incorrect';
             }
         }
+        else 
+        { 
+            echo "veuillez remplir tous les champs";
+        }
     }
+
 
     /**
      * Déconnexion de l'utilisateur
