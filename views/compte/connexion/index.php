@@ -1,9 +1,6 @@
-
-
 <div class="ban">
   <h1>Mon Compte</h1>
 </div>
-
 <div class="compte-titre">
   <h2>Veuillez-vous<br>connecter</h2>
 </div>
@@ -22,7 +19,7 @@
     <button type="submit">Connexion</button>
 </div>
 <div class="form__inscription">
-    <a href="inscription.html">Pas de compte inscrivez-vous</a>
+    <a href="/Inscription">Pas de compte inscrivez-vous</a>
 </div>
 </div>
 </form>
