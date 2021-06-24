@@ -1,1 +1,0 @@
-Core : ce dossier contiendra le coeur de l'application

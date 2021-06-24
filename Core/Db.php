@@ -30,7 +30,7 @@ class Db extends PDO
             //permet de faire toutes les transitions en utf8
             $this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8');
             //permet d'avoir un tableau associatif à chaque fetch
-            $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             //définir le transfère d'erreur
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
@@ -41,6 +41,7 @@ class Db extends PDO
     }
 
     //méthode qui vérifie si il y a une instance, si il y en a pas -> créer sinon la retourne
+    // :self fait réferance a la class
     public static function getInstance():self
     {
         if(self::$instance === null){
