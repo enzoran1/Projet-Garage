@@ -10,7 +10,7 @@ class UtilisateursModel extends Model
   protected $email;
   protected $mdp;
   protected $tel;
-  protected $role = [];
+  protected $role;
   protected $date_creation;
 
   public function __construct()
@@ -152,9 +152,7 @@ class UtilisateursModel extends Model
   public function getRole()
   {
     return $this->role;
-    $role[] = 'utilisateur';
-  
-    return array_unique($role);
+    
   }
 
   /**
