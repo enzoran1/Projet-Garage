@@ -41,11 +41,22 @@ class CompteController extends Controller
 
                 if($testPassword)
                 { 
+
                     // on créée la session 
                     $_SESSION['user'] = 
                     [
-                        'email' => $email
+                        'id'            =>      $testPassword['id'], 
+                        'nom'           =>      $testPassword['nom'],
+                        'prenom'        =>      $testPassword['prenom'], 
+                        'adresse'       =>      $testPassword['adresse'],
+                        'email'         =>      $testPassword['email'],
+                        'mdp'           =>      $testPassword['mdp'],
+                        'tel'           =>      $testPassword['tel'],
+                        'role'          =>      $testPassword['role'],
+                        'date_creation' =>      $testPassword['date_creation']
                     ];
+
+                    // SINON : on fait un beau foreach, ou une belle méthode  ---- 
 
                     // on redirige sur le dashboard
                     header('Location: ../Compte');
@@ -80,3 +91,16 @@ class CompteController extends Controller
     }
 
 } 
+
+
+// C:\Users\33620\Desktop\Projet-Garage\Controller\CompteController.php:41:
+// object(stdClass)[7]
+//   public 'id' => string '1' (length=1)
+//   public 'nom' => string 'martin' (length=6)
+//   public 'prenom' => string 'aubertin' (length=8)
+//   public 'adresse' => string '6 rue du machin' (length=15)
+//   public 'email' => string 'martin.aubertin@gmail.com' (length=25)
+//   public 'mdp' => string 'coco' (length=4)
+//   public 'tel' => string '0620363432' (length=10)
+//   public 'role' => string 'utilisateur' (length=11)
+//   public 'date_creation' => string '24/06/2021' (length=10)
