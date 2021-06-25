@@ -73,4 +73,5 @@ class Main
             $controller->index();
         }
     }
+  }
 }

@@ -1,0 +1,91 @@
+
+
+.carte_utilisateur{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.carte__utilisateur-container{
+    margin-bottom: 30px;
+    width: 300px;
+    background-color: #489897;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+
+    
+    
+}
+
+.utilisateur__flex{
+
+    display: flex;
+    
+    
+    
+    
+}
+
+.utilisateur__flex p{
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-top: 15px;
+    
+    color: white;
+}
+#utilisateur_color{
+    color: #EEC47A;
+}
+
+.utilisateur__btn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    
+}
+.utilisateur__btn button{
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 10%/50%;
+    width: 100px;
+    background-color: #2F3D4A;
+    font-weight: bold
+}
+
+
+@media screen and (min-width:688px){
+
+   .test{
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+
+   }
+
+}
+@media screen and (min-width:988px){
+
+    .test{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+ 
+    }
+
+}
+
+@media screen and (min-width:1300px){
+
+    .test{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+ 
+    }
+
+}
+
+
