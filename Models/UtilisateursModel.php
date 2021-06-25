@@ -209,7 +209,9 @@ class UtilisateursModel extends Model
         'prenom' => $this->prenom, 
         'adresse' => $this->adresse,
         'email' => $this->email,
-        'tel' => $this->tel
+        'tel' => $this->tel,
+        'role' => $this->role,
+        'date_creation' => $this->date_creation
     ];
 }
 }
