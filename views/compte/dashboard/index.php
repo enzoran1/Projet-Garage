@@ -1,3 +1,5 @@
+<?php var_dump($_SESSION) ?>
+
 <div class="ban">
   <h1>Mon Compte</h1>
 </div>
@@ -8,6 +10,8 @@
   <div class="dashboard__content">
     <p>Votre nom:</p>
     <p>Votre prénom:</p>
+
+
     <p>Votre adresse:</p>
     <p>Votre téléphone:</p>
     <p>Votre email:</p>

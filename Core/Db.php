@@ -21,10 +21,10 @@ class Db extends PDO
     private function __construct()
     {
         // DSN de connexion
-        $_dsn = 'mysql:dbname='. self::DBNAME . ';host=' . self::DBHOST;
+        $_dsn = 'mysql:dbname=' . self::DBNAME . ';host=' . self::DBHOST;
 
         // On appelle le constructeur de la classe PDO
-        try{
+        try {
             parent::__construct($_dsn, self::DBUSER, self::DBPASS);
 
             //permet de faire toutes les transitions en utf8
@@ -35,16 +35,16 @@ class Db extends PDO
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         // si connexion ne fonctionne pas => message d'exception
-        catch(PDOException $e){
+        catch (PDOException $e) {
             die($e->getMessage());
         }
     }
 
     //méthode qui vérifie si il y a une instance, si il y en a pas -> créer sinon la retourne
     // :self fait réferance a la class
-    public static function getInstance():self
+    public static function getInstance(): self
     {
-        if(self::$instance === null){
+        if (self::$instance === null) {
             self::$instance = new self(); //new de ma classe elle-même
         }
         return self::$instance;
