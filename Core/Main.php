@@ -11,38 +11,34 @@ class Main
       // On retire le 'trailing slash' éventuel de l'url (le slash a la fin quoi ^^)
       // On récupére l'url
 
-      $uri = $_SERVER['REQUEST_URI'];
+        $uri = $_SERVER['REQUEST_URI'];
       
       // on vérifie que uri n'est pas vide et se termine par un "/"
 
-      if(!empty($uri) && $uri != "/" && $uri[-1] === "/")
-      {
-          // on enléve le "/"
-          $uri = substr($uri, 0, -1);
-
-          echo $uri;
-
-          //on envoie un code de redirection permanente
-          http_response_code(301);
-
-          // On redirige vers l'url sans "/"
-          header('Location: '.$uri);
-
-
-
-
-      }
+        if(!empty($uri) && $uri != "/" && $uri[-1] === "/")
+        {
+            // on enléve le "/"
+            $uri = substr($uri, 0, -1);
+            echo $uri;
+            //on envoie un code de redirection permanente
+            http_response_code(301);
+            // On redirige vers l'url sans "/"
+            header('Location: '.$uri);
+        }
 
       // On gére les paramétres d'url
       // on sépare les parametres dans un tableau
       $params = [];
-      if(isset($_GET['p'])){
-        $params = explode('/', $_GET['p']);
 
-      }
+        if(isset($_GET['p']))
+        {
+            $params = explode('/', $_GET['p']);
+
+        }
        
 
-      if($params[0] != ''){
+        if($params[0] != '')
+        {
           // on a au moin un paramétre
           //on recupere le nom du controleur a instancier
           // on met une majuscule en premiere lettre, on ajoute le namespace complet avant et on ajout 'Controller' aprés
@@ -61,8 +57,14 @@ class Main
               http_response_code(404);
               echo "La page rechercher n'existe pas";
           }
-
-      }else{
+          else
+            {
+                http_response_code(404);
+                echo "La page rechercher n'existe pas";
+            }
+        }
+      else
+        {
           
             // on n'a pas de parametres
             // on instancie le controleur par defaut
@@ -71,12 +73,6 @@ class Main
             // On appelle la méthode index 
 
             $controller->index();
-
-
-      }
-
-
-
-
+        }
     }
 }
