@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use PDO;
 
 class UtilisateursModel extends Model
 {
@@ -199,6 +200,6 @@ class UtilisateursModel extends Model
 
   public function findOneByPassword(string $password)
   {
-    return $this->requete("SELECT * FROM $this->table WHERE mdp = ?", [$password])->fetch();
+    return $this->requete("SELECT * FROM $this->table WHERE mdp = ?", [$password])->fetch(PDO::FETCH_ASSOC);
   }
 }
