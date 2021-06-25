@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/compte.css">
   <link rel="stylesheet" href="css/inscription.css">
   <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/tableauutilisateur.css">
   <title><?= $title ?? '' ?></title>
 </head>
 
