@@ -56,14 +56,14 @@ class Model extends Db
    * @param Model $model Objet à créer
    * @return bool
   */
-  public function create(Model $model)
+  public function create()
   {
     $champs = [];
     $inter = [];
     $valeurs = [];
 
     // On boucle pour éclater le tableau
-    foreach($model as $champ => $valeur){
+    foreach($this as $champ => $valeur){
         // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
         if($valeur !== null && $champ != 'db' && $champ != 'table'){
             $champs[] = $champ;
@@ -87,20 +87,20 @@ class Model extends Db
    * @param Model $model Objet à modifier
    * @return bool
    */
-  public function update(int $id, Model $model)
+  public function update()
   {
       $champs = [];
       $valeurs = [];
 
       // On boucle pour éclater le tableau
-      foreach($model as $champ => $valeur){
+      foreach($this as $champ => $valeur){
           // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
           if($valeur !== null && $champ != 'db' && $champ != 'table'){
               $champs[] = "$champ = ?";
               $valeurs[] = $valeur;
           }
       }
-      $valeurs[] = $id;
+      $valeurs[] = $this->id;
 
       // On transforme le tableau "champs" en une chaine de caractères
       $liste_champs = implode(', ', $champs);
@@ -125,7 +125,7 @@ class Model extends Db
      * @param array $donnees Tableau associatif des données
      * @return self Retourne l'objet hydraté
      */
-    public function hydrate(array $donnees)
+    public function hydrate($donnees)
     {
         foreach ($donnees as $key => $value){
             // On récupère le nom du setter correspondant à l'attribut.

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/compte.css">
   <link rel="stylesheet" href="css/inscription.css">
   <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/tableauutilisateur.css">
   <title><?= $title ?? '' ?></title>
 </head>
 
@@ -65,7 +66,7 @@
           <li class="navbar2__menu-item"><a href="/prestation">Prestations</a></li>
           <li class="navbar2__menu-item"><a href="">Rendez-vous</a></li>
           <li class="navbar2__menu-item"><a href="">Achat véhicules</a></li>
-          <li class="navbar2__menu-item"><a href="/compte">Compte</a></li>
+          <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
           
         </ul>

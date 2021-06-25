@@ -1,25 +1,18 @@
 <?php
 
+// On définit une constante contenant le dossier racine
+define('ROOT', dirname(__DIR__));
 
+// On importe les namespaces nécessaires
 use App\Autoloader;
 use App\Core\Main;
 
-// on definit une constante contenant le dossier racine du projet
-// la fonction dirname permet d'accédé au dossier parent
-// __DIR__ est le dossier dans le quel on se trouve
-
-define('ROOT', dirname(__DIR__));
-
-//on importe l'autoloader
+// On importe l'Autoloader
 require_once ROOT.'/Autoloader.php';
 Autoloader::register();
 
-
-//On instancie Main (qui est notre routeur)
-
+// On instancie Main
 $app = new Main();
 
-//on démarre l'application
-
+// On démarre l'application
 $app->start();
-

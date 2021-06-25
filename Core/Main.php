@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Core;
-
+session_start();
 use App\Controller\MainController;
 
 class Main
@@ -49,10 +49,13 @@ class Main
           // on recupére le deuxieme paramétre d'url
           $action = (isset($params[0])) ? array_shift($params) : 'index';
 
-          if(method_exists($controller, $action))
-          {
-            // si il reste des parametres on les passe a la methode
-            (isset($params[0])) ? $controller->$action($params) : $controller->$action();
+          if(method_exists($controller, $action)){
+              // si il reste des parametres on les passe a la methode
+              (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
+
+          }else{
+              http_response_code(404);
+              echo "La page rechercher n'existe pas";
           }
           else
             {
