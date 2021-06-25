@@ -41,7 +41,7 @@ class CompteController extends Controller
             $manager->hydrate($newUser);
             if (password_verify($_POST['mdp'], $manager->getMdp())) {
                 $manager->setSession();
-                header('Location: ../Compte');
+                header('Location: /compte');
                 exit; // Redirection vers le dashboard
             }
         } else {
