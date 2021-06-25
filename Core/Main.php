@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+session_start();
 use App\Controller\MainController;
 
 class Main
@@ -8,7 +9,7 @@ class Main
     public function start()
     {
       
-      session_start();
+      
       // On retire le 'trailing slash' éventuel de l'url (le slash a la fin quoi ^^)
       // On récupére l'url
 
@@ -73,5 +74,6 @@ class Main
             $controller->index();
         }
     }
-  }
 }
+
+

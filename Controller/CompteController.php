@@ -23,54 +23,23 @@ class CompteController extends Controller
         //Vérifie si le formulaire est complet
         if(Form::validate($_POST, ['email', 'mdp']))
         {
-            // si complet : on initialise les variables récupérées par le formulaire 
-            $email = $_POST['email'];
-            $password = $_POST['mdp'];
             //formulaire complet
             // On instancie l'utilisateur model pour obtenir les méthodes de récupération
-            $utilisateurModel = new UtilisateursModel;
-
+            $manager = new UtilisateursModel();
             // récupère un utilisateur en prenant en argument son email
-             // strip_tags = nettoie l'e-mail pour éviter les failles XSS
-            $testEmail = $utilisateurModel->findOneByEmail(strip_tags($email));
-
-            // Si le testEmail est bon on test le password : 
-            if($testEmail)
-            { 
-                $testPassword = $utilisateurModel->findOneByPassword($password);
-
-                if($testPassword)
-                { 
-
-                    // on créée la session 
-                    $_SESSION['user'] = 
-                    [
-                        'id'            => $testPassword['id'], 
-                        'nom'           => $testPassword['nom'],
-                        'prenom'        => $testPassword['prenom'], 
-                        'adresse'       => $testPassword['adresse'],
-                        'email'         => $testPassword['email'],
-                        'mdp'           => $testPassword['mdp'],
-                        'tel'           => $testPassword['tel'],
-                        'role'          => $testPassword['role'],
-                        'date_creation' => $testPassword['date_creation']
-                    ];
-
-                    // SINON : on fait un beau foreach, ou une belle méthode  ---- 
-
-                    // on redirige sur le dashboard
-                    header('Location: ../Compte');
-
-                }
-                else 
-                { 
-                    echo 'Mot de passe ou email incorrect';
-                }
+            // strip_tags = nettoie l'e-mail pour éviter les failles XSS
+            $newUser = $manager->findOneByEmail(strip_tags($_POST['email']));
+        
+            if(!$newUser)
+            {
+                echo 'Email ou mot de passe incorrect';exit;
             }
-            else 
-            { 
-                echo 'Email ou mot de passe incorrect';
-            }
+            $manager->hydrate($newUser);
+            if(password_verify($_POST['mdp'], $manager->getMdp()))
+            {
+                $manager->setSession();
+                header('Location: /compte'); exit;// Redirection vers le dashboard
+            } 
         }
         else 
         { 

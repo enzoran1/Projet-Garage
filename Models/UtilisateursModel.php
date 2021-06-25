@@ -202,4 +202,14 @@ class UtilisateursModel extends Model
   {
     return $this->requete("SELECT * FROM $this->table WHERE mdp = ?", [$password])->fetch(PDO::FETCH_ASSOC);
   }
+  public function setSession(){
+    $_SESSION['user'] = [
+        'id' => $this->id,
+        'nom' => $this->nom,
+        'prenom' => $this->prenom, 
+        'adresse' => $this->adresse,
+        'email' => $this->email,
+        'tel' => $this->tel
+    ];
+}
 }
