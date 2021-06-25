@@ -1,22 +1,22 @@
 <?php
+
 namespace App\Controller;
 
 use App\Core\Form;
 use App\Models\UtilisateursModel;
 
 class InscriptionController extends Controller
-{    
-    public function index(){
+{
+    public function index()
+    {
 
         $this->render('inscription/index');
-        
     }
 
     //inscription
     public function inscription()
     {
-        if(Form::validate($_POST, ['nom', 'prenom', 'adresse', 'tel', 'email', 'mdp', 'mdp2']))
-        {
+        if (Form::validate($_POST, ['nom', 'prenom', 'adresse', 'tel', 'email', 'mdp', 'mdp2'])) {
             $nom = ($_POST['nom']);
             $prenom = ($_POST['prenom']);
             $adresse = ($_POST['adresse']);
@@ -29,19 +29,18 @@ class InscriptionController extends Controller
             //création utilisateur
             $newUser = new UtilisateursModel();
             $newUser->setNom($nom)
-                    ->setPrenom($prenom)
-                    ->setAdresse($adresse)
-                    ->setTel($tel)
-                    ->setEmail($email)
-                    ->setMdp($mdp)
-                    ->setRole($role)
-                    ->setDate_creation($date);
+                ->setPrenom($prenom)
+                ->setAdresse($adresse)
+                ->setTel($tel)
+                ->setEmail($email)
+                ->setMdp($mdp)
+                ->setRole($role)
+                ->setDate_creation($date);
             //$newUser['role'] = !isset($newUser['role']) ? 'ROLE_USER' : $newUser['role'];
             $newUser->create();
 
             header('Location: ../Compte');
-        }
-        else{
+        } else {
             echo 'Veuillez compléter tous les champs';
         }
     }
