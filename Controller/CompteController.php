@@ -45,15 +45,15 @@ class CompteController extends Controller
                     // on créée la session 
                     $_SESSION['user'] = 
                     [
-                        'id'            => $testPassword['id'], 
-                        'nom'           => $testPassword['nom'],
-                        'prenom'        => $testPassword['prenom'], 
-                        'adresse'       => $testPassword['adresse'],
-                        'email'         => $testPassword['email'],
-                        'mdp'           => $testPassword['mdp'],
-                        'tel'           => $testPassword['tel'],
-                        'role'          => $testPassword['role'],
-                        'date_creation' => $testPassword['date_creation']
+                        'id'            =>      $testPassword['id'], 
+                        'nom'           =>      $testPassword['nom'],
+                        'prenom'        =>      $testPassword['prenom'], 
+                        'adresse'       =>      $testPassword['adresse'],
+                        'email'         =>      $testPassword['email'],
+                        'mdp'           =>      $testPassword['mdp'],
+                        'tel'           =>      $testPassword['tel'],
+                        'role'          =>      $testPassword['role'],
+                        'date_creation' =>      $testPassword['date_creation']
                     ];
 
                     // SINON : on fait un beau foreach, ou une belle méthode  ---- 
