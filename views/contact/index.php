@@ -1,14 +1,8 @@
 <div class="ban" id="ban__contact">
     <h1>Contacts</h1>
-
-
 </div>
-
-
 <div class="titre-contact">
-
     <h2>Nous Contacter</h2>
-
 </div>
 
 <form action="" class="form3" method="post">

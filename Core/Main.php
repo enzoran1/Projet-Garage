@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Core;
-
+session_start();
 use App\Controller\MainController;
 
 class Main
