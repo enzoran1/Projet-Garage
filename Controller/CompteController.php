@@ -69,6 +69,36 @@ class CompteController extends Controller
         header('Location: /Main');
     }
 
+    //modifier profil utilisateur
+    public function modifierProfil()
+    {
+        $nom = strip_tags($_POST['nom']);
+        $prenom = strip_tags($_POST['prenom']);
+        $adresse = strip_tags($_POST['adresse']);
+        $tel = strip_tags($_POST['tel']);
+        $role = 'ROLE_USER';
+        $date = date('Y-m-d H:i:s');
+        $email = strip_tags($_POST['email']);
+        $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2I);
+        $id = ($_SESSION['user']['id']);
+        // On instancie le modèle
+        $utilisateurModif = new UtilisateursModel;
+        
+        // On hydrate
+        $utilisateurModif->setId($id)
+                        ->setNom($nom)
+                        ->setPrenom($prenom)
+                        ->setAdresse($adresse)
+                        ->setTel($tel)
+                        ->setEmail($email)
+                        ->setMdp($mdp)
+                        ->setRole($role)
+                        ->setDate_creation($date);
+        // On enregistre
+        $utilisateurModif->update();
+        header('Location: /compte');
+        exit; // Redirection vers le dashboard
+    }
 
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()
