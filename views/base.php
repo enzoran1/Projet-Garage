@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/inscription.css">
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="css/tableauutilisateur.css">
+  <link rel="stylesheet" href="css/dashboard.css">
   <title><?= $title ?? '' ?></title>
 </head>
 

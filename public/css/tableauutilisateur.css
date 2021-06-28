@@ -13,10 +13,12 @@
     margin-bottom: 30px;
     width: 300px;
     background-color: #489897;
-    height: 320px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     text-align: justify;
+    border-radius: 5px;
 
     
     
@@ -57,6 +59,8 @@
     background-color: #2F3D4A;
     font-weight: bold
 }
+
+
 
 
 @media screen and (min-width:688px){
