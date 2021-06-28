@@ -1,7 +1,7 @@
 
 
 <div class="ban" id="ban__dashboard">
-    <h1>Mon dashboard</h1>
+    <h1>Mon profil</h1>
 </div>
 <div>
 
@@ -40,7 +40,8 @@
               
                
                 <div class="utilisateur2__btn">
-                    <button type="submit">Modifier</button>
+                    <a href="/Inscription">Modifier</a>
+                    
                     
                 </div>
             </div>
