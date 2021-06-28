@@ -227,5 +227,6 @@ class UtilisateursModel extends Model
       'role' => $this->role,
       'date_creation' => $this->date_creation
     ];
+    
   }
 }

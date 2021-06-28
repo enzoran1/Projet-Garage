@@ -1,0 +1,267 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+
+.utilisateur2__titre{
+    color: white;
+    margin-bottom: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 35px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+
+.carte_utilisateur2{
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 35px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+
+.carte__utilisateur2-container{
+    margin-bottom: 30px;
+    width: 300px;
+    background-color: #489897;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: justify;
+    border-radius: 5px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+
+    
+    
+}
+
+.utilisateur2__flex{
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    
+    
+    
+    
+}
+
+.utilisateur2__flex p{
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-top: 15px;
+    font-weight: bold;
+    
+    color: white;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+#utilisateur2_color{
+    color: #EEC47A;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+
+.utilisateur2__btn{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-top: 40px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    
+}
+.utilisateur2__btn button{
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 10%/50%;
+    width: 100px;
+    background-color: #2F3D4A;
+    font-weight: bold;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+.utilisateur2__véhicule{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+.utilisateur2__véhicule h3{
+    color: white;
+    margin-bottom: 25px;
+    margin-top: 35px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+.utilisateur2__véhicule button{
+
+    background-color: #2F3D4A;
+    border: none;
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+
+}
+.utilisateur2__véhicule button img{
+
+    width: 70px;
+    height: 70px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    
+
+}
+
+.utilisateur2__btn a{
+    background-color: #489897;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 10%/50%;
+    color: white;
+    font-weight: bold;
+
+    margin-bottom: 50px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+
+}
+
+
+
+
+@media screen and (min-width:688px){
+
+    .utilisateur2__flex-container{
+
+        display: -webkit-box;
+
+        display: -ms-flexbox;
+
+        display: flex;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+    }
+
+    
+
+  
+
+}
+@media screen and (min-width:988px){
+
+    .utilisateur2__véhicule h3{
+        font-size: 140%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+
+    }
+    .utilisateur2__titre{
+        font-size: 120%;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+    }
+    .carte__utilisateur2-container{
+        width: 330px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+    }
+    .utilisateur2__flex p{
+        margin-bottom: 10px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+    }
+   
+
+    .utilisateur2__btn button{
+        font-size: 120%;
+        width: 120px;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+        
+    }
+    
+
+    
+
+
+
+}
