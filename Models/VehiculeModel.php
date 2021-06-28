@@ -10,6 +10,7 @@ class VehiculeModel extends Model
   protected $id_modele;
   protected $id_motorisation;
   protected $id_type;
+  protected $id_utilisateur;
 
   public function __construct()
   {
@@ -141,6 +142,25 @@ class VehiculeModel extends Model
   public function setId_type($id_type)
   {
     $this->id_type = $id_type;
+
+    return $this;
+  }
+  /**
+   * Get the value of id_utilisateur
+   */ 
+  public function getId_utilisateur()
+  {
+    return $this->id_type;
+  }
+
+  /**
+   * Set the value of id_utilisateur
+   *
+   * @return  self
+   */ 
+  public function setId_utilisateur($id_utilisateur)
+  {
+    $this->id_utilisateur = $id_utilisateur;
 
     return $this;
   }

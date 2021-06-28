@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Core\Form;
 use App\Models\UtilisateursModel;
+use App\Models\VehiculeModel;
 
 class CompteController extends Controller
 {
@@ -38,11 +39,17 @@ class CompteController extends Controller
                 echo 'Email ou mot de passe incorrect';
                 exit;
             }
+            //l'hydratation permet de transformer le contenu d' une base de données en objets et inversement
             $manager->hydrate($newUser);
             if (password_verify($_POST['mdp'], $manager->getMdp())) {
                 $manager->setSession();
-                header('Location: /compte');
-                exit; // Redirection vers le dashboard
+                if ($_SESSION['user']['role'] === 'ROLE_ADMIN') {
+                    header('Location: /admin');
+                    exit;
+                } else {
+                    header('Location: /compte');
+                    exit; // Redirection vers le dashboard
+                }
             }
         } else {
             echo "veuillez remplir tous les champs";
@@ -61,17 +68,26 @@ class CompteController extends Controller
         session_destroy();
         header('Location: /Main');
     }
-} 
 
 
-// C:\Users\33620\Desktop\Projet-Garage\Controller\CompteController.php:41:
-// object(stdClass)[7]
-//   public 'id' => string '1' (length=1)
-//   public 'nom' => string 'martin' (length=6)
-//   public 'prenom' => string 'aubertin' (length=8)
-//   public 'adresse' => string '6 rue du machin' (length=15)
-//   public 'email' => string 'martin.aubertin@gmail.com' (length=25)
-//   public 'mdp' => string 'coco' (length=4)
-//   public 'tel' => string '0620363432' (length=10)
-//   public 'role' => string 'utilisateur' (length=11)
-//   public 'date_creation' => string '24/06/2021' (length=10)
+    //ajout de véhicule de l'utilisateur
+    public function ajoutVehicule()
+    {
+        if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km'])) {
+            $plaque_immatriculation = ($_POST['plaque_immatriculation']);
+            $annee = ($_POST['annee']);
+            $km = ($_POST['km']);
+            //création véhicule
+            $newVehicule = new VehiculeModel();
+            $newVehicule->setPlaque_immatriculation($plaque_immatriculation)
+                ->setAnnee($annee)
+                ->setKm($km)
+                ->setId_utilisateur($_SESSION['user']['id']);
+            $newVehicule->create();
+
+            header('Location: /compte/dashboard');
+        } else {
+            echo 'Veuillez compléter tous les champs';
+        }
+    }
+}
