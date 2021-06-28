@@ -30,6 +30,18 @@ class UtilisateursModel extends Model
   }
 
   /**
+   * Set the value of nom
+   *
+   * @return  self
+   */
+  public function setId($id)
+  {
+    $this->id = $id;
+
+    return $this;
+  }
+
+  /**
    * Get the value of nom
    */
   public function getNom()
