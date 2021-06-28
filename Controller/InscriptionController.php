@@ -36,7 +36,6 @@ class InscriptionController extends Controller
                 ->setMdp($mdp)
                 ->setRole($role)
                 ->setDate_creation($date);
-            //$newUser['role'] = !isset($newUser['role']) ? 'ROLE_USER' : $newUser['role'];
             $newUser->create();
 
             header('Location: ../Compte');
