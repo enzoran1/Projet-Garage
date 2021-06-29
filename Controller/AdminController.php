@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 use App\Models\ClientModel;
+use App\Models\MessageModel;
 
 class AdminController extends Controller
 {
@@ -21,9 +22,8 @@ class AdminController extends Controller
 
     if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
     { 
-      echo 'La page recherchée n\'existe pas';
-
-      return $this->render('main/index');
+     // renvoyer une erreur, chercher le code 
+     return $this->render('main/index');
     } 
 
     //on instancie le modéle correspondant a la table 'utilisitateur
@@ -45,6 +45,21 @@ class AdminController extends Controller
 
   public function message()
   { 
-    // silence is golden
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $messageModel = new MessageModel;
+
+      // méthode 
+      $messages = $messageModel->findAll();
+      // render la view
+      return $this->render('admin/message/index', compact('messages'));
+      
+    }
   }
 }
