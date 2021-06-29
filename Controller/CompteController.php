@@ -25,7 +25,6 @@ class CompteController extends Controller
     //connexion
     public function login()
     {
-
         //Vérifie si le formulaire est complet
         if (Form::validate($_POST, ['email', 'mdp'])) {
             //formulaire complet
@@ -39,19 +38,24 @@ class CompteController extends Controller
                 echo 'Email ou mot de passe incorrect';
                 exit;
             }
-            //l'hydratation permet de transformer le contenu d' une base de données en objets et inversement
-            $manager->hydrate($newUser);
-            if (password_verify($_POST['mdp'], $manager->getMdp())) {
-                $manager->setSession();
-                if ($_SESSION['user']['role'] === 'ROLE_ADMIN') {
-                    header('Location: /admin');
-                    exit;
-                } else {
-                    header('Location: /compte');
-                    exit; // Redirection vers le dashboard
+            else
+            {
+                //l'hydratation permet de transformer le contenu d' une base de données en objets et inversement
+                $manager->hydrate($newUser);
+                if (password_verify($_POST['mdp'], $manager->getMdp())) {
+                    $manager->setSession();
+                    if ($_SESSION['user']['role'] === 'ROLE_ADMIN') {
+                        header('Location: /admin');
+                        exit;
+                    } else {
+                        header('Location: /compte');
+                        exit; // Redirection vers le dashboard
+                    }
                 }
             }
-        } else {
+        } 
+        else 
+        {
             echo "veuillez remplir tous les champs";
         }
     }
