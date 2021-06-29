@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
+use PDO;
 use App\Core\Form;
-use App\Models\UtilisateursModel;
 use App\Models\VehiculeModel;
+use App\Models\UtilisateursModel;
 
 class CompteController extends Controller
 {
@@ -72,13 +73,13 @@ class CompteController extends Controller
     //modifier profil utilisateur
     public function modifierProfil()
     {
-        $nom = strip_tags($_POST['nom']);
-        $prenom = strip_tags($_POST['prenom']);
-        $adresse = strip_tags($_POST['adresse']);
-        $tel = strip_tags($_POST['tel']);
+        $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
+        $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
+        $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
+        $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
         $role = 'ROLE_USER';
         $date = date('Y-m-d H:i:s');
-        $email = strip_tags($_POST['email']);
+        $email = strip_tags($_POST['email'], PDO::PARAM_STR);
         $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2I);
         $id = ($_SESSION['user']['id']);
         // On instancie le modèle
@@ -104,9 +105,9 @@ class CompteController extends Controller
     public function ajoutVehicule()
     {
         if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km'])) {
-            $plaque_immatriculation = ($_POST['plaque_immatriculation']);
-            $annee = ($_POST['annee']);
-            $km = ($_POST['km']);
+            $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
+            $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
+            $km = strip_tags($_POST['km'], PDO::PARAM_INT);
             //création véhicule
             $newVehicule = new VehiculeModel();
             $newVehicule->setPlaque_immatriculation($plaque_immatriculation)
