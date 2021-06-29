@@ -20,7 +20,7 @@ class AdminController extends Controller
     }
   }
 
-  public function show(){
+  public function utilisateurs(){
 
     if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
     { 
@@ -37,7 +37,7 @@ class AdminController extends Controller
     $utilisateur = $utilisateurModel->findAll();
 
     // On génére la vue 
-    $this->render('admin/show/index', compact('utilisateur'));  
+    $this->render('admin/utilisateurs/index', compact('utilisateur'));  
   }
 
 
