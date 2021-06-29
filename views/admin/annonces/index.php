@@ -1,1 +1,3 @@
-<?php echo 'hello world';
+<?php  
+
+// faire la boucle foreach ... 
