@@ -8,7 +8,7 @@
     <div class="admin__content">
         <img src="image/admin-utilisateur.png" alt="">
         <h3>Mes utilisateurs</h3>
-        <a href="/client">Accéder</a>
+        <a href="admin/show/index">Accéder</a>
     </div>
 
     <div class="admin__content">
