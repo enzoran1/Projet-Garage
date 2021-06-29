@@ -39,7 +39,7 @@ class AdminController extends Controller
     $this->render('admin/show/index', compact('utilisateur'));
   }
 
-  public function annonce()
+  public function annonces()
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
