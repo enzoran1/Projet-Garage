@@ -27,7 +27,7 @@
     <div class="admin__content">
         <img src="image/admin-annonce.png" alt="">
         <h3>Mes annonces</h3>
-        <a href="">Accéder</a>
+        <a href="admin/annonces/index">Accéder</a>
     </div>
 </div>
 </div>

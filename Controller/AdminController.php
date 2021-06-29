@@ -1,5 +1,7 @@
 <?php
 namespace App\Controller;
+
+use App\Models\AnnoncesModel;
 use App\Models\ClientModel;
 use App\Models\MessageModel;
 
@@ -40,7 +42,22 @@ class AdminController extends Controller
 
   public function annonce()
   { 
-    // silence is golden
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $annoncesModel = new AnnoncesModel;
+
+      // méthode 
+      $annonces = $annoncesModel->findAll();
+      // render la view
+      return $this->render('admin/annonces/index', compact('annonces'));
+      
+    }
   }
 
   public function message()
