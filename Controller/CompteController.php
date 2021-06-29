@@ -27,7 +27,8 @@ class CompteController extends Controller
     public function login()
     {
         //Vérifie si le formulaire est complet
-        if (Form::validate($_POST, ['email', 'mdp'])) {
+        if (Form::validate($_POST, ['email', 'mdp'])) 
+        {
             //formulaire complet
             // On instancie l'utilisateur model pour obtenir les méthodes de récupération
             $manager = new UtilisateursModel();
@@ -35,7 +36,8 @@ class CompteController extends Controller
             // strip_tags = nettoie l'e-mail pour éviter les failles XSS
             $newUser = $manager->findOneByEmail(strip_tags($_POST['email']));
 
-            if (!$newUser) {
+            if (!$newUser) 
+            {
                 echo 'Email ou mot de passe incorrect';
                 exit;
             }
@@ -43,9 +45,11 @@ class CompteController extends Controller
             {
                 //l'hydratation permet de transformer le contenu d' une base de données en objets et inversement
                 $manager->hydrate($newUser);
-                if (password_verify($_POST['mdp'], $manager->getMdp())) {
+                if (password_verify($_POST['mdp'], $manager->getMdp())) 
+                {
                     $manager->setSession();
-                    if ($_SESSION['user']['role'] === 'ROLE_ADMIN') {
+                    if ($_SESSION['user']['role'] === 'ROLE_ADMIN') 
+                    {
                         header('Location: /admin');
                         exit;
                     } 
@@ -55,12 +59,13 @@ class CompteController extends Controller
                         exit; // Redirection vers le dashboard
                     }
                 }
+                else 
+                {
+                    echo "veuillez remplir tous les champs";
+                }
             }
         } 
-        else 
-        {
-            echo "veuillez remplir tous les champs";
-        }
+
     }
 
 

@@ -21,7 +21,7 @@
     <div class="admin__content">
         <img src="image/admin-message.png" alt="">
         <h3>Mes messages</h3>
-        <a href="/message">Accéder</a>
+        <a href="admin/message/index">Accéder</a>
     </div>
 
     <div class="admin__content">
