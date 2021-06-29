@@ -59,9 +59,9 @@
           <a href="/Admin">Admin</a>
         </li>
         <?php  } ?>
-        
       </ul>
     </nav>
+
     <nav class="navbar2">
       <div class="navbar2__flex">
         <div class="navbar2__logo">
@@ -86,7 +86,7 @@
           
         </ul>
         <div class="navbar2__panier">
-          <a href=""> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
+          <a href="panier/index"> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
         </div>
       </div>
     </nav>
