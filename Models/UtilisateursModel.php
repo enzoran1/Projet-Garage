@@ -30,7 +30,11 @@ class UtilisateursModel extends Model
   }
 
   /**
+<<<<<<< HEAD
    * Set the value of nom
+=======
+   * Set the value of id
+>>>>>>> emilie
    *
    * @return  self
    */

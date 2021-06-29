@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use PDO;
 use App\Core\Form;
 use App\Models\UtilisateursModel;
 
@@ -17,18 +18,19 @@ class InscriptionController extends Controller
     public function inscription()
     {
         if (Form::validate($_POST, ['nom', 'prenom', 'adresse', 'tel', 'email', 'mdp', 'mdp2'])) {
-            $nom = ($_POST['nom']);
-            $prenom = ($_POST['prenom']);
-            $adresse = ($_POST['adresse']);
-            $tel = ($_POST['tel']);
+            $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
+            $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
+            $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
+            $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
             $role = 'ROLE_USER';
             $date = date('Y-m-d H:i:s');
             // On nettoie l'e-mail pour éviter les failles XSS et on chiffre le mot de passe
-            $email = strip_tags($_POST['email']);
+            $email = strip_tags($_POST['email'], PDO::PARAM_STR);
             $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2I);
             //création utilisateur
             $newUser = new UtilisateursModel();
-            $newUser->setNom($nom)
+            $newUser
+                ->setNom($nom)
                 ->setPrenom($prenom)
                 ->setAdresse($adresse)
                 ->setTel($tel)
