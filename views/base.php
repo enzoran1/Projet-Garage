@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="fr">
 
-<head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +11,8 @@
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="css/tableauutilisateur.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/message.css">
   <title><?= $title ?? '' ?></title>
 </head>
 
@@ -52,6 +53,13 @@
         <li class="navbar-menu__item">
           <a href="/Contact">Contacts</a>
         </li>
+        <?php 
+          if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN'){ ?>
+            <li class="navbar-menu__item">
+          <a href="/Admin">Admin</a>
+        </li>
+        <?php  } ?>
+        
       </ul>
     </nav>
     <nav class="navbar2">
@@ -69,6 +77,12 @@
           <li class="navbar2__menu-item"><a href="">Achat véhicules</a></li>
           <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
+          <?php 
+          if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN'){ ?>
+            <li class="navbar2__menu-item">
+          <a href="/Admin">Admin</a>
+        </li>
+        <?php  } ?>
           
         </ul>
         <div class="navbar2__panier">
