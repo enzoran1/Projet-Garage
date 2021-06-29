@@ -47,7 +47,9 @@ class CompteController extends Controller
                     if ($_SESSION['user']['role'] === 'ROLE_ADMIN') {
                         header('Location: /admin');
                         exit;
-                    } else {
+                    } 
+                    else 
+                    {
                         header('Location: /compte');
                         exit; // Redirection vers le dashboard
                     }
