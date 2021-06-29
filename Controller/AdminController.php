@@ -19,6 +19,13 @@ class AdminController extends Controller
 
   public function show(){
 
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      echo 'La page recherchée n\'existe pas';
+
+      return $this->render('main/index');
+    } 
+
     //on instancie le modéle correspondant a la table 'utilisitateur
 
     $utilisateurModel = new ClientModel;
@@ -29,5 +36,15 @@ class AdminController extends Controller
 
     // On génére la vue 
     $this->render('admin/show/index', compact('utilisateur'));  
+  }
+
+  public function annonce()
+  { 
+    // silence is golden
+  }
+
+  public function message()
+  { 
+    // silence is golden
   }
 }
