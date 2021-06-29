@@ -40,25 +40,6 @@ class AdminController extends Controller
     $this->render('admin/show/index', compact('utilisateur'));  
   }
 
-  public function annonce()
-  { 
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
-      // renvoyer une erreur, chercher le code 
-      return $this->render('main/index');
-    }
-    else
-    {
-      // instancier le model 
-      $annoncesModel = new AnnoncesModel;
-
-      // méthode 
-      $annonces = $annoncesModel->findAll();
-      // render la view
-      return $this->render('admin/annonces/index', compact('annonces'));
-      
-    }
-  }
 
   public function message()
   { 
@@ -76,6 +57,27 @@ class AdminController extends Controller
       $messages = $messageModel->findAll();
       // render la view
       return $this->render('admin/message/index', compact('messages'));
+      
+    }
+  }
+
+  
+  public function annonces()
+  { 
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $annoncesModel = new AnnoncesModel;
+
+      // méthode 
+      $annonces = $annoncesModel->findAll();
+      // render la view
+      return $this->render('admin/annonces/index', compact('annonces'));
       
     }
   }
