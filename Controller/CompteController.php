@@ -4,6 +4,10 @@ namespace App\Controller;
 
 use PDO;
 use App\Core\Form;
+use App\Models\MarqueModel;
+use App\Models\ModeleModel;
+use App\Models\MotorisationModel;
+use App\Models\TypeVehiculeModel;
 use App\Models\VehiculeModel;
 use App\Models\UtilisateursModel;
 
@@ -77,6 +81,17 @@ class CompteController extends Controller
         header('Location: /Main');
     }
 
+
+    public function editProfileView()
+    { 
+        ?> <script> if(testUser()) 
+        {   </script>
+            <?php
+            return $this->render('inscription/index');
+            ?> <script> 
+        } </script> <?php
+    } 
+
     //modifier profil utilisateur
     public function modifierProfil()
     {
@@ -89,6 +104,7 @@ class CompteController extends Controller
         $email = strip_tags($_POST['email'], PDO::PARAM_STR);
         $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2I);
         $id = ($_SESSION['user']['id']);
+
         // On instancie le modèle
         $utilisateurModif = new UtilisateursModel;
         
@@ -102,13 +118,38 @@ class CompteController extends Controller
                         ->setMdp($mdp)
                         ->setRole($role)
                         ->setDate_creation($date);
+
         // On enregistre
         $utilisateurModif->update();
         $utilisateurModif->setSession();
+        
         //il faut modifier la session pour rafraichir les valeurs du dashboard
+
 
         header('Location: /compte');
         exit; // Redirection vers le dashboard
+    }
+
+    // affichage du formulaire d'ajotu de véhicule
+
+    public function ajoutVehiculeForm(){
+        //on instancie le modéle correspondant a la table 'utilisitateur
+
+        $marqueModel = new MarqueModel;
+        $modelModel = new ModeleModel;
+        $motorisationModel = new MotorisationModel;
+        $typeVehiculeModel = new TypeVehiculeModel;
+        
+        // on va chercher toutes les utilisateur
+
+        $marques = $marqueModel->findAll();
+        $models = $modelModel->findAll();
+        $motorisations = $motorisationModel->findAll();
+        $types = $typeVehiculeModel->findAll();
+
+        // On génére la vue 
+        
+        $this->render('compte/ajoutVehicule/index', compact('marques','models','motorisations','types'));
     }
 
     //ajout de véhicule de l'utilisateur
@@ -132,3 +173,4 @@ class CompteController extends Controller
         }
     }
 }
+

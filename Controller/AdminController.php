@@ -13,7 +13,7 @@ class AdminController extends Controller
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
-      return $this->render('main/index');
+      header('Location: /');
     } else {
       return $this->render('admin/index');
     }
