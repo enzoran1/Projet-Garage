@@ -12,10 +12,6 @@ class CompteController extends Controller
     public function index()
     {
         //on instancie le modéle correspondant a la table 'utilisitateur
-
-
-
-
         if (empty($_SESSION)) {
             $this->render('compte/connexion/index');
         } else {
@@ -108,6 +104,9 @@ class CompteController extends Controller
                         ->setDate_creation($date);
         // On enregistre
         $utilisateurModif->update();
+        $utilisateurModif->setSession();
+        //il faut modifier la session pour rafraichir les valeurs du dashboard
+
         header('Location: /compte');
         exit; // Redirection vers le dashboard
     }
