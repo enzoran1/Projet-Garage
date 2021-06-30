@@ -9,6 +9,10 @@ const modalPub = document.querySelector('#modal-pub');
 const submitButton = document.getElementById('submitpasswordmodal');  
 
 
+const pass1 = document.getElementById('password1');
+const pass2 = document.getElementById('password2');  
+
+
 // évènement -> au click, le bouton enleve le hidden et ajoute le flou
 afficheModal.addEventListener('click', (e) => {
     modalPub.classList.remove('hidden');
@@ -41,14 +45,12 @@ const listeModal = document.querySelectorAll('.modal').forEach((modal) => {
     }
 
         function testUser() // cette méthode vérifie que les deux mots de passe renseignés sont identifiques 
-    { 
-        const pass1 = document.getElementById('password1');
-        const pass2 = document.getElementById('password2');   
+    {  
 
-        if(pass1 === pass2)
+        if(pass1.value === pass2.value)
         { 
             console.log("ca marche grand fou");
-            
+
         }
         else
         { 
