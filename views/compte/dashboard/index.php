@@ -40,12 +40,20 @@
               
                
                 <div class="utilisateur2__btn">
-                    <a href="/Inscription">Modifier</a>
-                    
+                    <a id="affiche-modal" href="#">Modifier</a>
                     
                 </div>
-            </div>
+                </div>
         </div>
+<div id="modal-pub" class="modal hidden">
+        <div class="conteneur-modal">
+            <div class="close">&times;</div>
+
+            <span class="titre-modal">Achête mon choco !</span>
+        </div>
+    </div>
+        
+
 
         
 
