@@ -81,6 +81,17 @@ class CompteController extends Controller
         header('Location: /Main');
     }
 
+
+    public function editProfileView()
+    { 
+        ?> <script> if(testUser()) 
+        {   </script>
+            <?php
+            return $this->render('inscription/index');
+            ?> <script> 
+        } </script> <?php
+    } 
+
     //modifier profil utilisateur
     public function modifierProfil()
     {
@@ -177,3 +188,4 @@ class CompteController extends Controller
         }
     }
 }
+

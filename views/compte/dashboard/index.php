@@ -47,12 +47,18 @@
 <div id="modal-pub" class="modal hidden">
         <div class="conteneur-modal">
             <div class="close">&times;</div>
-            <form action="">
+            <form class="form__modal" action="/compte/editProfileView" method="post">
+            <div class="modal__content">
                 <label for="">mot de passe</label>
                 <input type="password" name="password1" id="password1">
-                <label for="">Retapez votre mot de passe </label>
+            </div>
+            <div class="modal__content">
+                <label for="">Confirmer votre mot de passe </label>
                 <input type="password" name="password2" id="password2">
-                <button type="submit" id="submitpasswordmodal">envoyer</button>
+            </div>
+            <div class="modal__btn">   
+                <button type="submit" id="submitpasswordmodal">Envoyer</button>
+            </div> 
             </form>      
         </div>
     </div>
