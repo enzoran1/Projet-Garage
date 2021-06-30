@@ -1,4 +1,4 @@
-<div class="ban" id="ban__clients">
+<div class="ban" id="ban__listeutilisateur">
     <h1>Liste utilisateurs</h1>
 </div>
 

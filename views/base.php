@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/prestations.css">
-  <link rel="stylesheet" href="/css/compte.css">
+  <link rel="stylesheet" href="/css/connexion.css">
   <link rel="stylesheet" href="/css/inscription.css">
   <link rel="stylesheet" href="/css/contact.css">
   <link rel="stylesheet" href="/css/tableauutilisateur.css">
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/css/admin.css">
   <link rel="stylesheet" href="/css/message.css">
   <link rel="stylesheet" href="/css/panier.css">
+  <link rel="stylesheet" href="/css/annonces.css">
   <title><?= $title ?? '' ?></title>
 </head>
 
@@ -25,7 +26,7 @@
       </div>
       <div class="navbar__container">
         <div class="navbar__container-panier">
-          <a href=""> <img src="/image/icons8-shopping-cart-48.png" alt="icon"></a>
+          <a href="panier/index"> <img src="/image/icons8-shopping-cart-48.png" alt="icon"></a>
         </div>
         <span class="navbar__container-burger">
           <svg viewBox="0 0 100 80" widht="40" height="40">
