@@ -2,8 +2,6 @@
 //routeur
 namespace App\Core;
 
-
-
 use App\Controller\MainController;
 
 class Main

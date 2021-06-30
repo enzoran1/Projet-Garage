@@ -115,6 +115,12 @@ class CompteController extends Controller
         exit; // Redirection vers le dashboard
     }
 
+    // affichage du formulaire d'ajotu de véhicule
+
+    public function ajoutVehiculeForm(){
+        $this->render('compte/ajoutVehicule/index');
+    }
+
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()
     {
