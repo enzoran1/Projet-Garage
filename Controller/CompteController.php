@@ -89,6 +89,7 @@ class CompteController extends Controller
         $email = strip_tags($_POST['email'], PDO::PARAM_STR);
         $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2I);
         $id = ($_SESSION['user']['id']);
+
         // On instancie le modèle
         $utilisateurModif = new UtilisateursModel;
         
@@ -102,10 +103,13 @@ class CompteController extends Controller
                         ->setMdp($mdp)
                         ->setRole($role)
                         ->setDate_creation($date);
+
         // On enregistre
         $utilisateurModif->update();
         $utilisateurModif->setSession();
+        
         //il faut modifier la session pour rafraichir les valeurs du dashboard
+
 
         header('Location: /compte');
         exit; // Redirection vers le dashboard

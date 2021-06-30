@@ -120,6 +120,7 @@
   </footer>
   <script src="/js/script.js"></script>
   <script src="/js/formulaire.js"></script>
+  <script src="/js/modal.js"></script>
 
 </body>
 
