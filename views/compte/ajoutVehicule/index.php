@@ -1,7 +1,7 @@
 <div class="ban" id="ban__inscription">
 
-        <h1>Ajout véhicule</h1>
- 
+    <h1>Ajout véhicule</h1>
+
 </div>
 
 
@@ -25,56 +25,57 @@
             <div class="form2__content">
                 <label for="">Marque :</label>
                 <select name="marque" id="marque">
-                <option value="">--Marques--</option>
-            <?php foreach ($marques as $marque) { ?>
-                <option value="<?= $marque['id'] ?>"><?= $marque['nom'] ?></option>
-            <?php } ?>
+                    <option value="">--Marques--</option>
+                    <?php foreach ($marques as $marque) { ?>
+                        <option value="<?= $marque['id'] ?>"><?= $marque['nom'] ?></option>
+                    <?php } ?>
                 </select>
             </div>
 
-            
+
             <div class="form2__content">
                 <label for="">Modéle :</label>
                 <select name="modele" id="modele">
-                <option value="">--Modéles--</option>
-            <?php foreach ($models as $model) { ?>
-                <option value="<?= $model['id'] ?>"><?= $model['nom'] ?></option>
-            <?php } ?>
+                    <option value="">--Modéles--</option>
+                    <?php foreach ($models as $model) { ?>
+                        <option value="<?= $model['id'] ?>"><?= $model['nom'] ?></option>
+                    <?php } ?>
                 </select>
             </div>
 
             <div class="form2__content">
                 <label for="">Motorisation :</label>
                 <select name="motorisation" id="motorisation">
-                <option value="">--Motorisation--</option>
-            <?php foreach ($motorisations as $motorisation) { ?>
-                <option value="<?= $motorisation['id'] ?>"><?= $motorisation['lib_motorisation'] ?></option>
-            <?php } ?>
+                    <option value="">--Motorisation--</option>
+                    <?php foreach ($motorisations as $motorisation) { ?>
+                        <option value="<?= $motorisation['id'] ?>"><?= $motorisation['lib_motorisation'] ?></option>
+                    <?php } ?>
                 </select>
             </div>
 
             <div class="form2__content">
                 <label for="">Type véhicule :</label>
                 <select name="type_vehicule" id="type_vehicule">
-                <option value="">--Type véhicules--</option>
-            <?php foreach ($types as $type) { ?>
-                <option value="<?= $type['id_type'] ?>"><?= $type['lib_type'] ?></option>
-            <?php } ?>
+                    <option value="">--Type véhicules--</option>
+                    <?php foreach ($types as $type) { ?>
+                        <option value="<?= $type['id_type'] ?>"><?= $type['lib_type'] ?></option>
+                    <?php } ?>
                 </select>
             </div>
 
-            
+
 
         </div>
-         
-        
+
+
 
         <div class="form2__btn">
-           
 
-            
-                <button type="submit">Envoyer</button>
+
+
+            <button type="submit">Envoyer</button>
         </div>
 
     </div>
 </form>
+<p>bite</p>
