@@ -5,6 +5,9 @@ const afficheModal = document.querySelector('#affiche-modal');
 // correspond au modal en intégralité, caché par défaut
 const modalPub = document.querySelector('#modal-pub');
 
+// bouton submit
+const submitButton = document.getElementById('submitpasswordmodal');  
+
 
 // évènement -> au click, le bouton enleve le hidden et ajoute le flou
 afficheModal.addEventListener('click', (e) => {
@@ -26,6 +29,8 @@ const listeModal = document.querySelectorAll('.modal').forEach((modal) => {
     // ajout event, au click, cache le modal
     modal.addEventListener('click', cacheModal);
 
+    submitButton.addEventListener('click', testUser);
+
     // éviter la propagation sur les parents, enfants
     conteneurModal.addEventListener('click', (e) => { e.stopPropagation() });
 
@@ -34,4 +39,21 @@ const listeModal = document.querySelectorAll('.modal').forEach((modal) => {
         modal.classList.add('hidden');
         e.stopPropagation();
     }
+
+        function testUser() // cette méthode vérifie que les deux mots de passe renseignés sont identifiques 
+    { 
+        const pass1 = document.getElementById('password1');
+        const pass2 = document.getElementById('password2');   
+
+        if(pass1 === pass2)
+        { 
+            console.log("ca marche grand fou");
+            
+        }
+        else
+        { 
+            console.log("vos mots de passe ne sont pas identiques");
+        }
+    }
 });
+

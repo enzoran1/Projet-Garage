@@ -49,10 +49,10 @@
             <div class="close">&times;</div>
             <form action="">
                 <label for="">mot de passe</label>
-                <input type="password" name="" id="">
-                <label for="">mot de passe 2</label>
-                <input type="password" name="" id="">
-                <button type="submit">envoyer</button>
+                <input type="password" name="password1" id="password1">
+                <label for="">Retapez votre mot de passe </label>
+                <input type="password" name="password2" id="password2">
+                <button type="submit" id="submitpasswordmodal">envoyer</button>
             </form>      
         </div>
     </div>
