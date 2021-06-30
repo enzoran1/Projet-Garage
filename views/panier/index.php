@@ -28,3 +28,4 @@
 </div>
 
 <div class="panier_btn"> <a href="">Passer la commande</a> </div>
+<!-- Si pas identifié : connexion, sinon valider les achats, prise de rdv -->
