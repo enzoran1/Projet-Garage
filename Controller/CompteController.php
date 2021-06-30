@@ -4,6 +4,10 @@ namespace App\Controller;
 
 use PDO;
 use App\Core\Form;
+use App\Models\MarqueModel;
+use App\Models\ModeleModel;
+use App\Models\MotorisationModel;
+use App\Models\TypeVehiculeModel;
 use App\Models\VehiculeModel;
 use App\Models\UtilisateursModel;
 
@@ -124,6 +128,28 @@ class CompteController extends Controller
 
         header('Location: /compte');
         exit; // Redirection vers le dashboard
+    }
+
+    // affichage du formulaire d'ajotu de véhicule
+
+    public function ajoutVehiculeForm(){
+        //on instancie le modéle correspondant a la table 'utilisitateur
+
+        $marqueModel = new MarqueModel;
+        $modelModel = new ModeleModel;
+        $motorisationModel = new MotorisationModel;
+        $typeVehiculeModel = new TypeVehiculeModel;
+        
+        // on va chercher toutes les utilisateur
+
+        $marques = $marqueModel->findAll();
+        $models = $modelModel->findAll();
+        $motorisations = $motorisationModel->findAll();
+        $types = $typeVehiculeModel->findAll();
+
+        // On génére la vue 
+        
+        $this->render('compte/ajoutVehicule/index', compact('marques','models','motorisations','types'));
     }
 
     //ajout de véhicule de l'utilisateur
