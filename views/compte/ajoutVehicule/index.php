@@ -5,7 +5,7 @@
 </div>
 
 
-<form action="" class="form2" method="post">
+<form action="/Compte/ajoutVehicule" class="form2" method="post">
     <div class="form2__container">
         <div class="form2__flex">
             <div class="form2__content">
