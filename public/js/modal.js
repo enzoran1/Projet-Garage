@@ -56,6 +56,8 @@ const listeModal = document.querySelectorAll('.modal').forEach((modal) =>
         else
         { 
             alert('les deux mots de passes ne sont pas identiques, veuillez réessayer');
+            pass1.value = "";
+            pass2.value = "";
         }
     }
 });

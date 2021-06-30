@@ -47,7 +47,7 @@
 <div id="modal-pub" class="modal hidden">
         <div class="conteneur-modal">
             <div class="close">&times;</div>
-            <form action="">
+            <form action="/compte/editProfileView" method="post">
                 <label for="">mot de passe</label>
                 <input type="password" name="password1" id="password1">
                 <label for="">Retapez votre mot de passe </label>
