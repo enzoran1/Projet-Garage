@@ -48,8 +48,14 @@
 <div id="modal-pub" class="modal hidden">
         <div class="conteneur-modal">
             <div class="close">&times;</div>
-
-            <span class="titre-modal">Achête mon choco !</span>
+            <form action="">
+                <label for="">mot de passe</label>
+                <input type="password" name="" id="">
+                <label for="">mot de passe 2</label>
+                <input type="password" name="" id="">
+                <button type="submit">envoyer</button>
+            </form>
+        
         </div>
     </div>
         
