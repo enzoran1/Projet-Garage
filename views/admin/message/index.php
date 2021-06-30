@@ -1,35 +1,38 @@
-<div class="test2">
+<div class="ban" id="ban__messageutilisateur">
+    <h1>Message utilisateur</h1>
+</div>
+
+<div class="message__container">
     <?php foreach ($messages as $message) : ?>
-        <div class="carte_utilisateur2">
-            <div class="carte__utilisateur2-container">
-                <div class="utilisateur2__prenom-nom">
-                    <div class="utilisateur2__flex">
-                        <p id="utilisateur2_color">Prenom : </p>
-                        <p><?= $message->prenom ?></p>
-                    </div>
-                    <div class="utilisateur2__flex">
-                        <p id="utilisateur2_color">Nom : </p>
-                        <p><?= $message->nom ?></p>
-                    </div>
+        <div class="center-message">
+        <div class="message-carte__container">
+            <div class="message-carte__content">
+                <div class="message-carte__content-flex">
+                    <p id="message-color">Prenom :</p>
+                    <p><?= $message->prenom ?></p>
                 </div>
-                <div class="utilisateur2__flex">
-                    <p id="utilisateur2_color">Email : </p>
+                <div class="message-carte__content-flex">
+                    <p id="message-color">Nom :</p>
+                    <p><?= $message->nom ?></p>
+                </div>
+                <div class="message-carte__content-flex">
+                    <p id="message-color">Email :</p>
                     <p><?= $message->email ?></p>
                 </div>
-                
-                
-                <div class="utilisateur2__flex">
-                    <p id="utilisateur2_color">Date message: </p>
-                    <p><?= $message->message_date ?></p>
+                <div class="message-carte__content-flex">
+                    <p id="message-color">Date message :</p>
+                    <p><?= $message->message_date?></p>
                 </div>
-                <div class="utilisateur2__flex2">
-                    <p id="utilisateur2_color">Message</p>
-                    <p id="color_message2"><?= $message->message ?></p>
-                </div>
-                <div class="utilisateur2__btn">
-                    <button type="submit">Supprimer</button>
-                </div>
+
             </div>
+            <div class="carte__message">
+                <p id="message-color2">Message</p>
+                <p class="message__overflow"><?= $message->message?></p>
+            </div>
+            <div class="message__btn">
+                <a href="">Supprimer</a>
+            </div>
+        </div>
         </div>
 
     <?php endforeach;   ?>
