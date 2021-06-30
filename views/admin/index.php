@@ -8,7 +8,7 @@
     <div class="admin__content">
         <img src="image/admin-utilisateur.png" alt="">
         <h3>Mes utilisateurs</h3>
-        <a href="admin/show/index">Accéder</a>
+        <a href="admin/utilisateurs/index">Accéder</a>
     </div>
 
     <div class="admin__content">
@@ -27,12 +27,13 @@
     <div class="admin__content">
         <img src="image/admin-annonce.png" alt="">
         <h3>Mes annonces</h3>
-        <a href="">Accéder</a>
+        <a href="admin/annonces/index">Accéder</a>
     </div>
 </div>
 </div>
 
 
-
-<a href="Compte/logout">DECONNEXION</a>
+<div class="admin__btn">
+<a href="Compte/logout">Deconnexion</a>
+</div>
 

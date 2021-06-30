@@ -15,11 +15,11 @@ class AnnoncesController extends Controller
 
         //on instancie le modéle correspondant a la table 'utilisitateur
 
-        $model = new AnnoncesModel;
+        $annoncesModel = new AnnoncesModel;
         
         // on va chercher toutes les utilisateur
 
-        $annonces = $model->findAll();
+        $annonces = $annoncesModel->findAll();
         
 
         // On génére la vue 

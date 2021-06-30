@@ -1,4 +1,4 @@
-<div class="ban">
+<div class="ban" id="ban__compte">
   <h1>Mon Compte</h1>
 </div>
 <div class="compte-titre">

@@ -11,6 +11,9 @@ class AnnoncesModel extends Model
     protected $km;
     protected $description;
     protected $actif;
+    protected $id_modele;
+    protected $id_motorisation;
+    protected $id_type;
 
     public function __construct()
     {
@@ -154,6 +157,66 @@ class AnnoncesModel extends Model
     public function setActif($actif)
     {
         $this->actif = $actif;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_modele
+     */ 
+    public function getId_modele()
+    {
+        return $this->id_modele;
+    }
+
+    /**
+     * Set the value of id_modele
+     *
+     * @return  self
+     */ 
+    public function setId_modele($id_modele)
+    {
+        $this->id_modele = $id_modele;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_motorisation
+     */ 
+    public function getId_motorisation()
+    {
+        return $this->id_motorisation;
+    }
+
+    /**
+     * Set the value of id_motorisation
+     *
+     * @return  self
+     */ 
+    public function setId_motorisation($id_motorisation)
+    {
+        $this->id_motorisation = $id_motorisation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_type
+     */ 
+    public function getId_type()
+    {
+        return $this->id_type;
+    }
+
+    /**
+     * Set the value of id_type
+     *
+     * @return  self
+     */ 
+    public function setId_type($id_type)
+    {
+        $this->id_type = $id_type;
 
         return $this;
     }
