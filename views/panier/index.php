@@ -1,4 +1,5 @@
-<div class="ban" id="panierhero">
+<div class="ban" id="ban__panier">
+    <h1>Mon panier</h1>
 </div>
 
 <div class="panier__container">
@@ -21,7 +22,7 @@
 
 <!-- Foeach des articles  -->
 
-<div class="titlePanier" id="total"> 
+<div class="titlePanier" > 
     <h2> Total </h2>
     <p>100 €</p> <!-- prix affiché en PHP  --> 
 </div>

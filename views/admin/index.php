@@ -33,6 +33,7 @@
 </div>
 
 
-
-<a href="Compte/logout">DECONNEXION</a>
+<div class="admin__btn">
+<a href="Compte/logout">Deconnexion</a>
+</div>
 
