@@ -27,7 +27,7 @@
                 <select name="marque" id="marque">
                     <option value="">--Marques--</option>
                     <?php foreach ($marques as $marque) { ?>
-                        <option value="<?= $marque['id'] ?>"><?= $marque['nom'] ?></option>
+                        <option value="<?= $marque->id ?>"><?= $marque->nom ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -36,9 +36,9 @@
             <div class="form2__content">
                 <label for="">Modéle :</label>
                 <select name="modele" id="modele">
-                    <option value="">--Modéles--</option>
+                    <option value="">--Modèles--</option>
                     <?php foreach ($models as $model) { ?>
-                        <option value="<?= $model['id'] ?>"><?= $model['nom'] ?></option>
+                        <option value="<?= $model->id ?>"><?= $model->nom ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -48,7 +48,7 @@
                 <select name="motorisation" id="motorisation">
                     <option value="">--Motorisation--</option>
                     <?php foreach ($motorisations as $motorisation) { ?>
-                        <option value="<?= $motorisation['id'] ?>"><?= $motorisation['lib_motorisation'] ?></option>
+                        <option value="<?= $motorisation->id_motorisation ?>"><?= $motorisation->lib_motorisation ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -58,7 +58,7 @@
                 <select name="type_vehicule" id="type_vehicule">
                     <option value="">--Type véhicules--</option>
                     <?php foreach ($types as $type) { ?>
-                        <option value="<?= $type['id_type'] ?>"><?= $type['lib_type'] ?></option>
+                        <option value="<?= $type->id_type ?>"><?= $type->lib_type ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -78,4 +78,3 @@
 
     </div>
 </form>
-<p>bite</p>
