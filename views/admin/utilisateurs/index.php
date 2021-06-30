@@ -33,7 +33,7 @@
                     <p><?= $utilisateurs->date_creation ?></p>
                 </div>
                 <div class="utilisateur__btn">
-                    <button type="submit">Modifier</button>
+                    <a href="">Modifier</a>
                     <button type="submit">Supprimer</button>
                 </div>
             </div>
