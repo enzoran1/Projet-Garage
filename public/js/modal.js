@@ -19,7 +19,8 @@ afficheModal.addEventListener('click', (e) => {
 })
 
 
-const listeModal = document.querySelectorAll('.modal').forEach((modal) => {
+const listeModal = document.querySelectorAll('.modal').forEach((modal) => 
+{
 
     // contenu du modal 
     const conteneurModal = modal.querySelector('.conteneur-modal');
@@ -39,22 +40,22 @@ const listeModal = document.querySelectorAll('.modal').forEach((modal) => {
     conteneurModal.addEventListener('click', (e) => { e.stopPropagation() });
 
     // ajoute le hidden 
-    function cacheModal(e) {
+    function cacheModal(e) 
+    {
         modal.classList.add('hidden');
         e.stopPropagation();
     }
 
-        function testUser() // cette méthode vérifie que les deux mots de passe renseignés sont identifiques 
+    function testUser() // cette méthode vérifie que les deux mots de passe renseignés sont identifiques 
     {  
 
         if(pass1.value === pass2.value)
         { 
-            console.log("ca marche grand fou");
-
+            return true;
         }
         else
         { 
-            console.log("vos mots de passe ne sont pas identiques");
+            alert('les deux mots de passes ne sont pas identiques, veuillez réessayer');
         }
     }
 });
