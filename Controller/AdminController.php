@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Models\AnnoncesModel;
 use App\Models\ClientModel;
 use App\Models\MessageModel;
+use App\Models\UtilisateursModel;
 
 class AdminController extends Controller
 {
@@ -30,7 +31,7 @@ class AdminController extends Controller
 
     //on instancie le modéle correspondant a la table 'utilisitateur
 
-    $utilisateurModel = new ClientModel;
+    $utilisateurModel = new UtilisateursModel;
     
     // on va chercher toutes les utilisateur
 
@@ -60,6 +61,14 @@ class AdminController extends Controller
       
     }
   }
+
+  //supprimer message
+    public function supprimerMessage(int $id)
+    {
+        $message = new MessageModel;
+        $message->delete($id);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
+    }
   
   public function annonces()
   { 

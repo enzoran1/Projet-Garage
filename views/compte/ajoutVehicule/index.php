@@ -5,7 +5,7 @@
 </div>
 
 
-<form action="" class="form2" method="post">
+<form action="/Compte/ajoutVehicule" class="form2" method="post">
     <div class="form2__container">
         <div class="form2__flex">
             <div class="form2__content">
@@ -36,7 +36,7 @@
             <div class="form2__content">
                 <label for="">Modéle :</label>
                 <select name="modele" id="modele">
-                    <option value="">--Choisisez une marque avant le modèle--</option>
+                    <option value="">--Modèle--</option>
                 </select>
             </div>
 
@@ -45,7 +45,7 @@
                 <select name="motorisation" id="motorisation">
                     <option value="">--Motorisation--</option>
                     <?php foreach ($motorisations as $motorisation) { ?>
-                        <option value="<?= $motorisation->id_motorisation ?>"><?= $motorisation->lib_motorisation ?></option>
+                        <option value="<?= $motorisation->id?>"><?= $motorisation->lib_motorisation ?></option>
                     <?php } ?>
                 </select>
             </div>
