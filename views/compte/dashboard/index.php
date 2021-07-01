@@ -47,30 +47,52 @@
 <div id="modal-pub" class="modal hidden">
         <div class="conteneur-modal">
             <div class="close">&times;</div>
-            <form action="/compte/editProfileView" method="post">
+            <form class="form__modal" action="/compte/editProfileView" method="post">
+            <div class="modal__content">
                 <label for="">mot de passe</label>
                 <input type="password" name="password1" id="password1">
-                <label for="">Retapez votre mot de passe </label>
+            </div>
+            <div class="modal__content">
+                <label for="">Confirmer votre mot de passe </label>
                 <input type="password" name="password2" id="password2">
-                <button type="submit" id="submitpasswordmodal">envoyer</button>
+            </div>
+            <div class="modal__btn">   
+                <button type="submit" id="submitpasswordmodal">Envoyer</button>
+            </div> 
             </form>      
         </div>
     </div>
-        
-
-
-        
-
-
-
-
-
 
 <div class="utilisateur2__véhicule">
-          <h3>Ajouter véhicules</h3>
-          <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>
-          
+    <h3>Véhicules</h3>
+    <?php foreach ($vehicules as $vehicule) : ?>
+    <p>Plaque d'immatriculation : </p>
+    <p><?= $vehicule->plaque_immatriculation ?></p>
+    <p>Marque : </p>
+    <p><?= $vehicule->marque ?></p>
+    <p>Modèle : </p>
+    <p><?= $vehicule->modele ?></p>
+    <p>Motorisation : </p>
+    <p><?= $vehicule->motorisation ?></p>
+    <p>Type de véhicule : </p>
+    <p><?= $vehicule->type_vehicule ?></p>
+    <p>Annee : </p>
+    <p><?= $vehicule->annee ?></p>
+    <p>Kilomètre : </p>
+    <p><?= $vehicule->km ?></p>
+    <?php endforeach;   ?>
+
+    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
 </div> 
+</div>
 <div class="utilisateur2__btn">
+<<<<<<< HEAD
+    <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
+  </div>
+||||||| f974cc2
     <a href="Compte/logout">DECONNEXION</a>
   </div>
+=======
+    <a href="Compte/logout">DECONNEXION</a>
+</div>
+>>>>>>> emilie

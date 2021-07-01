@@ -5,7 +5,6 @@ class ModeleModel extends Model
 {
   protected $id;
   protected $nom;
-  protected $type_mine;
   protected $id_marque;
 
   public function __construct()
@@ -41,25 +40,6 @@ class ModeleModel extends Model
     return $this;
   }
 
-  /**
-   * Get the value of type_mine
-   */ 
-  public function getType_mine()
-  {
-    return $this->type_mine;
-  }
-
-  /**
-   * Set the value of type_mine
-   *
-   * @return  self
-   */ 
-  public function setType_mine($type_mine)
-  {
-    $this->type_mine = $type_mine;
-
-    return $this;
-  }
 
   /**
    * Get the value of id_marque
@@ -80,4 +60,5 @@ class ModeleModel extends Model
 
     return $this;
   }
+
 }

@@ -50,4 +50,11 @@ class MarqueModel extends Model
 
     return $this;
   }
+
+  // par ordre alphabétique
+  public function findAllOrdre()
+  {
+    $query = $this->requete('SELECT * FROM marque order by nom asc');
+    return $query->fetchAll();
+  }
 }

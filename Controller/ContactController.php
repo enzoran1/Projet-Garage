@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Core\Form;
-use App\Models\ContactModel;
+use App\Models\MessageModel;
 
 class ContactController extends Controller
 {    
@@ -20,8 +20,8 @@ class ContactController extends Controller
             // On nettoie l'e-mail pour éviter les failles XSS et on chiffre le mot de passe
             $email = strip_tags($_POST['email']);
             $message = strip_tags($_POST['message']);
-            //création utilisateur
-            $newUser = new ContactModel();
+            //création message
+            $newUser = new MessageModel();
             $newUser->setNom($nom)
                 ->setPrenom($prenom)
                 ->setEmail($email)
