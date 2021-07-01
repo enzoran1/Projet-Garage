@@ -83,7 +83,7 @@ class CompteController extends Controller
     }
 
 
-    public function editProfileView()
+    public function editProfileView() // pas besoin de crypter
     { 
         
         ?> <script> if(testUser()) 
@@ -92,9 +92,22 @@ class CompteController extends Controller
             if(Form::validate($_POST, ['password1', 'password2']))
             { 
                 $manager = new UtilisateursModel;
-                if(!password_verify($_POST['password1'], $manager->getMdp())) // faux à partir d'ici, voir avec enzo pour hashage
-                { 
+
+                $newUser = $manager->findOneByEmail($_SESSION['user']['email']);
+
+                if(!$newUser)
+                {
                     echo 'mot de passe incorrect';
+                    exit;
+                }
+                else 
+                { 
+                    $manager->hydrate($newUser);
+                }
+                if (!password_verify($_POST['password1'], $manager->getMdp())) 
+                { 
+                    echo 'Mot de passe incorrect';
+                    exit;
                 }
                 else 
                 { 
