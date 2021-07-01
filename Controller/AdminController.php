@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Models\AnnoncesModel;
-use App\Models\ClientModel;
 use App\Models\MessageModel;
 use App\Models\UtilisateursModel;
 
@@ -57,7 +56,7 @@ class AdminController extends Controller
       // méthode 
       $messages = $messageModel->findAll();
       // render la view
-      return $this->render('admin/message/index', compact('messages'));
+    return $this->render('admin/message/index'/*, compact('messages')*/);
       
     }
   }

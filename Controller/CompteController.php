@@ -169,27 +169,27 @@ class CompteController extends Controller
         // on va chercher toutes les utilisateur
         
         $marques = $marqueModel->findAllOrdre();
-        //$models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = '.$_POST['marque']);
-        //return $models->fetchAll();
+        
+        //$models = $modelModel->findAll();
         $motorisations = $motorisationModel->findAll();
         $types = $typeVehiculeModel->findAll();
 
         // On génére la vue 
         
-        $this->render('compte/ajoutVehicule/index', compact('marques','motorisations','types'));
+        $this->render('compte/ajoutVehicule/index', compact('marques',/*'models',*/'motorisations','types'));
     }
     
     public function reqAjax(){
-        $chaine ='';
+        $chaine ='$';
         $modelModel = new ModeleModel;
-        $models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = '.$_POST['marque']);
+        $models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = 22');
         return $models->fetchAll();
 
         foreach($models as $model)
         {
             $chaine .= '<option value="'.$model['id'].'">'.$model['nom'].'</option>';
         }
-
+        
         echo $chaine;
     }
 
