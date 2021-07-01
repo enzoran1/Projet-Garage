@@ -84,6 +84,8 @@ class CompteController extends Controller
 
     public function editProfileView()
     { 
+        // faut aussi vérifier que l'user mette les bonnes infos.... ! 
+        
         ?> <script> if(testUser()) 
         {   </script>
             <?php
