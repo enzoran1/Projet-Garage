@@ -8,4 +8,8 @@ class PrestationController extends Controller
         $this->render('prestation/index');
         
     }
+
+    public function prestationVue(){
+        $this->render('prestation/pneu/montageEquilibrage');
+    }
 }

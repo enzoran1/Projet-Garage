@@ -77,6 +77,7 @@
           <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>
           
 </div> 
+</div>
 <div class="utilisateur2__btn">
-    <a href="Compte/logout">DECONNEXION</a>
+    <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
   </div>

@@ -171,7 +171,7 @@
 }
 
 .utilisateur2__btn a{
-    background-color: #489897;
+    background-color: #2F3D4A;
     text-decoration: none;
     border: none;
     cursor: pointer;
@@ -187,6 +187,9 @@
     -o-transition: 1s;
     transition: 1s;
 
+}
+#utilisateur2__btn-color{
+    background-color: #489897;
 }
 
 
