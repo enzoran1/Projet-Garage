@@ -82,7 +82,7 @@
     <p><?= $vehicule->km ?></p>
     <?php endforeach;   ?>
 
-    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
+    <a href="compte/ajoutVehicule"><img src="image\icons8-plus-100.png" alt=""></a>       
 </div> 
 </div>
 <div class="utilisateur2__btn">

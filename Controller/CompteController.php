@@ -158,7 +158,7 @@ class CompteController extends Controller
 
     // affichage du formulaire d'ajotu de véhicule
 
-    public function ajoutVehiculeForm(){
+    public function ajoutVehicule(){
         //on instancie le modéle correspondant a la table 'utilisitateur
 
         $marqueModel = new MarqueModel;
@@ -193,7 +193,7 @@ class CompteController extends Controller
     }
 
     //ajout de véhicule de l'utilisateur
-    public function ajoutVehicule()
+    public function ajoutVehiculeForm()
     {
         if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'marque', 'modele','motorisation','type_vehicule'])) {
             $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
