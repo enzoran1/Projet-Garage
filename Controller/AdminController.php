@@ -61,6 +61,14 @@ class AdminController extends Controller
       
     }
   }
+
+  //supprimer message
+    public function supprimerMessage(int $id)
+    {
+        $message = new MessageModel;
+        $message->delete($id);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
+    }
   
   public function annonces()
   { 
