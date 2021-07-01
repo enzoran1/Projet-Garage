@@ -189,7 +189,6 @@ class CompteController extends Controller
         {
             $chaine .= '<option value="'.$model['id'].'">'.$model['nom'].'</option>';
         }
-        
         echo $chaine;
     }
 

@@ -40,7 +40,7 @@
           
            
             <div class="utilisateur2__btn">
-                <a id="affiche-modal" href="#">Modifier</a>
+                <a id="affiche-modal" href="#" onclick="modal()">Modifier</a>
             </div>
         </div>
     </div>
@@ -86,5 +86,5 @@
 </div> 
 </div>
 <div class="utilisateur2__btn">
-    <a id="utilisateur2btn-color" href="Compte/logout">DECONNEXION</a>
-</div>
+    <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
+  </div>
