@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/css/message.css">
   <link rel="stylesheet" href="/css/panier.css">
   <link rel="stylesheet" href="/css/annonces.css">
+  <link rel="stylesheet" href="/css/pneu.css">
   <title><?= $title ?? '' ?></title>
 </head>
 
