@@ -86,13 +86,5 @@
 </div> 
 </div>
 <div class="utilisateur2__btn">
-<<<<<<< HEAD
     <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
   </div>
-||||||| f974cc2
-    <a href="Compte/logout">DECONNEXION</a>
-  </div>
-=======
-    <a href="Compte/logout">DECONNEXION</a>
-</div>
->>>>>>> emilie
