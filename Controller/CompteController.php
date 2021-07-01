@@ -45,6 +45,7 @@ class CompteController extends Controller
             {
                 //l'hydratation permet de transformer le contenu d' une base de données en objets et inversement
                 $manager->hydrate($newUser);
+
                 if (password_verify($_POST['mdp'], $manager->getMdp())) 
                 {
                     $manager->setSession();
@@ -84,12 +85,22 @@ class CompteController extends Controller
 
     public function editProfileView()
     { 
-        // faut aussi vérifier que l'user mette les bonnes infos.... ! 
         
         ?> <script> if(testUser()) 
         {   </script>
             <?php
-            return $this->render('inscription/index');
+            if(Form::validate($_POST, ['password1', 'password2']))
+            { 
+                $manager = new UtilisateursModel;
+                if(!password_verify($_POST['password1'], $manager->getMdp())) // faux à partir d'ici, voir avec enzo pour hashage
+                { 
+                    echo 'mot de passe incorrect';
+                }
+                else 
+                { 
+                    return $this->render('inscription/index');
+                }
+            }
             ?> <script> 
         } </script> <?php
     } 
