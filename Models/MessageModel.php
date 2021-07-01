@@ -10,9 +10,6 @@ class MessageModel extends Model
     protected $date;
     protected $message;
     
-    
-
-
     public function __construct()
     {
         $this->table = 'contact';
