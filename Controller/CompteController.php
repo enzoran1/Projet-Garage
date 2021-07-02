@@ -5,7 +5,7 @@ namespace App\Controller;
 use PDO;
 use App\Core\Form;
 use App\Models\MarqueModel;
-use App\Models\ModeleModel;
+
 use App\Models\MotorisationModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\VehiculeModel;
@@ -172,7 +172,7 @@ class CompteController extends Controller
         $this->render('compte/ajoutVehiculeForm/index', compact('marques','motorisations','types'));
     }
     
-    
+   
 
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()

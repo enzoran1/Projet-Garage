@@ -24,7 +24,7 @@
         <div class="form2__flex">
             <div class="form2__content">
                 <label for="">Marque :</label>
-                <select name="marque" id="marque" onchange="ajaxModele()">
+                <select name="marque" id="marque" class="marques">
                     <option value="">--Marques--</option>
                     <?php foreach ($marques as $marque) { ?>
                         <option value="<?= $marque->id ?>"><?= $marque->nom ?></option>

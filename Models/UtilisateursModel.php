@@ -164,9 +164,12 @@ class UtilisateursModel extends Model
   /**
    * Get the value of role
    */
-  public function getRole()
+  public function getRole():array
   {
-    return $this->role;
+    $role = $this->role;
+    $role[] = 'ROLE_USER';
+
+    return array_unique($role);
   }
 
   /**

@@ -127,6 +127,7 @@
   <script src="/js/script.js"></script>
   <script src="/js/formulaire.js"></script>
   <script src="/js/modal.js"></script>
+  <script src="/js/ajax/reqajax.js"></script>
 
 </body>
 

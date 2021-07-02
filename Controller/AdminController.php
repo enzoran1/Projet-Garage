@@ -70,6 +70,13 @@ class AdminController extends Controller
         $message->delete($id);
         header('Location: '.$_SERVER['HTTP_REFERER']);
     }
+    //supprimer utilisateur
+    public function supprimerUtilisateur(int $id)
+    {
+        $utilisateurs = new UtilisateursModel;
+        $utilisateurs->delete($id);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
+    }
   
   public function annonces()
   { 
@@ -86,7 +93,7 @@ class AdminController extends Controller
       // méthode 
       $annonces = $annoncesModel->findAll();
       // render la view
-      return $this->render('admin/annonces/index', compact('annonces'));
+      return $this->render('annonces/index', compact('annonces'));
       
     }
   }
