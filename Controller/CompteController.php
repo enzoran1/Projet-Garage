@@ -208,11 +208,16 @@ class CompteController extends Controller
         //on instancie le modéle correspondant a la table vehicule
         $vehiculeModel = new VehiculeModel;
         // on va chercher toutes les vehicule de l'utilisateur
-        $vehicules = $vehiculeModel->requete('SELECT * FROM vehicule WHERE id_utilisateur = '.$_SESSION['user']['id']);
-        return $vehicules->fetchAll();
+        $requete = $vehiculeModel->requete('SELECT * FROM vehicule
+        INNER JOIN marque ON vehicule.id_marque = marque.id
+        INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+        INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+        WHERE id_utilisateur = '.$_SESSION['user']['id']
+        );
+        $vehicules = $requete->fetchAll();
         // On génére la vue 
-        header('Location: /compte');
-        exit; // Redirection vers le dashboard
+        return $this->render('/compte/vehicule', compact('vehicules'));
+        
     }
 }
 
