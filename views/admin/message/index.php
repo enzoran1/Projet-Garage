@@ -31,11 +31,15 @@
             </div>
             <div class="message__btn">
                 <a href="/admin/supprimerMessage/<?=$message->id?>">Supprimer</a>
+                
             </div>
         </div>
         </div>
 
+
     <?php endforeach;   ?>
+
+    
 
 
 </div>

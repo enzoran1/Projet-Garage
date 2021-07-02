@@ -1,58 +1,69 @@
 <?php
-//routeur
 namespace App\Core;
 
 use App\Controller\MainController;
 
+/**
+ * Routeur principal
+ */
 class Main
 {
-  public function start()
-  {
-    session_start();
-    // On retire le 'trailing slash' éventuel de l'url (le slash a la fin quoi ^^)
-    // On récupére l'url
-    $uri = $_SERVER['REQUEST_URI'];
+    public function start()
+    {
+        // On démarre la session
+        session_start();
 
-    // on vérifie que uri n'est pas vide et se termine par un "/"
-    if (!empty($uri) && $uri != "/" && $uri[-1] === "/") {
-      // on enléve le "/"
-      $uri = substr($uri, 0, -1);
-      echo $uri;
-      //on envoie un code de redirection permanente
-      http_response_code(301);
-      // On redirige vers l'url sans "/"
-      header('Location: ' . $uri);
-    }
-    // On gére les paramétres d'url
-    // on sépare les parametres dans un tableau
-    $params = [];
-    if (isset($_GET['p'])) {
-      $params = explode('/', $_GET['p']);
-    }
+        // On retire le "trailing slash" éventuel de l'URL
+        // On récupère l'URL
+        $uri = $_SERVER['REQUEST_URI'];
+        
+        // On vérifie que uri n'est pas vide et se termine par un /
+        if(!empty($uri) && $uri != '/' && $uri[-1] === "/"){
+            // On enlève le /
+            $uri = substr($uri, 0, -1);
 
-    if ($params[0] != '') {
-      // on a au moin un paramétre
-      //on recupere le nom du controleur a instancier
-      // on met une majuscule en premiere lettre, on ajoute le namespace complet avant et on ajout 'Controller' aprés
-      $controller = '\\App\\Controller\\' . ucfirst(array_shift($params)) . 'Controller';
-      //on instancie le controleur
-      $controller = new $controller();
-      // on recupére le deuxieme paramétre d'url
-      $action = (isset($params[0])) ? array_shift($params) : 'index';
-      if (method_exists($controller, $action)) {
-        // si il reste des parametres on les passe a la methode
-        (isset($params[0])) ? $controller->$action($params) : $controller->$action();
-      } else {
-        http_response_code(404);
-        echo "La page rechercher n'existe pas";
-      }
-    } else {
+            // On envoie un code de redirection permanente
+            http_response_code(301);
 
-      // on n'a pas de parametres
-      // on instancie le controleur par defaut
-      $controller = new MainController;
-      // On appelle la méthode index 
-      $controller->index();
+            // On redirige vers l'URL sans /
+            header('Location: '.$uri);
+        }
+
+        // On gère les paramètres d'URL
+        // p=controleur/methode/paramètres
+        // On sépare les paramètres dans un tableau
+        $params = [];
+        if(isset($_GET['p']))
+            $params = explode('/', $_GET['p']);
+
+        // var_dump($params);
+        if($params[0] != ''){
+            // On a au moins 1 paramètre
+            // On récupère le nom du contrôleur à instancier
+            // On met une majuscule en 1ère lettre, on ajoute le namespace complet avant et on ajoute "Controller" après
+            $controller = '\\App\\Controller\\'.ucfirst(array_shift($params)).'Controller';
+
+            // On instancie le contrôleur
+            $controller = new $controller();
+
+            // On récupère le 2ème paramètre d'URL
+            $action = (isset($params[0])) ? array_shift($params) : 'index';
+
+            if(method_exists($controller, $action)){
+                // Si il reste des paramètres on les passe à la méthode
+                (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
+            }else{
+                http_response_code(404);
+                echo "La page recherchée n'existe pas";
+            }
+
+        }else{
+            // On n'a pas de paramètres
+            // On instancie le contrôleur par défaut
+            $controller = new MainController;
+            
+            // On appelle la méthode index
+            $controller->index();
+        }
     }
-  }
 }

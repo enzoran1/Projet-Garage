@@ -144,7 +144,7 @@ class AnnoncesModel extends Model
     /**
      * Get the value of actif
      */ 
-    public function getActif()
+    public function getActif():int
     {
         return $this->actif;
     }
@@ -154,12 +154,13 @@ class AnnoncesModel extends Model
      *
      * @return  self
      */ 
-    public function setActif($actif)
+    public function setActif(int $actif)
     {
         $this->actif = $actif;
 
         return $this;
     }
+  
 
     /**
      * Get the value of id_modele

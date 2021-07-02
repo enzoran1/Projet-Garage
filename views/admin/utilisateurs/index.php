@@ -34,7 +34,7 @@
                 </div>
                 <div class="utilisateur__btn">
                     <a href="">Modifier</a>
-                    <button type="submit">Supprimer</button>
+                    <a href="/admin/supprimerUtilisateur/<?=$utilisateurs->id?>">Supprimer</a>
                 </div>
             </div>
         </div>
