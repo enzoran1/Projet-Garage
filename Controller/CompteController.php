@@ -180,31 +180,34 @@ class CompteController extends Controller
     }
     
    
-
+    
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()
     {
-        if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'marque', 'modele','motorisation','type_vehicule'])) {
+        if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque','id_motorisation','id_type'])) {
             $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
             $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
             $km = strip_tags($_POST['km'], PDO::PARAM_INT);
-            $modele = ($_POST['modele']);
-            $type_vehicule = ($_POST['type_vhicule']);
-            $motorisation = ($_POST['motorisation']);
+            $type_vehicule = ($_POST['id_type']);
+            $motorisation = ($_POST['id_motorisation']);
+            $marque = ($_POST['id_marque']);
+            $id_utilisateur = $_SESSION['user']['id'];
             //création véhicule
             $newVehicule = new VehiculeModel();
             $newVehicule->setPlaque_immatriculation($plaque_immatriculation)
                         ->setAnnee($annee)
                         ->setKm($km)
-                        ->setId_modele($modele)
+                        ->setId_marque($marque)
+
                         ->setId_motorisation($motorisation)
                         ->setId_type($type_vehicule)
-                        ->setId_utilisateur($_SESSION['user']['id']);
+                        ->setId_utilisateur($id_utilisateur);
             $newVehicule->create();
-            header('Location: /compte/dashboard');
+            header('Location: /compte');
         } else {
             echo 'Veuillez compléter tous les champs';
         }
+        
     }
 
     public function afficheVehiculesUtil()
