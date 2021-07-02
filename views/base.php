@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="/css/annonces.css">
   <link rel="stylesheet" href="/css/pneu.css">
   <title><?= $title ?? '' ?></title>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
+</script>
 </head>
 
 <body>
@@ -122,6 +127,7 @@
   <script src="/js/script.js"></script>
   <script src="/js/formulaire.js"></script>
   <script src="/js/modal.js"></script>
+  <script src="/js/ajax/reqajax.js"></script>
 
 </body>
 

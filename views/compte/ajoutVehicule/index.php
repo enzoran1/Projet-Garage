@@ -24,7 +24,7 @@
         <div class="form2__flex">
             <div class="form2__content">
                 <label for="">Marque :</label>
-                <select name="marque" id="marque" onclick="ajaxModele()">
+                <select name="marque" id="marque" class="marques">
                     <option value="">--Marques--</option>
                     <?php foreach ($marques as $marque) { ?>
                         <option value="<?= $marque->id ?>"><?= $marque->nom ?></option>
@@ -75,27 +75,5 @@
 
     </div>
 </form>
-<script
-    src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous">
-</script>
-  
-<script>
-    function ajaxModele()
-    {
-        let marque = $('#marque').val();
-        $.ajax(
-        {
-            url : '/reqAjax',
-            type : 'post',
-            data : {'marque':marque},
 
-            success:function(retourRes)
-            {
-            $('#modele').html(retourRes);
-            }
-        }
-        );
-    }
-</script>
+  

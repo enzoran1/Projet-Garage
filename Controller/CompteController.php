@@ -5,7 +5,7 @@ namespace App\Controller;
 use PDO;
 use App\Core\Form;
 use App\Models\MarqueModel;
-use App\Models\ModeleModel;
+
 use App\Models\MotorisationModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\VehiculeModel;
@@ -179,19 +179,7 @@ class CompteController extends Controller
         $this->render('compte/ajoutVehicule/index', compact('marques','motorisations','types'));
     }
     
-    public function reqAjax(){
-        $chaine ='';
-        $modelModel = new ModeleModel;
-        $models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = '.$_POST['marque']);
-        return $models->fetchAll();
-
-        foreach($models as $model)
-        {
-            $chaine .= '<option value="'.$model['id'].'">'.$model['nom'].'</option>';
-        }
-
-        echo $chaine;
-    }
+   
 
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()
