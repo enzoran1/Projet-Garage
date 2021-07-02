@@ -24,7 +24,7 @@
         <div class="form2__flex">
             <div class="form2__content">
                 <label for="">Marque :</label>
-                <select name="marque" id="marque" class="marques">
+                <select name="id_marque" id="id_marque" class="marques">
                     <option value="">--Marques--</option>
                     <?php foreach ($marques as $marque) { ?>
                         <option value="<?= $marque->id ?>"><?= $marque->nom ?></option>
@@ -33,16 +33,11 @@
             </div>
 
 
-            <div class="form2__content">
-                <label for="">Modéle :</label>
-                <select name="modele" id="modele">
-                    <option value="">--Modèle--</option>
-                </select>
-            </div>
+            
 
             <div class="form2__content">
                 <label for="">Motorisation :</label>
-                <select name="motorisation" id="motorisation">
+                <select name="id_motorisation" id="id_motorisation">
                     <option value="">--Motorisation--</option>
                     <?php foreach ($motorisations as $motorisation) { ?>
                         <option value="<?= $motorisation->id?>"><?= $motorisation->lib_motorisation ?></option>
@@ -52,7 +47,7 @@
 
             <div class="form2__content">
                 <label for="">Type véhicule :</label>
-                <select name="type_vehicule" id="type_vehicule">
+                <select name="id_type" id="id_type">
                     <option value="">--Type véhicules--</option>
                     <?php foreach ($types as $type) { ?>
                         <option value="<?= $type->id_type ?>"><?= $type->lib_type ?></option>

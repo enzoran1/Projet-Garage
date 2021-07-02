@@ -7,23 +7,34 @@ class VehiculeModel extends Model
   protected $plaque_immatriculation;
   protected $annee;
   protected $km;
-  protected $id_modele;
+  protected $id_marque;
   protected $id_motorisation;
   protected $id_type;
   protected $id_utilisateur;
+  
 
   public function __construct()
   {
     $this->table = 'vehicule';
   }
-  
-
   /**
    * Get the value of id
    */ 
   public function getId()
   {
     return $this->id;
+  }
+
+  /**
+   * Set the value of id
+   *
+   * @return  self
+   */ 
+  public function setId($id)
+  {
+    $this->id = $id;
+
+    return $this;
   }
 
   /**
@@ -87,21 +98,21 @@ class VehiculeModel extends Model
   }
 
   /**
-   * Get the value of id_modele
+   * Get the value of id_marque
    */ 
-  public function getId_modele()
+  public function getId_marque()
   {
-    return $this->id_modele;
+    return $this->id_marque;
   }
 
   /**
-   * Set the value of id_modele
+   * Set the value of id_marque
    *
    * @return  self
    */ 
-  public function setId_modele($id_modele)
+  public function setId_marque($id_marque)
   {
-    $this->id_modele = $id_modele;
+    $this->id_marque = $id_marque;
 
     return $this;
   }
@@ -145,12 +156,13 @@ class VehiculeModel extends Model
 
     return $this;
   }
+
   /**
    * Get the value of id_utilisateur
    */ 
   public function getId_utilisateur()
   {
-    return $this->id_type;
+    return $this->id_utilisateur;
   }
 
   /**
@@ -164,4 +176,7 @@ class VehiculeModel extends Model
 
     return $this;
   }
-}
+  }
+  
+
+ 
