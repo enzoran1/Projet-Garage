@@ -159,38 +159,20 @@ class CompteController extends Controller
     // affichage du formulaire d'ajotu de véhicule
 
     public function ajoutVehiculeForm(){
-        //on instancie le modéle correspondant a la table 'utilisitateur
-
         $marqueModel = new MarqueModel;
-        //$modelModel = new ModeleModel;
         $motorisationModel = new MotorisationModel;
         $typeVehiculeModel = new TypeVehiculeModel;
         
-        // on va chercher toutes les utilisateur
-        
+        // on va chercher tout
         $marques = $marqueModel->findAllOrdre();
-        
-        //$models = $modelModel->findAll();
         $motorisations = $motorisationModel->findAll();
         $types = $typeVehiculeModel->findAll();
 
         // On génére la vue 
-        
-        $this->render('compte/ajoutVehicule/index', compact('marques',/*'models',*/'motorisations','types'));
+        $this->render('compte/ajoutVehiculeForm/index', compact('marques','motorisations','types'));
     }
     
-    public function reqAjax(){
-        $chaine ='$';
-        $modelModel = new ModeleModel;
-        $models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = 22');
-        return $models->fetchAll();
-
-        foreach($models as $model)
-        {
-            $chaine .= '<option value="'.$model['id'].'">'.$model['nom'].'</option>';
-        }
-        echo $chaine;
-    }
+    
 
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()
