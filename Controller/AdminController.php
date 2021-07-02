@@ -56,9 +56,7 @@ class AdminController extends Controller
       // méthode 
       $messages = $messageModel->findAll();
       // render la view
-    return $this->render('admin/message/index'/*, compact('messages')*/,[
-
-    ]);
+    return $this->render('admin/message/index', compact('messages'));
       
     }
   }
