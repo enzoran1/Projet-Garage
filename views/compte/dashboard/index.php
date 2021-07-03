@@ -65,21 +65,20 @@
 
 <div class="utilisateur2__véhicule">
     <h3>Véhicules</h3>
-    <?php foreach ($vehicules as $vehicule) : ?>
+    <?php foreach ($vehicule as $vehicules) : ?>
     <p>Plaque d'immatriculation : </p>
-    <p><?= $vehicule->plaque_immatriculation ?></p>
+    <p><?= $vehicules->plaque_immatriculation ?></p>
     <p>Marque : </p>
-    <p><?= $vehicule->marque ?></p>
-    <p>Modèle : </p>
-    <p><?= $vehicule->modele ?></p>
+    <p><?= $vehicules->marque ?></p>
+
     <p>Motorisation : </p>
-    <p><?= $vehicule->motorisation ?></p>
+    <p><?= $vehicules->id_motorisation ?></p>
     <p>Type de véhicule : </p>
-    <p><?= $vehicule->type_vehicule ?></p>
+    <p><?= $vehicules->type_vehicule ?></p>
     <p>Annee : </p>
-    <p><?= $vehicule->annee ?></p>
+    <p><?= $vehicules->annee ?></p>
     <p>Kilomètre : </p>
-    <p><?= $vehicule->km ?></p>
+    <p><?= $vehicules->km ?></p>
     <?php endforeach;   ?>
 
     <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       

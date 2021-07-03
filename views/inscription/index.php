@@ -49,15 +49,19 @@
         
 
         <div class="form2__btn">
-            <?php if(isset($_SESSION['user']['prenom'])){ ?>
-                <button type="submit">Mettre à jour</button>
-                <a href="/compte">Annuler</a>
-            <?php } ?>
+            
 
             <?php if(!isset($_SESSION['user']['prenom'])){ ?>
                 <button type="submit">Envoyer</button>
             <?php } ?>    
         </div>
+   
 
     </div>
+    <div class="form2__modifs">
+            <?php if(isset($_SESSION['user']['prenom'])){ ?>
+                <button type="submit">Mettre à jour</button>
+                <a href="/compte">Annuler</a>
+            <?php } ?>
+            </div>
 </form>

@@ -212,14 +212,21 @@ class CompteController extends Controller
 
     public function afficheVehiculesUtil()
     {
-        //on instancie le modéle correspondant a la table vehicule
-        $vehiculeModel = new VehiculeModel;
-        // on va chercher toutes les vehicule de l'utilisateur
-        $vehicules = $vehiculeModel->requete('SELECT * FROM vehicule WHERE id_utilisateur = '.$_SESSION['user']['id']);
-        return $vehicules->fetchAll();
-        // On génére la vue 
-        header('Location: /compte');
-        exit; // Redirection vers le dashboard
+    
+
+    //on instancie le modéle correspondant a la table 'utilisitateur
+
+    $VehiculeModel = new VehiculeModel;
+    
+    // on va chercher toutes les utilisateur
+
+    $vehicule = $VehiculeModel->findAll();
+
+    // On génére la vue 
+    $this->render('compte/dashboard/index', compact('vehicule')); 
+        
+        
+    
     }
 }
 

@@ -52,12 +52,14 @@
     margin-top: 40px;
     
 }
-.utilisateur__btn button{
+.utilisateur__btn a{
     color: white;
     padding: 8px;
-    border: none;
+    text-decoration: none;
     border-radius: 10%/50%;
-    width: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
+
     background-color: #2F3D4A;
     font-weight: bold
 }
