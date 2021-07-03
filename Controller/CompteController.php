@@ -219,5 +219,13 @@ class CompteController extends Controller
         return $this->render('/compte/vehicule', compact('vehicules'));
         
     }
+
+    //supprimer vehicule
+    public function supprimerVehicule(int $id)
+    {
+        $vehicule = new VehiculeModel;
+        $vehicule->delete($id);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
+    }
 }
 
