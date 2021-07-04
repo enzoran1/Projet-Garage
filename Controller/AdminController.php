@@ -37,7 +37,8 @@ class AdminController extends Controller
     INNER JOIN marque ON vehicule.id_marque = marque.id
     INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
     INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
-    WHERE utilisateur.role = "ROLE_USER" '
+    WHERE utilisateur.role = "ROLE_USER" 
+    order by nom asc'
     );
     $utilisateur = $requete->fetchAll();
     // on va chercher toutes les utilisateur
