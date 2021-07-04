@@ -8,7 +8,7 @@
       </div>
       <div class="utilisateur__flex">
         <p id="utilisateur_color">>Marque : </p>
-        <p><?= $vehicule->nom ?></p>
+        <p><?= $vehicule->lib_marque ?></p>
       </div>
     </div>
     <div class="utilisateur__flex">
@@ -28,8 +28,9 @@
       <p><?= $vehicule->km ?></p>
     </div>
     <div class="utilisateur__btn">
-      <a href="/compte/supprimerVehicule/<?=$vehicule->id?>">Supprimer</a>
+      <a href="/compte/supprimerVehicule/<?=$vehicule->id?>" onclick="return confirm('Etes-vous sûre ?');">Supprimer</a>
     </div>
   </div>
 </div>
 <?php endforeach;   ?>
+<a href="/compte">Retour</a>

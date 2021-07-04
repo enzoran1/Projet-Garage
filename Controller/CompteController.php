@@ -208,7 +208,7 @@ class CompteController extends Controller
         //on instancie le modéle correspondant a la table vehicule
         $vehiculeModel = new VehiculeModel;
         // on va chercher toutes les vehicule de l'utilisateur
-        $requete = $vehiculeModel->requete('SELECT vehicule.*,marque.nom, type_vehicule.lib_type, motorisation.lib_motorisation 
+        $requete = $vehiculeModel->requete('SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
         FROM vehicule
         INNER JOIN marque ON vehicule.id_marque = marque.id
         INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
