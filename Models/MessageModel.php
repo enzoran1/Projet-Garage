@@ -1,15 +1,16 @@
 <?php
+
 namespace App\Models;
 
 class MessageModel extends Model
-{   
+{
     protected $id;
     protected $nom;
     protected $prenom;
     protected $email;
     protected $date;
     protected $message;
-    
+
     public function __construct()
     {
         $this->table = 'contact';
@@ -17,7 +18,7 @@ class MessageModel extends Model
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -27,7 +28,7 @@ class MessageModel extends Model
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -37,7 +38,7 @@ class MessageModel extends Model
 
     /**
      * Get the value of nom
-     */ 
+     */
     public function getNom()
     {
         return $this->nom;
@@ -47,7 +48,7 @@ class MessageModel extends Model
      * Set the value of nom
      *
      * @return  self
-     */ 
+     */
     public function setNom($nom)
     {
         $this->nom = $nom;
@@ -57,7 +58,7 @@ class MessageModel extends Model
 
     /**
      * Get the value of prenom
-     */ 
+     */
     public function getPrenom()
     {
         return $this->prenom;
@@ -67,7 +68,7 @@ class MessageModel extends Model
      * Set the value of prenom
      *
      * @return  self
-     */ 
+     */
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
@@ -77,7 +78,7 @@ class MessageModel extends Model
 
     /**
      * Get the value of email
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -87,7 +88,7 @@ class MessageModel extends Model
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setEmail($email)
     {
         $this->email = $email;
@@ -97,7 +98,7 @@ class MessageModel extends Model
 
     /**
      * Get the value of date
-     */ 
+     */
     public function getDate()
     {
         return $this->date;
@@ -107,7 +108,7 @@ class MessageModel extends Model
      * Set the value of date
      *
      * @return  self
-     */ 
+     */
     public function setDate($date)
     {
         $this->date = $date;
@@ -117,7 +118,7 @@ class MessageModel extends Model
 
     /**
      * Get the value of message
-     */ 
+     */
     public function getMessage()
     {
         return $this->message;
@@ -127,7 +128,7 @@ class MessageModel extends Model
      * Set the value of message
      *
      * @return  self
-     */ 
+     */
     public function setMessage($message)
     {
         $this->message = $message;
