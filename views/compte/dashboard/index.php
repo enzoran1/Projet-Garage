@@ -64,6 +64,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="utilisateur2__véhicule">
         <h3>Véhicules</h3>
         <?php foreach ($vehicules as $vehicule) : ?>
@@ -87,6 +88,14 @@
             <img src="image\icons8-plus-100.png" alt="">
         </a>       
     </div> 
+=======
+<div class="utilisateur2__véhicule">
+    <h3>Véhicules</h3>
+    
+    <a href="compte/afficheVehiculesUtil">voir</a>
+    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
+</div> 
+>>>>>>> enzo
 </div>
 
 <div class="utilisateur2__btn">

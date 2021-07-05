@@ -40,7 +40,7 @@ class Model extends Db
     // On transforme le tableau en chaîne de caractères séparée par des AND
     $liste_champs = implode(' AND ', $champs);
     // On exécute la requête
-    return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetchAll();
+    return $this->requete('SELECT * FROM ' . $this->table . ' WHERE ' . $liste_champs, $valeurs)->fetchAll();
   }
 
   //3. méthode qui permettra de récupérer 1 enregistrement en fonction de son id
@@ -119,6 +119,9 @@ class Model extends Db
   {
     return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
   }
+ 
+
+  
 
   //métode hydratation de notre objet, c'est à dire la définition de ses propriétés à partir d'un tableau ou d'un formulaire, par exemple.
   /**
@@ -128,18 +131,20 @@ class Model extends Db
    */
   public function hydrate($donnees)
   {
-    foreach ($donnees as $key => $value) {
-      // On récupère le nom du setter correspondant à l'attribut.
-      $method = 'set' . ucfirst($key);
+      foreach ($donnees as $key => $value) {
+          // On récupère le nom du setter correspondant à la clé (key)
+          // titre -> setTitre
+          $setter = 'set' . ucfirst($key);
 
-      // Si le setter correspondant existe.
-      if (method_exists($this, $method)) {
-        // On appelle le setter.
-        $this->$method($value);
+          // On vérifie si le setter existe
+          if (method_exists($this, $setter)) {
+              // On appelle le setter
+              $this->$setter($value);
+          }
       }
-    }
-    return $this;
+      return $this;
   }
+
 
 
   /**

@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="/css/annonces.css">
   <link rel="stylesheet" href="/css/pneu.css">
   <title><?= $title ?? '' ?></title>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
+</script>
 </head>
 
 <body>
@@ -27,7 +32,7 @@
       </div>
       <div class="navbar__container">
         <div class="navbar__container-panier">
-          <a href="panier/index"> <img src="/image/icons8-shopping-cart-48.png" alt="icon"></a>
+          <a href="/Panier"> <img src="/image/icons8-shopping-cart-48.png" alt="icon"></a>
         </div>
         <span class="navbar__container-burger">
           <svg viewBox="0 0 100 80" widht="40" height="40">
@@ -89,7 +94,7 @@
           
         </ul>
         <div class="navbar2__panier">
-          <a href="panier/index"> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
+          <a href="/Panier"> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
         </div>
       </div>
     </nav>
@@ -122,6 +127,7 @@
   <script src="/js/script.js"></script>
   <script src="/js/formulaire.js"></script>
   <script src="/js/modal.js"></script>
+  <script src="/js/ajax/reqajax.js"></script>
 
 </body>
 
