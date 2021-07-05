@@ -159,24 +159,17 @@ class CompteController extends Controller
     // affichage du formulaire d'ajotu de véhicule
 
     public function ajoutVehiculeForm(){
-        //on instancie le modéle correspondant a la table 'utilisitateur
-
         $marqueModel = new MarqueModel;
-        //$modelModel = new ModeleModel;
         $motorisationModel = new MotorisationModel;
         $typeVehiculeModel = new TypeVehiculeModel;
         
-        // on va chercher toutes les utilisateur
-        
+        // on va chercher tout
         $marques = $marqueModel->findAllOrdre();
-        //$models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = '.$_POST['marque']);
-        //return $models->fetchAll();
         $motorisations = $motorisationModel->findAll();
         $types = $typeVehiculeModel->findAll();
 
         // On génére la vue 
-        
-        $this->render('compte/ajoutVehicule/index', compact('marques','motorisations','types'));
+        $this->render('compte/ajoutVehiculeForm/index', compact('marques','motorisations','types'));
     }
     
    
@@ -212,6 +205,7 @@ class CompteController extends Controller
 
     public function afficheVehiculesUtil()
     {
+<<<<<<< HEAD
     
 
     //on instancie le modéle correspondant a la table 'utilisitateur
@@ -227,6 +221,39 @@ class CompteController extends Controller
         
         
     
+||||||| db67a24
+        //on instancie le modéle correspondant a la table vehicule
+        $vehiculeModel = new VehiculeModel;
+        // on va chercher toutes les vehicule de l'utilisateur
+        $vehicules = $vehiculeModel->requete('SELECT * FROM vehicule WHERE id_utilisateur = '.$_SESSION['user']['id']);
+        return $vehicules->fetchAll();
+        // On génére la vue 
+        header('Location: /compte');
+        exit; // Redirection vers le dashboard
+=======
+        //on instancie le modéle correspondant a la table vehicule
+        $vehiculeModel = new VehiculeModel;
+        // on va chercher toutes les vehicule de l'utilisateur
+        $requete = $vehiculeModel->requete('SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
+        FROM vehicule
+        INNER JOIN marque ON vehicule.id_marque = marque.id
+        INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+        INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+        WHERE id_utilisateur = '.$_SESSION['user']['id']
+        );
+        $vehicules = $requete->fetchAll();
+        // On génére la vue 
+        return $this->render('/compte/vehicule', compact('vehicules'));
+        
+    }
+
+    //supprimer vehicule
+    public function supprimerVehicule(int $id)
+    {
+        $vehicule = new VehiculeModel;
+        $vehicule->delete($id);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
+>>>>>>> emilie
     }
 }
 

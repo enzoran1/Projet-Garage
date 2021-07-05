@@ -27,7 +27,7 @@
                 <select name="id_marque" id="id_marque" class="marques">
                     <option value="">--Marques--</option>
                     <?php foreach ($marques as $marque) { ?>
-                        <option value="<?= $marque->id ?>"><?= $marque->nom ?></option>
+                        <option value="<?= $marque->id ?>"><?= $marque->lib_marque ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -66,6 +66,7 @@
 
 
             <button type="submit">Envoyer</button>
+            <a href="/compte">Annuler</a>
         </div>
 
     </div>

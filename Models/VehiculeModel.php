@@ -18,26 +18,6 @@ class VehiculeModel extends Model
     $this->table = 'vehicule';
   }
   /**
-   * Get the value of id
-   */ 
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  /**
-   * Set the value of id
-   *
-   * @return  self
-   */ 
-  public function setId($id)
-  {
-    $this->id = $id;
-
-    return $this;
-  }
-
-  /**
    * Get the value of plaque_immatriculation
    */ 
   public function getPlaque_immatriculation()
@@ -173,6 +153,27 @@ class VehiculeModel extends Model
   public function setId_utilisateur($id_utilisateur)
   {
     $this->id_utilisateur = $id_utilisateur;
+
+    return $this;
+  }
+
+ 
+  /**
+   * Get the value of id
+   */ 
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  /**
+   * Set the value of id
+   *
+   * @return  self
+   */ 
+  public function setId($id)
+  {
+    $this->id = $id;
 
     return $this;
   }
