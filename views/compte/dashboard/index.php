@@ -64,38 +64,12 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-    <div class="utilisateur2__véhicule">
-        <h3>Véhicules</h3>
-        <?php foreach ($vehicules as $vehicule) : ?>
-        <p>Plaque d'immatriculation : </p>
-        <p><?= $vehicule->plaque_immatriculation ?></p>
-        <p>Marque : </p>
-        <p><?= $vehicule->marque ?></p>
-        <p>Modèle : </p>
-        <p><?= $vehicule->modele ?></p>
-        <p>Motorisation : </p>
-        <p><?= $vehicule->motorisation ?></p>
-        <p>Type de véhicule : </p>
-        <p><?= $vehicule->type_vehicule ?></p>
-        <p>Annee : </p>
-        <p><?= $vehicule->annee ?></p>
-        <p>Kilomètre : </p>
-        <p><?= $vehicule->km ?></p>
-        <?php endforeach;   ?>
-
-        <a href="compte/ajoutVehicule">
-            <img src="image\icons8-plus-100.png" alt="">
-        </a>       
-    </div> 
-=======
 <div class="utilisateur2__véhicule">
     <h3>Véhicules</h3>
     
     <a href="compte/afficheVehiculesUtil">voir</a>
     <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
 </div> 
->>>>>>> enzo
 </div>
 
 <div class="utilisateur2__btn">
