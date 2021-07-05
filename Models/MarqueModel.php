@@ -4,7 +4,7 @@ namespace App\Models;
 class MarqueModel extends Model
 {
   protected $id;
-  protected $nom;
+  protected $lib_marque;
 
   public function __construct()
   {
@@ -31,30 +31,31 @@ class MarqueModel extends Model
     return $this;
   }
 
-  /**
-   * Get the value of nom
-   */ 
-  public function getNom()
-  {
-    return $this->nom;
-  }
-
-  /**
-   * Set the value of nom
-   *
-   * @return  self
-   */ 
-  public function setNom($nom)
-  {
-    $this->nom = $nom;
-
-    return $this;
-  }
 
   // par ordre alphabétique
   public function findAllOrdre()
   {
-    $query = $this->requete('SELECT * FROM marque order by nom asc');
+    $query = $this->requete('SELECT * FROM marque order by lib_marque asc');
     return $query->fetchAll();
+  }
+
+  /**
+   * Get the value of lib_marque
+   */ 
+  public function getLib_marque()
+  {
+    return $this->lib_marque;
+  }
+
+  /**
+   * Set the value of lib_marque
+   *
+   * @return  self
+   */ 
+  public function setLib_marque($lib_marque)
+  {
+    $this->lib_marque = $lib_marque;
+
+    return $this;
   }
 }

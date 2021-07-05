@@ -102,7 +102,23 @@
     font-weight: bold;
     padding-left: 25px;
     padding-right: 25px;
-    font-size: 130%;
+
+    cursor: pointer;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    
+}
+.form2__btn a{
+    background-color: #2f3d4abe;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 10%/50%;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-right: 25px;
+    
     cursor: pointer;
     -webkit-transition: 1s;
     -o-transition: 1s;
@@ -114,6 +130,35 @@
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
+}
+.form2__modifs{
+    display: flex;
+    justify-content: space-around;
+    width: 310px;
+}
+.form2__modifs a{
+    text-decoration: none;
+    background-color: #489897;
+    color: white;
+    padding: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 10%/50%;
+    font-weight: bold;
+    
+}
+.form2__modifs button{
+    border: none;
+    text-decoration: none;
+    background-color: #489897;
+    color: white;
+    padding: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 10%/50%;
+    font-weight: bold;
+    cursor: pointer;
+    
 }
 @media screen and (min-width:688px){
     
@@ -144,6 +189,10 @@
         -o-transition: 1s;
         transition: 1s;
     }
+    .form2__modifs{
+        
+        width: 500px;
+    }
 
 }
 
@@ -164,7 +213,18 @@
         transition: 1s;
     }
 
-    
+    .form2__modifs{
+        
+        width: 800px;
+    }
+    .form2__modifs a{
+        font-size: 130%;
+
+    }
+    .form2__modifs button{
+        font-size: 130%;
+
+    }
 
 }
 

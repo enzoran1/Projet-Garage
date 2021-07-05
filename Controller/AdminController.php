@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Models\AnnoncesModel;
-use App\Models\ClientModel;
 use App\Models\MessageModel;
 use App\Models\UtilisateursModel;
 
@@ -31,10 +30,20 @@ class AdminController extends Controller
     //on instancie le modéle correspondant a la table 'utilisitateur
 
     $utilisateurModel = new UtilisateursModel;
-
+    $requete = $utilisateurModel->requete(
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km 
+    FROM utilisateur
+    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+    INNER JOIN marque ON vehicule.id_marque = marque.id
+    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+    WHERE utilisateur.role = "ROLE_USER" 
+    order by nom asc'
+    );
+    $utilisateur = $requete->fetchAll();
     // on va chercher toutes les utilisateur
 
-    $utilisateur = $utilisateurModel->findAll();
+    //$utilisateur = $utilisateurModel->findAll();
 
     // On génére la vue 
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
@@ -64,6 +73,13 @@ class AdminController extends Controller
     $message->delete($id);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
+  //supprimer utilisateur
+  public function supprimerUtilisateur(int $id)
+  {
+    $utilisateurs = new UtilisateursModel;
+    $utilisateurs->delete($id);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
 
   public function annonces()
   {
@@ -77,7 +93,7 @@ class AdminController extends Controller
       // méthode 
       $annonces = $annoncesModel->findAll();
       // render la view
-      return $this->render('admin/annonces/index', compact('annonces'));
+      return $this->render('annonces/index', compact('annonces'));
     }
   }
 }

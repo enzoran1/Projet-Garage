@@ -8,4 +8,23 @@ navButton.addEventListener("click", function(){
 
 
 
+function ajaxModele()
+{
+    let marque = $('#marque').val();
+    $.ajax(
+    {
+        url : '/modele/reqAjax/'+marque ,
+        type : 'get',
+        data : {'marque':marque},
+
+        success:function(retourRes)
+        {
+        $('#modele').html(retourRes);
+        }
+    }
+    );
+}
+
+
+
 

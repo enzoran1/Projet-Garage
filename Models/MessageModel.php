@@ -3,8 +3,13 @@
 namespace App\Models;
 
 class MessageModel extends Model
+<<<<<<< HEAD
 {
     protected $id;
+=======
+{   
+    protected int $id;
+>>>>>>> enzo
     protected $nom;
     protected $prenom;
     protected $email;
@@ -16,6 +21,7 @@ class MessageModel extends Model
         $this->table = 'contact';
     }
 
+<<<<<<< HEAD
     /**
      * Get the value of id
      */
@@ -35,6 +41,9 @@ class MessageModel extends Model
 
         return $this;
     }
+=======
+    
+>>>>>>> enzo
 
     /**
      * Get the value of nom
@@ -135,4 +144,28 @@ class MessageModel extends Model
 
         return $this;
     }
+<<<<<<< HEAD
 }
+=======
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+}
+>>>>>>> enzo

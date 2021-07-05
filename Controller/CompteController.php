@@ -5,7 +5,7 @@ namespace App\Controller;
 use PDO;
 use App\Core\Form;
 use App\Models\MarqueModel;
-use App\Models\ModeleModel;
+
 use App\Models\MotorisationModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\VehiculeModel;
@@ -159,68 +159,69 @@ class CompteController extends Controller
     // affichage du formulaire d'ajotu de véhicule
 
     public function ajoutVehiculeForm(){
-        //on instancie le modéle correspondant a la table 'utilisitateur
-
         $marqueModel = new MarqueModel;
-        //$modelModel = new ModeleModel;
         $motorisationModel = new MotorisationModel;
         $typeVehiculeModel = new TypeVehiculeModel;
         
-        // on va chercher toutes les utilisateur
-        
+        // on va chercher tout
         $marques = $marqueModel->findAllOrdre();
-        //$models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = '.$_POST['marque']);
-        //return $models->fetchAll();
         $motorisations = $motorisationModel->findAll();
         $types = $typeVehiculeModel->findAll();
 
         // On génére la vue 
-        
-        $this->render('compte/ajoutVehicule/index', compact('marques','motorisations','types'));
+        $this->render('compte/ajoutVehiculeForm/index', compact('marques','motorisations','types'));
     }
     
-    public function reqAjax(){
-        $chaine ='';
-        $modelModel = new ModeleModel;
-        $models = $modelModel->requete('SELECT * FROM modele WHERE id_marque = '.$_POST['marque']);
-        return $models->fetchAll();
-
-        foreach($models as $model)
-        {
-            $chaine .= '<option value="'.$model['id'].'">'.$model['nom'].'</option>';
-        }
-
-        echo $chaine;
-    }
-
+   
+    
     //ajout de véhicule de l'utilisateur
     public function ajoutVehicule()
     {
-        if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'marque', 'modele','motorisation','type_vehicule'])) {
+        if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque','id_motorisation','id_type'])) {
             $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
             $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
             $km = strip_tags($_POST['km'], PDO::PARAM_INT);
-            $modele = ($_POST['modele']);
-            $type_vehicule = ($_POST['type_vhicule']);
-            $motorisation = ($_POST['motorisation']);
+            $type_vehicule = ($_POST['id_type']);
+            $motorisation = ($_POST['id_motorisation']);
+            $marque = ($_POST['id_marque']);
+            $id_utilisateur = $_SESSION['user']['id'];
             //création véhicule
             $newVehicule = new VehiculeModel();
             $newVehicule->setPlaque_immatriculation($plaque_immatriculation)
                         ->setAnnee($annee)
                         ->setKm($km)
-                        ->setId_modele($modele)
+                        ->setId_marque($marque)
+
                         ->setId_motorisation($motorisation)
                         ->setId_type($type_vehicule)
-                        ->setId_utilisateur($_SESSION['user']['id']);
+                        ->setId_utilisateur($id_utilisateur);
             $newVehicule->create();
-            header('Location: /compte/dashboard');
+            header('Location: /compte');
         } else {
             echo 'Veuillez compléter tous les champs';
         }
+        
     }
 
     public function afficheVehiculesUtil()
     {
+<<<<<<< HEAD
+    
+
+    //on instancie le modéle correspondant a la table 'utilisitateur
+
+    $VehiculeModel = new VehiculeModel;
+    
+    // on va chercher toutes les utilisateur
+
+    $vehicule = $VehiculeModel->findAll();
+
+    // On génére la vue 
+    $this->render('compte/dashboard/index', compact('vehicule')); 
+        
+        
+    
+||||||| db67a24
         //on instancie le modéle correspondant a la table vehicule
         $vehiculeModel = new VehiculeModel;
         // on va chercher toutes les vehicule de l'utilisateur
@@ -229,6 +230,30 @@ class CompteController extends Controller
         // On génére la vue 
         header('Location: /compte');
         exit; // Redirection vers le dashboard
+=======
+        //on instancie le modéle correspondant a la table vehicule
+        $vehiculeModel = new VehiculeModel;
+        // on va chercher toutes les vehicule de l'utilisateur
+        $requete = $vehiculeModel->requete('SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
+        FROM vehicule
+        INNER JOIN marque ON vehicule.id_marque = marque.id
+        INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+        INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+        WHERE id_utilisateur = '.$_SESSION['user']['id']
+        );
+        $vehicules = $requete->fetchAll();
+        // On génére la vue 
+        return $this->render('/compte/vehicule', compact('vehicules'));
+        
+    }
+
+    //supprimer vehicule
+    public function supprimerVehicule(int $id)
+    {
+        $vehicule = new VehiculeModel;
+        $vehicule->delete($id);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
+>>>>>>> emilie
     }
 }
 

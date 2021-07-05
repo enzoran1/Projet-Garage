@@ -24,25 +24,20 @@
         <div class="form2__flex">
             <div class="form2__content">
                 <label for="">Marque :</label>
-                <select name="marque" id="marque" onclick="ajaxModele()">
+                <select name="id_marque" id="id_marque" class="marques">
                     <option value="">--Marques--</option>
                     <?php foreach ($marques as $marque) { ?>
-                        <option value="<?= $marque->id ?>"><?= $marque->nom ?></option>
+                        <option value="<?= $marque->id ?>"><?= $marque->lib_marque ?></option>
                     <?php } ?>
                 </select>
             </div>
 
 
-            <div class="form2__content">
-                <label for="">Modéle :</label>
-                <select name="modele" id="modele">
-                    <option value="">--Modèle--</option>
-                </select>
-            </div>
+            
 
             <div class="form2__content">
                 <label for="">Motorisation :</label>
-                <select name="motorisation" id="motorisation">
+                <select name="id_motorisation" id="id_motorisation">
                     <option value="">--Motorisation--</option>
                     <?php foreach ($motorisations as $motorisation) { ?>
                         <option value="<?= $motorisation->id?>"><?= $motorisation->lib_motorisation ?></option>
@@ -52,7 +47,7 @@
 
             <div class="form2__content">
                 <label for="">Type véhicule :</label>
-                <select name="type_vehicule" id="type_vehicule">
+                <select name="id_type" id="id_type">
                     <option value="">--Type véhicules--</option>
                     <?php foreach ($types as $type) { ?>
                         <option value="<?= $type->id_type ?>"><?= $type->lib_type ?></option>
@@ -71,31 +66,10 @@
 
 
             <button type="submit">Envoyer</button>
+            <a href="/compte">Annuler</a>
         </div>
 
     </div>
 </form>
-<script
-    src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous">
-</script>
-  
-<script>
-    function ajaxModele()
-    {
-        let marque = $('#marque').val();
-        $.ajax(
-        {
-            url : '/reqAjax',
-            type : 'post',
-            data : {'marque':marque},
 
-            success:function(retourRes)
-            {
-            $('#modele').html(retourRes);
-            }
-        }
-        );
-    }
-</script>
+  
