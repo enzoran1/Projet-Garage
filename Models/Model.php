@@ -119,6 +119,7 @@ class Model extends Db
   {
     return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
   }
+ 
 
   
 

@@ -32,7 +32,7 @@
       </div>
       <div class="navbar__container">
         <div class="navbar__container-panier">
-          <a href="panier/index"> <img src="/image/icons8-shopping-cart-48.png" alt="icon"></a>
+          <a href="/Panier"> <img src="/image/icons8-shopping-cart-48.png" alt="icon"></a>
         </div>
         <span class="navbar__container-burger">
           <svg viewBox="0 0 100 80" widht="40" height="40">
@@ -94,7 +94,7 @@
           
         </ul>
         <div class="navbar2__panier">
-          <a href="panier/index"> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
+          <a href="/Panier"> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
         </div>
       </div>
     </nav>

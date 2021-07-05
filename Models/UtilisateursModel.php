@@ -231,4 +231,12 @@ class UtilisateursModel extends Model
       'date_creation' => $this->date_creation
     ];
   }
+// public function deleteUtilisateurAdmin($id){
+
+//     return $this->requete("DELETE FROM utilisateur , vehicule WHERE utilisateur.id = ? AND vehicule.id_utilisateur = id", [$id]);
+
+
+//   }
+
 }
+
