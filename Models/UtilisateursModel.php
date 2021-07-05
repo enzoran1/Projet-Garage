@@ -232,4 +232,12 @@ class UtilisateursModel extends Model
     ];
     
   }
+// public function deleteUtilisateurAdmin($id){
+
+//     return $this->requete("DELETE FROM utilisateur , vehicule WHERE utilisateur.id = ? AND vehicule.id_utilisateur = id", [$id]);
+
+
+//   }
+
 }
+

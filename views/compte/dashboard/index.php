@@ -65,45 +65,8 @@
 
 <div class="utilisateur2__véhicule">
     <h3>Véhicules</h3>
-<<<<<<< HEAD
-    <?php foreach ($vehicule as $vehicules) : ?>
-    <p>Plaque d'immatriculation : </p>
-    <p><?= $vehicules->plaque_immatriculation ?></p>
-    <p>Marque : </p>
-    <p><?= $vehicules->marque ?></p>
-
-    <p>Motorisation : </p>
-    <p><?= $vehicules->id_motorisation ?></p>
-    <p>Type de véhicule : </p>
-    <p><?= $vehicules->type_vehicule ?></p>
-    <p>Annee : </p>
-    <p><?= $vehicules->annee ?></p>
-    <p>Kilomètre : </p>
-    <p><?= $vehicules->km ?></p>
-    <?php endforeach;   ?>
-
-||||||| db67a24
-    <?php foreach ($vehicules as $vehicule) : ?>
-    <p>Plaque d'immatriculation : </p>
-    <p><?= $vehicule->plaque_immatriculation ?></p>
-    <p>Marque : </p>
-    <p><?= $vehicule->marque ?></p>
-    <p>Modèle : </p>
-    <p><?= $vehicule->modele ?></p>
-    <p>Motorisation : </p>
-    <p><?= $vehicule->motorisation ?></p>
-    <p>Type de véhicule : </p>
-    <p><?= $vehicule->type_vehicule ?></p>
-    <p>Annee : </p>
-    <p><?= $vehicule->annee ?></p>
-    <p>Kilomètre : </p>
-    <p><?= $vehicule->km ?></p>
-    <?php endforeach;   ?>
-
-=======
     
     <a href="compte/afficheVehiculesUtil">voir</a>
->>>>>>> emilie
     <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
 </div> 
 </div>

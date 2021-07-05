@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Models\AnnoncesModel;
 use App\Models\MessageModel;
 use App\Models\UtilisateursModel;
+use App\Models\VehiculeModel;
 
 class AdminController extends Controller
 {
@@ -31,7 +32,7 @@ class AdminController extends Controller
     //on instancie le modéle correspondant a la table 'utilisitateur
 
     $utilisateurModel = new UtilisateursModel;
-    $requete = $utilisateurModel->requete('SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km 
+    $requete = $utilisateurModel->requete('SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
     FROM utilisateur
     INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
     INNER JOIN marque ON vehicule.id_marque = marque.id
@@ -75,15 +76,20 @@ class AdminController extends Controller
     {
         $message = new MessageModel;
         $message->delete($id);
-        header('Location: '.$_SERVER['HTTP_REFERER']);
+        
     }
     //supprimer utilisateur
-    public function supprimerUtilisateur(int $id)
-    {
-        $utilisateurs = new UtilisateursModel;
-        $utilisateurs->delete($id);
-        header('Location: '.$_SERVER['HTTP_REFERER']);
+    
+    public function supprimerUtilisateur(int $id){
+
+      $utilisateurModel = new UtilisateursModel;
+      $vehiculeModel = new VehiculeModel;
+
+      $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = '.$id);
+      $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = '.$id);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
+    
   
   public function annonces()
   { 
