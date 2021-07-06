@@ -3,10 +3,12 @@ namespace App\Controller;
 
 use App\Core\Form;
 use App\Models\AnnoncesModel;
+use App\Models\CategorieprestationsModel;
 use App\Models\MarqueModel;
 use App\Models\MessageModel;
 use App\Models\MotorisationModel;
 use App\Models\PhotoModel;
+use App\Models\PrestationModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\UtilisateursModel;
 use App\Models\VehiculeModel;
@@ -213,4 +215,31 @@ class AdminController extends Controller
     header('Location: /admin');
   }
 
+
+  //Les prestations
+  public function prestations()
+  { 
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $prestationModel = new PrestationModel;
+      
+      // méthode 
+      $prestations = $prestationModel->findAll();
+      // render la view
+    return $this->render('admin/prestations/index', compact('prestations'));
+      
+    }
+  }
+  public function ajoutPrestationsForm(){
+    $catprestaModel = new CategorieprestationsModel;
+    // on va chercher tout
+    $categories = $catprestaModel->findAll();
+    return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
+  }
   }
