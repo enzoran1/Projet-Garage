@@ -143,7 +143,7 @@ class AdminController extends Controller
 
   public function ajoutAnnonces(){
 
-    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix','file'])) {
+    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -152,7 +152,6 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
-      $id_file = $_FILES['file'];
 
       //création véhicule
       $newAnnonces = new AnnoncesModel();
@@ -164,11 +163,6 @@ class AdminController extends Controller
           ->setPrix($prix)
           ->setId_motorisation($motorisation)
           ->setId_type($type_vehicule);
-      
-      // Pour la photo du véhicule
-      $newPhoto = new PhotoModel();
-      $newPhoto->setLib_photo($id_file);
-      $newPhoto->create();
 
       $newAnnonces->create();
       header('Location: /admin');
