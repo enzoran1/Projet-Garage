@@ -7,6 +7,7 @@
 foreach($annonces as $annonce)
 { 
     echo 
+    $annonce->lib_photo. '</br>',
     $annonce->id. '</br>',
     $annonce->prix. '</br>', 
     $annonce->description. '</br>', 

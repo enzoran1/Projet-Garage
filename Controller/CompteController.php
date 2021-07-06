@@ -192,11 +192,11 @@ class CompteController extends Controller
                     // on va chercher toutes les vehicule de l'utilisateur
                     $requete = $vehiculeModel->requete(
                         'SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
-        FROM vehicule
-        INNER JOIN marque ON vehicule.id_marque = marque.id
-        INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
-        INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
-        WHERE id_utilisateur = ' . $_SESSION['user']['id']
+                        FROM vehicule
+                        INNER JOIN marque ON vehicule.id_marque = marque.id
+                        INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+                        INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+                        WHERE id_utilisateur = ' . $_SESSION['user']['id']
                     );
                     $vehicules = $requete->fetchAll();
                     // On génére la vue 

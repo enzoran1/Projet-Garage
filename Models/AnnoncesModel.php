@@ -249,25 +249,7 @@ class AnnoncesModel extends Model
         return $this;
     }
 
-    /**
-     * Get the value of id_file
-     */ 
-    public function getId_file()
-    {
-        return $this->id_file;
-    }
 
-    /**
-     * Set the value of id_file
-     *
-     * @return  self
-     */ 
-    public function setId_file($id_file)
-    {
-        $this->id_file = $id_file;
-
-        return $this;
-    }
     }
 
 

@@ -6,6 +6,7 @@ use App\Models\AnnoncesModel;
 use App\Models\MarqueModel;
 use App\Models\MessageModel;
 use App\Models\MotorisationModel;
+use App\Models\PhotoModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\UtilisateursModel;
 use App\Models\VehiculeModel;
@@ -107,8 +108,9 @@ class AdminController extends Controller
     {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
-      $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
+      $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type, photo.lib_photo
       FROM a_vendre
+      INNER JOIN photo ON a_vendre.id = photo.id_avendre
       INNER JOIN marque ON a_vendre.id_marque = marque.id
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
@@ -150,8 +152,8 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
-      $id_utilisateur = $_SESSION['user']['id'];
-      $id_file = $_POST['file'];
+      $id_file = $_FILES['file'];
+
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
@@ -160,11 +162,14 @@ class AdminController extends Controller
           ->setId_marque($marque)
           ->setDescription($description)
           ->setPrix($prix)
-          ->setId_file($id_file)
-
           ->setId_motorisation($motorisation)
           ->setId_type($type_vehicule);
-        
+      
+      // Pour la photo du véhicule
+      $newPhoto = new PhotoModel();
+      $newPhoto->setLib_photo($id_file);
+      $newPhoto->create();
+
       $newAnnonces->create();
       header('Location: /admin');
   } else {
