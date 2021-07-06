@@ -8,22 +8,17 @@ navButton.addEventListener("click", function(){
 
 
 
-function ajaxModele()
-{
-    let marque = $('#marque').val();
-    $.ajax(
-    {
-        url : '/modele/reqAjax/'+marque ,
-        type : 'get',
-        data : {'marque':marque},
+const ajoutPanier = document.querySelector('#panier-ajout');
+const hidden = document.querySelector('.hidden');
 
-        success:function(retourRes)
-        {
-        $('#modele').html(retourRes);
-        }
-    }
-    );
-}
+
+ajoutPanier.addEventListener("click",(event) =>{
+
+    hidden.classList.toggle("show")
+
+    
+
+})
 
 
 

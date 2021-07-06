@@ -1,10 +1,15 @@
 <?php
 namespace App\Controller;
 
+use App\Core\Form;
 use App\Models\AnnoncesModel;
+use App\Models\MarqueModel;
 use App\Models\MessageModel;
+use App\Models\MotorisationModel;
+use App\Models\TypeVehiculeModel;
 use App\Models\UtilisateursModel;
 use App\Models\VehiculeModel;
+use PDO;
 
 class AdminController extends Controller
 {
@@ -106,8 +111,55 @@ class AdminController extends Controller
       // méthode 
       $annonces = $annoncesModel->findAll();
       // render la view
-      return $this->render('annonces/index', compact('annonces'));
+      return $this->render('admin/annonces/index', compact('annonces'));
       
     }
   }
+
+  public function ajoutAnnoncesFrom(){
+
+    $marqueModel = new MarqueModel;
+    $motorisationModel = new MotorisationModel;
+    $typeVehiculeModel = new TypeVehiculeModel;
+
+    // on va chercher tout
+    $marques = $marqueModel->findAllOrdre();
+    $motorisations = $motorisationModel->findAll();
+    $types = $typeVehiculeModel->findAll();
+
+    
+    return $this->render('admin/annonces/ajoutAnnonces/index',compact('marques', 'motorisations', 'types'));
+  }
+
+  public function ajoutAnnonces(){
+
+    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) {
+      $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
+      $description = strip_tags($_POST['description'], PDO::PARAM_STR);
+      $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
+      $km = strip_tags($_POST['km'], PDO::PARAM_INT);
+      $type_vehicule = ($_POST['id_type']);
+      $motorisation = ($_POST['id_motorisation']);
+      $marque = ($_POST['id_marque']);
+      $prix = ($_POST['prix']);
+      $id_utilisateur = $_SESSION['user']['id'];
+      //création véhicule
+      $newAnnonces = new AnnoncesModel();
+      $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
+          ->setAnnee($annee)
+          ->setKm($km)
+          ->setId_marque($marque)
+          ->setDescription($description)
+          ->setPrix($prix)
+
+          ->setId_motorisation($motorisation)
+          ->setId_type($type_vehicule);
+        
+      $newAnnonces->create();
+      header('Location: /admin');
+  } else {
+      echo 'Veuillez compléter tous les champs';
+  }
 }
+
+  }

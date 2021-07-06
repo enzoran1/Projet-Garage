@@ -58,3 +58,14 @@
     color: white;
     font-weight: bold;
 }
+
+.hidden{
+    display: none;
+}
+.show{
+    display: initial;
+}
+
+.hidden .show{
+    display: initial;
+}
