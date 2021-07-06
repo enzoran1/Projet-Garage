@@ -18,7 +18,7 @@
     </div>
         <div class="pneu-content2__prix-ajout">
             <p>17,90€</p>
-            <a href="">ajouter</a>
+            <a id="panier-ajout" href="#">ajouter</a>
         </div>
     </div>
     </div>
@@ -35,7 +35,7 @@
     </div>
         <div class="pneu-content2__prix-ajout">
             <p>17,90€</p>
-            <a href="">ajouter</a>
+            <a id="" href="">ajouter</a>
         </div>
     </div>
     </div>

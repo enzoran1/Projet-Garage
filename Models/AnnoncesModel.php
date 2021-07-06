@@ -6,7 +6,7 @@ class AnnoncesModel extends Model
 {   
     protected $id;
     protected $prix;
-    protected $immatriculation;
+    protected $plaque_immatriculation;
     protected $annee;
     protected $km;
     protected $description;
@@ -14,6 +14,7 @@ class AnnoncesModel extends Model
     protected $id_modele;
     protected $id_motorisation;
     protected $id_type;
+    protected $id_marque;
 
     public function __construct()
     {
@@ -61,25 +62,10 @@ class AnnoncesModel extends Model
         return $this;
     }
 
-    /**
-     * Get the value of immatriculation
-     */ 
-    public function getImmatriculation()
-    {
-        return $this->immatriculation;
-    }
+     
+    
 
-    /**
-     * Set the value of immatriculation
-     *
-     * @return  self
-     */ 
-    public function setImmatriculation($immatriculation)
-    {
-        $this->immatriculation = $immatriculation;
-
-        return $this;
-    }
+ 
 
     /**
      * Get the value of annee
@@ -218,6 +204,46 @@ class AnnoncesModel extends Model
     public function setId_type($id_type)
     {
         $this->id_type = $id_type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_marque
+     */ 
+    public function getId_marque()
+    {
+        return $this->id_marque;
+    }
+
+    /**
+     * Set the value of id_marque
+     *
+     * @return  self
+     */ 
+    public function setId_marque($id_marque)
+    {
+        $this->id_marque = $id_marque;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of plaque_immatriculation
+     */ 
+    public function getPlaque_immatriculation()
+    {
+        return $this->plaque_immatriculation;
+    }
+
+    /**
+     * Set the value of plaque_immatriculation
+     *
+     * @return  self
+     */ 
+    public function setPlaque_immatriculation($plaque_immatriculation)
+    {
+        $this->plaque_immatriculation = $plaque_immatriculation;
 
         return $this;
     }
