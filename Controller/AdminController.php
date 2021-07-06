@@ -107,7 +107,7 @@ class AdminController extends Controller
     {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
-      $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type 
+      $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
       FROM a_vendre
       INNER JOIN marque ON a_vendre.id_marque = marque.id
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 

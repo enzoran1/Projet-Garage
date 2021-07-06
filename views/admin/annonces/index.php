@@ -3,7 +3,6 @@
 <br>
 
 <?php
-var_dump($annonces);
 
 foreach($annonces as $annonce)
 { 
