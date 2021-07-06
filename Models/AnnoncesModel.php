@@ -15,6 +15,7 @@ class AnnoncesModel extends Model
     protected $id_motorisation;
     protected $id_type;
     protected $id_marque;
+    protected $id_file;
 
     public function __construct()
     {
@@ -244,6 +245,26 @@ class AnnoncesModel extends Model
     public function setPlaque_immatriculation($plaque_immatriculation)
     {
         $this->plaque_immatriculation = $plaque_immatriculation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_file
+     */ 
+    public function getId_file()
+    {
+        return $this->id_file;
+    }
+
+    /**
+     * Set the value of id_file
+     *
+     * @return  self
+     */ 
+    public function setId_file($id_file)
+    {
+        $this->id_file = $id_file;
 
         return $this;
     }
