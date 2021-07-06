@@ -101,15 +101,23 @@ class AdminController extends Controller
     if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
     { 
       // renvoyer une erreur, chercher le code 
-      return $this->render('main/index');
+      return $this->render('main/index'); 
     }
     else
     {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
+      $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type 
+      FROM a_vendre
+      INNER JOIN marque ON a_vendre.id_marque = marque.id
+      INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
+      INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+      order by lib_marque asc');
+      // il faut ajouter la putain de photo :'(  
 
       // méthode 
-      $annonces = $annoncesModel->findAll();
+      $annonces = $requete->fetchAll();
+
       // render la view
       return $this->render('admin/annonces/index', compact('annonces'));
       
