@@ -4,7 +4,7 @@ namespace App\Models;
 class PhotoModel extends Model
 {
   protected $id;
-  protected $nom;
+  protected $lib_photo;
   protected $id_a_vendre;
 
   public function __construct()
@@ -23,9 +23,9 @@ class PhotoModel extends Model
   /**
    * Get the value of nom
    */ 
-  public function getNom()
+  public function getLib_photo()
   {
-    return $this->nom;
+    return $this->lib_photo;
   }
 
   /**
@@ -33,9 +33,9 @@ class PhotoModel extends Model
    *
    * @return  self
    */ 
-  public function setNom($nom)
+  public function setLib_photo($lib_photo)
   {
-    $this->nom = $nom;
+    $this->lib_photo = $lib_photo;
 
     return $this;
   }
