@@ -140,8 +140,6 @@ class CompteController extends Controller
                     exit; // Redirection vers le dashboard
                 }
 
-                // affichage du formulaire d'ajotu de véhicule
-
                 public function ajoutVehiculeForm()
                 {
                     $marqueModel = new MarqueModel;

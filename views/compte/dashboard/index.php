@@ -3,7 +3,6 @@
 <div class="ban" id="ban__dashboard">
     <h1>Mon profil</h1>
 </div>
-<div>
 
 <div class="utilisateur2__flex-container">
 
@@ -11,6 +10,7 @@
         <div class="utilisateur2__titre">
             <h3>Mes information</h3>
         </div>
+
         <div class="carte__utilisateur2-container">
             <div class="utilisateur2__flex-paire">
                 <div class="utilisateur2__flex">
@@ -44,9 +44,10 @@
             </div>
         </div>
     </div>
-<div id="modal-pub" class="modal hidden">
+    
+    <div id="modal-pub" class="modal hidden">
         <div class="conteneur-modal">
-            <div class="close">&times;</div>
+            <div class="close">&times; </div>
             <form class="form__modal" action="/compte/editProfileView" method="post">
             <div class="modal__content">
                 <label for="">mot de passe</label>
@@ -70,6 +71,7 @@
     <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
 </div> 
 </div>
+
 <div class="utilisateur2__btn">
     <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
-  </div>
+</div>
