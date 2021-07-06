@@ -7,7 +7,7 @@
 foreach($annonces as $annonce)
 { 
     echo 
-    $annonce->lib_photo. '</br>',
+    
     $annonce->id. '</br>',
     $annonce->prix. '</br>', 
     $annonce->description. '</br>', 
@@ -18,4 +18,14 @@ foreach($annonces as $annonce)
     $annonce->lib_type. '</br>',
     $annonce->lib_marque. '</br>';
     echo '<br>';
-}
+
+    ?>
+    <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
+        <input type="file" name="photo" id="photo">
+        <button type="submit">Ajouter photo</button>
+    </form>
+    
+    
+<?php
+}?>
+

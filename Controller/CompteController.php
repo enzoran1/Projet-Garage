@@ -140,6 +140,8 @@ class CompteController extends Controller
                     exit; // Redirection vers le dashboard
                 }
 
+                // affichage du formulaire d'ajotu de véhicule
+
                 public function ajoutVehiculeForm()
                 {
                     $marqueModel = new MarqueModel;
@@ -197,7 +199,7 @@ class CompteController extends Controller
                         INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
                         INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
                         WHERE id_utilisateur = ' . $_SESSION['user']['id']
-                    );
+                                    );
                     $vehicules = $requete->fetchAll();
                     // On génére la vue 
                     return $this->render('/compte/vehicule', compact('vehicules'));

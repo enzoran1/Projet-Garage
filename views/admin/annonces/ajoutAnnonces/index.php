@@ -68,9 +68,7 @@
 
         <div class="form4__btn">
 
-        <div>
-        <input type="file" name="file" id="fileToUpload">
-        </div>
+        
         <div class="form4__flex-btn">
             <button type="submit">Envoyer</button>
             <a href="/compte">Annuler</a>
