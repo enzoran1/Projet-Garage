@@ -170,8 +170,8 @@ class AdminController extends Controller
 }
 
   //ajouter une photo
-  public function ajouterPhoto($id){
-    if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+  public function ajouterPhoto(int $id){
+   /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
         $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
         $filename = $_FILES["photo"]["name"];
         $filetype = $_FILES["photo"]["type"];
@@ -197,12 +197,18 @@ class AdminController extends Controller
         } else {
             $message = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
         }
-    } else {
+      } else {
         $message = "Error: " . $_FILES["photo"]["error"];
-    }
+    }*/
+    $uploaddir = '../public/image/';
+        if(!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0 )
+        {
+            $uploadfile = $uploaddir.$_FILES['photo']['name'];
+            move_uploaded_file($_FILES['photo']['tmp_name'],$uploadfile);
+        }
     $newPhoto = new PhotoModel();
-    $newPhoto->setLib_photo($filename)
-             ->setId_a_vendre($id);
+    $newPhoto->setLib_photo($uploadfile)
+             ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin');
   }

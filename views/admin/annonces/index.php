@@ -21,7 +21,7 @@ foreach($annonces as $annonce)
 
     ?>
     <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
-        <input type="file" name="photo" id="photo">
+        <input type="file" name="photo" id="photo"  accept="image/png, image/jpeg">
         <button type="submit">Ajouter photo</button>
     </form>
     
