@@ -1,4 +1,4 @@
-<div class="ban" id="ban__messageutilisateur">
+<div class="ban" id="ban__annonces">
     <h1>Message utilisateur</h1>
 </div>
 

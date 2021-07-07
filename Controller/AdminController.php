@@ -91,6 +91,16 @@ class AdminController extends Controller
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
+  public function supprimerAnnonces(int $id)
+  {
+    $annoncesModel = new AnnoncesModel;
+    $photoModel = new PhotoModel;
+    $photoModel->requete('DELETE photo.* FROM photo WHERE id_avendre = ' . $id);
+    $annoncesModel->requete('DELETE a_vendre.* FROM a_vendre WHERE id = ' . $id);
+    
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+
 
   public function annonces()
   {
@@ -201,7 +211,7 @@ class AdminController extends Controller
     }
     $newPhoto = new PhotoModel();
     $newPhoto->setLib_photo($uploadfile)
-      ->setId_avendre($id);
+             ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin');
   }
