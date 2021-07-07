@@ -33,7 +33,7 @@
         </div>
 
         <div class="admin-annonces__btn">
-            <a href="">Modifier</a>
+            <a href="/admin/modifAnnoncesFrom/<?=$annonce->id?>">Modifier</a>
             <a href="/admin/supprimerAnnonces/<?=$annonce->id?>">Supprimer</a>
         </div>
     </div>
