@@ -98,7 +98,6 @@ public function modifierProfiladmin()
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
-    $vehiculeModifAdmin = new VehiculeModel;
 
     // On hydrate
     $utilisateurModifAdmin
