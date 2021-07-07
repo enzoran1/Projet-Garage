@@ -1,8 +1,9 @@
 
 <h1>Modifier le profil du client</h1>
   
-<?php foreach($utilisateurs as $utilisateur) ?>
-<form action="admin/" class="form2" method="post">
+<?php foreach($utilisateurs as $utilisateur) var_dump($utilisateur->id)?>
+
+<form action="/Admin/modifierProfiladmin/<?=$utilisateur->id?>" class="form2" method="post">
   <div class="form2__container">
     <div class="form2__flex">
       <div class="form2__content">
@@ -44,7 +45,7 @@
       <div class="form2__content">
         <label for="">Marque :</label>
         <select name="id_marque" id="id_marque" class="marques">
-          <option value="<?=$utilisateur->lib_marque?>"></option>
+          <option value="<?=$utilisateur->id_marque?>"><?=$utilisateur->lib_marque?></option>
             <?php foreach ($marques as $marque) { ?>
               <option value="<?= $marque->id ?>"><?= $marque->lib_marque ?></option>
             <?php } ?>
@@ -53,7 +54,7 @@
         <div class="form2__content">
             <label for="">Motorisation :</label>
             <select name="id_motorisation" id="id_motorisation">
-                <option value=""><?= $utilisateur->lib_motorisation?></option>
+                <option value="<?= $utilisateur->id_motorisation?>"><?= $utilisateur->lib_motorisation?></option>
                 <?php foreach ($motorisations as $motorisation) { ?>
                     <option value="<?= $motorisation->id?>"><?= $motorisation->lib_motorisation ?></option>
                 <?php } ?>
@@ -62,7 +63,7 @@
         <div class="form2__content">
             <label for="">Type véhicule :</label>
             <select name="id_type" id="id_type">
-                <option value=""><?=$utilisateur->lib_type?></option>
+                <option value="<?= $utilisateur->id_type?>"><?=$utilisateur->lib_type?></option>
                 <?php foreach ($types as $type) { ?>
                     <option value="<?= $type->id_type ?>"><?= $type->lib_type ?></option>
                 <?php } ?>

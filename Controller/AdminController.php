@@ -62,7 +62,7 @@ class AdminController extends Controller
   {
     $utilisateurModel = new UtilisateursModel;
     $requete = $utilisateurModel->requete(
-      'SELECT utilisateur.*,marque.*, type_vehicule.*, motorisation.*, vehicule.*
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
     FROM utilisateur
     INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
     INNER JOIN marque ON vehicule.id_marque = marque.id
@@ -85,7 +85,7 @@ class AdminController extends Controller
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
 //modifier profil utilisateur
-public function modifierProfiladmin()
+public function modifierProfiladmin(int $id)
 {
     $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
     $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
@@ -93,29 +93,41 @@ public function modifierProfiladmin()
     $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
     $email = strip_tags($_POST['email'], PDO::PARAM_STR);
     $id_marque = ($_POST['id_marque']);
-  
-  
+    $id_motorisation = ($_POST['id_motorisation']);
+    $id_type = ($_POST['id_type']);
+    $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
+    $km = strip_tags($_POST['km'], PDO::PARAM_INT);
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
 
     // On hydrate
     $utilisateurModifAdmin
+        ->setId($id)
         ->setNom($nom)
         ->setPrenom($prenom)
         ->setAdresse($adresse)
         ->setTel($tel)
         ->setEmail($email);
+    $vehiculeModifAdmin
+      ->setId()
+      ->setId_utilisateur($id)
+      ->setId_type($id_type)
+      ->setId_motorisation($id_motorisation)
+      ->setId_marque($id_marque)
+      ->setKm($km)
+      ->setAnnee($annee);
 
     // On enregistre
-    $utilisateurModif->update();
+    $utilisateurModifAdmin->update();
+    $vehiculeModifAdmin->update();
 
 
     //il faut modifier la session pour rafraichir les valeurs du dashboard
 
 
-    header('Location: /compte');
-    exit; // Redirection vers le dashboard
+    header('Location: /admin');
+    exit; 
 }
   public function message()
   {
