@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Core\Form;
 use App\Models\AnnoncesModel;
+use App\Models\CategorieprestationsModel;
 use App\Models\MarqueModel;
 use App\Models\MessageModel;
 use App\Models\MotorisationModel;
 use App\Models\PhotoModel;
+use App\Models\PrestationModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\UtilisateursModel;
 use App\Models\VehiculeModel;
@@ -154,20 +156,20 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
-
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
-        ->setAnnee($annee)
-        ->setKm($km)
-        ->setId_marque($marque)
-        ->setDescription($description)
-        ->setPrix($prix)
-        ->setId_motorisation($motorisation)
-        ->setId_type($type_vehicule);
+                  ->setAnnee($annee)
+                  ->setKm($km)
+                  ->setId_marque($marque)
+                  ->setDescription($description)
+                  ->setPrix($prix)
+                  ->setId_motorisation($motorisation)
+                  ->setId_type($type_vehicule);
       $newAnnonces->create();
       header('Location: /admin');
-    } else {
+    } else 
+    {
       echo 'Veuillez compléter tous les champs';
     }
   }
@@ -214,5 +216,33 @@ class AdminController extends Controller
              ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin');
+  }
+
+
+  //Les prestations
+  public function prestations()
+  { 
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $prestationModel = new PrestationModel;
+      
+      // méthode 
+      $prestations = $prestationModel->findAll();
+      // render la view
+    return $this->render('admin/prestations/index', compact('prestations'));
+      
+    }
+  }
+  public function ajoutPrestationsForm(){
+    $catprestaModel = new CategorieprestationsModel;
+    // on va chercher tout
+    $categories = $catprestaModel->findAll();
+    return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
 }

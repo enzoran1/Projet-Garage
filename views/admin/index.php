@@ -16,6 +16,11 @@
         <h3>Mes rendez-vous</h3>
         <a href="">Accéder</a>
     </div>
+    <div class="admin__content">
+        <img src="image/admin-calender.png" alt="">
+        <h3>Mes prestations</h3>
+        <a href="admin/prestations/index">Accéder</a>
+    </div>
 </div>
 <div class="admin-flex">
     <div class="admin__content">
