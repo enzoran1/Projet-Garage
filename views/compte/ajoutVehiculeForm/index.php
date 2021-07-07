@@ -31,10 +31,6 @@
                     <?php } ?>
                 </select>
             </div>
-
-
-            
-
             <div class="form2__content">
                 <label for="">Motorisation :</label>
                 <select name="id_motorisation" id="id_motorisation">
@@ -44,7 +40,6 @@
                     <?php } ?>
                 </select>
             </div>
-
             <div class="form2__content">
                 <label for="">Type véhicule :</label>
                 <select name="id_type" id="id_type">
@@ -54,21 +49,11 @@
                     <?php } ?>
                 </select>
             </div>
-
-
-
         </div>
-
-
-
         <div class="form2__btn">
-
-
-
             <button type="submit">Envoyer</button>
             <a href="/compte">Annuler</a>
         </div>
-
     </div>
 </form>
 
