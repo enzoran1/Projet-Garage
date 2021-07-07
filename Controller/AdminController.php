@@ -57,6 +57,31 @@ class AdminController extends Controller
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
   }
 
+  //formulaire de modification utilisateur
+  public function modifClientForm($id)
+  {
+    $utilisateurModel = new UtilisateursModel;
+    $requete = $utilisateurModel->requete(
+      'SELECT utilisateur.*,marque.*, type_vehicule.*, motorisation.*, vehicule.*
+    FROM utilisateur
+    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+    INNER JOIN marque ON vehicule.id_marque = marque.id
+    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+    WHERE utilisateur.id = 
+    ' . $id
+    );
+    $utilisateurs = $requete->fetchAll();
+    //var_dump($utilisateurs);exit;
+    $marqueModel = new MarqueModel;
+    $motorisationModel = new MotorisationModel;
+    $typeVehiculeModel = new TypeVehiculeModel;
+    // on va chercher tout
+    $marques = $marqueModel->findAllOrdre();
+    $motorisations = $motorisationModel->findAll();
+    $types = $typeVehiculeModel->findAll();
+    return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
+  }
 
   public function message()
   {
@@ -206,8 +231,10 @@ class AdminController extends Controller
       } else {
         $message = "Error: " . $_FILES["photo"]["error"];
     }*/
+
     $uploaddir = '../public/image/';
-    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) {
+    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
+    {
       $uploadfile = $uploaddir . $_FILES['photo']['name'];
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
