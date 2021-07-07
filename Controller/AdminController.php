@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Core\Form;
 use App\Models\AnnoncesModel;
+use App\Models\CategorieprestationsModel;
 use App\Models\MarqueModel;
 use App\Models\MessageModel;
 use App\Models\MotorisationModel;
+use App\Models\PhotoModel;
+use App\Models\PrestationModel;
 use App\Models\TypeVehiculeModel;
 use App\Models\UtilisateursModel;
 use App\Models\VehiculeModel;
@@ -100,9 +103,17 @@ class AdminController extends Controller
     } else {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
+      $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
+      FROM a_vendre
+      INNER JOIN marque ON a_vendre.id_marque = marque.id
+      INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
+      INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+      order by lib_marque asc');
+      // il faut ajouter la putain de photo :'(  
 
       // méthode 
-      $annonces = $annoncesModel->findAll();
+      $annonces = $requete->fetchAll();
+
       // render la view
       return $this->render('admin/annonces/index', compact('annonces'));
     }
@@ -136,7 +147,6 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
-      $id_utilisateur = $_SESSION['user']['id'];
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
@@ -145,14 +155,81 @@ class AdminController extends Controller
         ->setId_marque($marque)
         ->setDescription($description)
         ->setPrix($prix)
-
         ->setId_motorisation($motorisation)
         ->setId_type($type_vehicule);
-
       $newAnnonces->create();
       header('Location: /admin');
     } else {
       echo 'Veuillez compléter tous les champs';
     }
+  }
+
+  //ajouter une photo
+  public function ajouterPhoto(int $id)
+  {
+    /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+        $filename = $_FILES["photo"]["name"];
+        $filetype = $_FILES["photo"]["type"];
+        $filesize = $_FILES["photo"]["size"];
+
+        // Vérifie l'extension du fichier
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        if (!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
+
+        // Vérifie la taille du fichier - 5Mo maximum
+        $maxsize = 5 * 1024 * 1024;
+        if ($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
+
+        // Vérifie le type MIME du fichier
+        if (in_array($filetype, $allowed)) {
+            // Vérifie si le fichier existe avant de le télécharger.
+            if (file_exists("/image/" . $_FILES["photo"]["name"])) {
+                $message = $_FILES["photo"]["name"] . " existe déjà.";
+            } else {
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "/image/" . $_FILES["photo"]["name"]);
+                $message = "Votre fichier a été téléchargé avec succès.";
+            }
+        } else {
+            $message = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
+        }
+      } else {
+        $message = "Error: " . $_FILES["photo"]["error"];
+    }*/
+    $uploaddir = '../public/image/';
+    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) {
+      $uploadfile = $uploaddir . $_FILES['photo']['name'];
+      move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
+    }
+    $newPhoto = new PhotoModel();
+    $newPhoto->setLib_photo($uploadfile)
+      ->setId_avendre($id);
+    $newPhoto->create();
+    header('Location: /admin');
+  }
+
+
+  //Les prestations
+  public function prestations()
+  {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    } else {
+      // instancier le model 
+      $prestationModel = new PrestationModel;
+
+      // méthode 
+      $prestations = $prestationModel->findAll();
+      // render la view
+      return $this->render('admin/prestations/index', compact('prestations'));
+    }
+  }
+  public function ajoutPrestationsForm()
+  {
+    $catprestaModel = new CategorieprestationsModel;
+    // on va chercher tout
+    $categories = $catprestaModel->findAll();
+    return $this->render('admin/prestations/ajoutPrestations/index', compact('categories'));
   }
 }

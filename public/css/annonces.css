@@ -1,228 +1,198 @@
-#ban__annonces{
-    background-image: url(../image/ban-admin-annonce.jpg);
+#ban__annonces {
+  background-image: url(../image/ban-admin-annonce.jpg);
 }
 
-.form4{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-bottom: 50px;
-    margin-top: 50px;
+.form4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
-.form4__container{
-    width: 250px;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    background-color: #489897;
-    padding: 20px;
-    border-radius: 5px;
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
-            box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
-    
-    margin-top: 50px;
-    margin-bottom: 50px;
-    
+.form4__container {
+  width: 250px;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  background-color: #489897;
+  padding: 20px;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
-.form4__content{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    
-    
+.form4__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
-.form4__content label{
-    font-size: 110%;
-    margin-bottom: 10px;
-    color: #EEC47A;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
+.form4__content label {
+  font-size: 110%;
+  margin-bottom: 10px;
+  color: #eec47a;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
 }
-.form4__content input{
-    font-size: 140%;
-    margin-bottom: 25px;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
+.form4__content input {
+  font-size: 140%;
+  margin-bottom: 25px;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
 }
-.form4__content select{
-    background-color: #2f3d4a;
-    color: #489897;
-    border: none;
-    font-size: 120%;
-    margin-bottom: 10px;
-    margin-top: 10px;
+.form4__content select {
+  background-color: #2f3d4a;
+  color: #489897;
+  border: none;
+  font-size: 120%;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
-.form4__content option{
-    border: none;
+.form4__content option {
+  border: none;
 }
 
 .form4__btn {
-    display: flex ;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.form4__btn button{
-    background-color: #2f3d4abe;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 10%/50%;
-    font-weight: bold;
-    padding-left: 25px;
-    padding-right: 25px;
+.form4__btn button {
+  background-color: #2f3d4abe;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 10%/50%;
+  font-weight: bold;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  cursor: pointer;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+.form4__btn a {
+  background-color: #2f3d4abe;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 10%/50%;
+  font-weight: bold;
+  padding-left: 25px;
+  padding-right: 25px;
+
+  cursor: pointer;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+.form4__btn button:hover {
+  background-color: #2f3d4a;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+@media screen and (min-width: 688px) {
+  .form4__container {
+    width: 420px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
+  .form4__content input {
+    font-size: 150%;
     margin-bottom: 30px;
-    margin-top: 30px;
-
-    cursor: pointer;
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
-    
-}
-.form4__btn a{
-    background-color: #2f3d4abe;
-    color: white;
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 10%/50%;
-    font-weight: bold;
-    padding-left: 25px;
-    padding-right: 25px;
-    
-    cursor: pointer;
+  }
+
+  .form4__content label {
+    font-size: 130%;
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
-    
+  }
 }
-.form4__btn button:hover{
-    background-color: #2f3d4a;
+
+@media screen and (min-width: 788px) {
+  .form4__flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  .form4__container {
+    width: 650px;
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
-}
-/* .form4__flex-btn{
-
-} */
-
-
-
-@media screen and (min-width:688px){
-    
-    .form4__container{
-        width: 420px;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-    .form4__content input{
-        font-size: 150%;
-        margin-bottom: 30px;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-
-    .form4__content label{
-        font-size: 130%;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-        
-    }
-   
-  
-
+  }
+  .form4__btn {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: initial;
+  }
 }
 
-@media screen and (min-width:788px){
+@media screen and (min-width: 988px) {
+  .form4__container {
+    width: 750px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
 
-    .form4__flex{
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-    }
-    .form4__container{
-        width: 650px;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-    .form4__btn{
-        display: flex;
-        justify-content: space-around;
-        flex-direction: initial;
-    }
+  .form4__content input {
+    font-size: 170%;
+    margin-bottom: 30px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
 
-   
-    
-
+  .form4__content label {
+    font-size: 150%;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
 }
-
-@media screen and (min-width:988px){
-
-   
-
-    .form4__container{
-        width: 750px;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-
-    .form4__content input{
-        font-size: 170%;
-        margin-bottom: 30px;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-
-    .form4__content label{
-        font-size: 150%;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-        
-    }
-
-   
-
-   
-}
-@media screen and (min-width:1300px){
-
-    .form4__container{
-        width: 730px;
-        -webkit-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-    .form4__flex-btn button{
-        font-size: 110%;
-    }
+@media screen and (min-width: 1300px) {
+  .form4__container {
+    width: 730px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
+  .form4__flex-btn button {
+    font-size: 110%;
+  }
 }

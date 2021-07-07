@@ -15,6 +15,7 @@ class AnnoncesModel extends Model
     protected $id_motorisation;
     protected $id_type;
     protected $id_marque;
+    protected $id_file;
 
     public function __construct()
     {
@@ -247,6 +248,8 @@ class AnnoncesModel extends Model
 
         return $this;
     }
+
+
     }
 
 
