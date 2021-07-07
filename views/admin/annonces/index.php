@@ -11,7 +11,7 @@
     <div class="admin-annonces__container">
         <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
            <input class="input-file" type="file" name="photo" id="photo"  accept="image/png, image/jpeg">
-           <button type="submit">Ajouter photo</button>
+           <button type="submit">Enregistrer photo</button>
         </form>
         <div class="admin-annonces__content">
             <p>marque : <?=$annonce->lib_marque?></p>
