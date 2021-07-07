@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="utilisateur__btn">
-                    <a href="">Modifier</a>
+                    <a href="/admin/modifClient/<?= $utilisateurs->id?>">Modifier</a>
                     <a href="/admin/supprimerUtilisateur/<?=$utilisateurs->id?>" onclick="return confirm('Etes-vous sûre ?');">Supprimer</a>
                 </div>
             </div>

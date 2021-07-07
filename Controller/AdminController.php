@@ -57,6 +57,55 @@ class AdminController extends Controller
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
   }
 
+  public function modifClientForm(){
+
+    
+    
+  
+      $utilisateursModel = new UtilisateursModel;
+      $vehiculeModel = new VehiculeModel;
+  
+  
+      // on va chercher tout
+      $utilisateurs = $utilisateursModel->findAll();
+      $vehicules = $vehiculeModel->findAll();
+    
+  
+  
+      return $this->render('admin/annonces/ajoutAnnonces/index', compact('utilisateur', 'vehicule'));
+  
+
+  }
+
+  public function modifClient($id){
+    
+    $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
+    $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
+    $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
+    $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
+    $role = 'ROLE_USER';
+    $date = date('Y-m-d H:i:s');
+    $email = strip_tags($_POST['email'], PDO::PARAM_STR);
+  
+
+    // On instancie le modèle
+    $utilisateurModif = new UtilisateursModel;
+
+    // On hydrate
+    $utilisateurModif->setNom($nom)
+        ->setPrenom($prenom)
+        ->setAdresse($adresse)
+        ->setTel($tel)
+        ->setEmail($email)
+        ->setRole($role)
+        ->setDate_creation($date)
+        ->setId($id);
+        
+
+    // On enregistre
+    $utilisateurModif->update();
+  }
+
 
   public function message()
   {
@@ -177,35 +226,7 @@ class AdminController extends Controller
   //ajouter une photo
   public function ajouterPhoto(int $id)
   {
-    /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-        $filename = $_FILES["photo"]["name"];
-        $filetype = $_FILES["photo"]["type"];
-        $filesize = $_FILES["photo"]["size"];
-
-        // Vérifie l'extension du fichier
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
-
-        // Vérifie la taille du fichier - 5Mo maximum
-        $maxsize = 5 * 1024 * 1024;
-        if ($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
-
-        // Vérifie le type MIME du fichier
-        if (in_array($filetype, $allowed)) {
-            // Vérifie si le fichier existe avant de le télécharger.
-            if (file_exists("/image/" . $_FILES["photo"]["name"])) {
-                $message = $_FILES["photo"]["name"] . " existe déjà.";
-            } else {
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "/image/" . $_FILES["photo"]["name"]);
-                $message = "Votre fichier a été téléchargé avec succès.";
-            }
-        } else {
-            $message = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
-        }
-      } else {
-        $message = "Error: " . $_FILES["photo"]["error"];
-    }*/
+    
     $uploaddir = '../public/image/';
     if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) {
       $uploadfile = $uploaddir . $_FILES['photo']['name'];
@@ -216,6 +237,10 @@ class AdminController extends Controller
              ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin');
+  }
+
+  public function modfifAnnonces(){
+
   }
 
 
