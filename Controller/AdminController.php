@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Core\Form;
@@ -18,29 +19,27 @@ class AdminController extends Controller
 {
   public function index()
   {
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       header('Location: /');
-    } 
-    else 
-    { 
+    } else {
       return $this->render('admin/index');
     }
   }
 
-  public function utilisateurs(){
+  public function utilisateurs()
+  {
 
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
-     // renvoyer une erreur, chercher le code 
-     return $this->render('main/index');
-    } 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
 
     //on instancie le modéle correspondant a la table 'utilisitateur
 
     $utilisateurModel = new UtilisateursModel;
-    $requete = $utilisateurModel->requete('SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
+    $requete = $utilisateurModel->requete(
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
     FROM utilisateur
     INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
     INNER JOIN marque ON vehicule.id_marque = marque.id
@@ -55,31 +54,28 @@ class AdminController extends Controller
     //$utilisateur = $utilisateurModel->findAll();
 
     // On génére la vue 
-    $this->render('admin/utilisateurs/index', compact('utilisateur'));  
+    $this->render('admin/utilisateurs/index', compact('utilisateur'));
   }
 
 
   public function message()
-  { 
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
+  {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
-    }
-    else
-    {
+    } else {
       // instancier le model 
       $messageModel = new MessageModel;
-      
+
       // méthode 
       $messages = $messageModel->findAll();
       // render la view
-    return $this->render('admin/message/index', compact('messages'));
-      
+      return $this->render('admin/message/index', compact('messages'));
     }
   }
 
   //supprimer message
+<<<<<<< HEAD
     public function supprimerMessage(int $id)
     {
       $message = new MessageModel;
@@ -88,25 +84,33 @@ class AdminController extends Controller
     //supprimer utilisateur
     
     public function supprimerUtilisateur(int $id){
+=======
+  public function supprimerMessage(int $id)
+  {
+    $message = new MessageModel;
+    $message->delete($id);
+  }
+  //supprimer utilisateur
 
-      $utilisateurModel = new UtilisateursModel;
-      $vehiculeModel = new VehiculeModel;
+  public function supprimerUtilisateur(int $id)
+  {
 
-      $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = '.$id);
-      $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = '.$id);
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
-    
-  
+    $utilisateurModel = new UtilisateursModel;
+    $vehiculeModel = new VehiculeModel;
+
+    $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
+    $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+>>>>>>> enzo
+
+
   public function annonces()
-  { 
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
+  {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
-      return $this->render('main/index'); 
-    }
-    else
-    {
+      return $this->render('main/index');
+    } else {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
       $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
@@ -122,11 +126,11 @@ class AdminController extends Controller
 
       // render la view
       return $this->render('admin/annonces/index', compact('annonces'));
-      
     }
   }
 
-  public function ajoutAnnoncesFrom(){
+  public function ajoutAnnoncesFrom()
+  {
 
     $marqueModel = new MarqueModel;
     $motorisationModel = new MotorisationModel;
@@ -137,15 +141,19 @@ class AdminController extends Controller
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
 
-    
-    return $this->render('admin/annonces/ajoutAnnonces/index',compact('marques', 'motorisations', 'types'));
+
+    return $this->render('admin/annonces/ajoutAnnonces/index', compact('marques', 'motorisations', 'types'));
   }
 
   public function ajoutAnnonces()
   {
 
+<<<<<<< HEAD
     if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) 
     {
+=======
+    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
+>>>>>>> enzo
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -154,6 +162,7 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
+<<<<<<< HEAD
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
@@ -168,13 +177,30 @@ class AdminController extends Controller
       header('Location: /admin');
     } else 
     {
+=======
+
+      //création véhicule
+      $newAnnonces = new AnnoncesModel();
+      $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
+        ->setAnnee($annee)
+        ->setKm($km)
+        ->setId_marque($marque)
+        ->setDescription($description)
+        ->setPrix($prix)
+        ->setId_motorisation($motorisation)
+        ->setId_type($type_vehicule);
+      $newAnnonces->create();
+      header('Location: /admin');
+    } else {
+>>>>>>> enzo
       echo 'Veuillez compléter tous les champs';
     }
   }
 
   //ajouter une photo
-  public function ajouterPhoto(int $id){
-   /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+  public function ajouterPhoto(int $id)
+  {
+    /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
         $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
         $filename = $_FILES["photo"]["name"];
         $filetype = $_FILES["photo"]["type"];
@@ -204,17 +230,17 @@ class AdminController extends Controller
         $message = "Error: " . $_FILES["photo"]["error"];
     }*/
     $uploaddir = '../public/image/';
-        if(!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0 )
-        {
-            $uploadfile = $uploaddir.$_FILES['photo']['name'];
-            move_uploaded_file($_FILES['photo']['tmp_name'],$uploadfile);
-        }
+    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) {
+      $uploadfile = $uploaddir . $_FILES['photo']['name'];
+      move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
+    }
     $newPhoto = new PhotoModel();
     $newPhoto->setLib_photo($uploadfile)
-             ->setId_avendre($id);
+      ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin');
   }
+<<<<<<< HEAD
 
 
   //Les prestations
@@ -243,4 +269,6 @@ class AdminController extends Controller
     $categories = $catprestaModel->findAll();
     return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
+=======
+>>>>>>> enzo
 }
