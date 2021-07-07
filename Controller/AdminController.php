@@ -105,16 +105,6 @@ public function modifierProfiladmin(int $id)
         ->setAdresse($adresse)
         ->setTel($tel)
         ->setEmail($email);
-<<<<<<< HEAD
-    $vehiculeModifAdmin
-      ->setId($id)
-      ->setId_type($id_type)
-      ->setId_motorisation($id_motorisation)
-      ->setId_marque($id_marque)
-      ->setKm($km)
-      ->setAnnee($annee);
-=======
->>>>>>> martin
 
     // On enregistre
     $utilisateurModifAdmin->update();
