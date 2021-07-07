@@ -92,15 +92,9 @@ public function modifierProfiladmin(int $id)
     $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
     $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
     $email = strip_tags($_POST['email'], PDO::PARAM_STR);
-    $id_marque = ($_POST['id_marque']);
-    $id_motorisation = ($_POST['id_motorisation']);
-    $id_type = ($_POST['id_type']);
-    $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
-    $km = strip_tags($_POST['km'], PDO::PARAM_INT);
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
-    $vehiculeModifAdmin = new VehiculeModel;
 
     // On hydrate
     $utilisateurModifAdmin
@@ -110,18 +104,9 @@ public function modifierProfiladmin(int $id)
         ->setAdresse($adresse)
         ->setTel($tel)
         ->setEmail($email);
-    $vehiculeModifAdmin
-      
-      ->setId_utilisateur($id)
-      ->setId_type($id_type)
-      ->setId_motorisation($id_motorisation)
-      ->setId_marque($id_marque)
-      ->setKm($km)
-      ->setAnnee($annee);
 
     // On enregistre
     $utilisateurModifAdmin->update();
-    $vehiculeModifAdmin->update();
 
 
     //il faut modifier la session pour rafraichir les valeurs du dashboard
