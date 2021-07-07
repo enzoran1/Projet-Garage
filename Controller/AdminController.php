@@ -80,9 +80,44 @@ class AdminController extends Controller
     $marques = $marqueModel->findAllOrdre();
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
+
+    
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
+//modifier profil utilisateur
+public function modifierProfiladmin()
+{
+    $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
+    $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
+    $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
+    $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
+    $email = strip_tags($_POST['email'], PDO::PARAM_STR);
+    $id_marque = ($_POST['id_marque']);
+  
+  
 
+    // On instancie le modèle
+    $utilisateurModifAdmin = new UtilisateursModel;
+    $vehiculeModifAdmin = new VehiculeModel;
+
+    // On hydrate
+    $utilisateurModifAdmin
+        ->setNom($nom)
+        ->setPrenom($prenom)
+        ->setAdresse($adresse)
+        ->setTel($tel)
+        ->setEmail($email);
+
+    // On enregistre
+    $utilisateurModif->update();
+
+
+    //il faut modifier la session pour rafraichir les valeurs du dashboard
+
+
+    header('Location: /compte');
+    exit; // Redirection vers le dashboard
+}
   public function message()
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
