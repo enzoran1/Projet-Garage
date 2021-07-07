@@ -75,16 +75,6 @@ class AdminController extends Controller
   }
 
   //supprimer message
-<<<<<<< HEAD
-    public function supprimerMessage(int $id)
-    {
-      $message = new MessageModel;
-      $message->delete($id);     
-    }
-    //supprimer utilisateur
-    
-    public function supprimerUtilisateur(int $id){
-=======
   public function supprimerMessage(int $id)
   {
     $message = new MessageModel;
@@ -102,7 +92,6 @@ class AdminController extends Controller
     $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
->>>>>>> enzo
 
 
   public function annonces()
@@ -148,12 +137,7 @@ class AdminController extends Controller
   public function ajoutAnnonces()
   {
 
-<<<<<<< HEAD
-    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) 
-    {
-=======
     if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
->>>>>>> enzo
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -162,7 +146,6 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
-<<<<<<< HEAD
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
@@ -177,22 +160,6 @@ class AdminController extends Controller
       header('Location: /admin');
     } else 
     {
-=======
-
-      //création véhicule
-      $newAnnonces = new AnnoncesModel();
-      $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
-        ->setAnnee($annee)
-        ->setKm($km)
-        ->setId_marque($marque)
-        ->setDescription($description)
-        ->setPrix($prix)
-        ->setId_motorisation($motorisation)
-        ->setId_type($type_vehicule);
-      $newAnnonces->create();
-      header('Location: /admin');
-    } else {
->>>>>>> enzo
       echo 'Veuillez compléter tous les champs';
     }
   }
@@ -240,7 +207,6 @@ class AdminController extends Controller
     $newPhoto->create();
     header('Location: /admin');
   }
-<<<<<<< HEAD
 
 
   //Les prestations
@@ -269,6 +235,4 @@ class AdminController extends Controller
     $categories = $catprestaModel->findAll();
     return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
-=======
->>>>>>> enzo
 }
