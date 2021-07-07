@@ -82,9 +82,8 @@ class AdminController extends Controller
   //supprimer message
     public function supprimerMessage(int $id)
     {
-        $message = new MessageModel;
-        $message->delete($id);
-        
+      $message = new MessageModel;
+      $message->delete($id);     
     }
     //supprimer utilisateur
     
@@ -142,9 +141,11 @@ class AdminController extends Controller
     return $this->render('admin/annonces/ajoutAnnonces/index',compact('marques', 'motorisations', 'types'));
   }
 
-  public function ajoutAnnonces(){
+  public function ajoutAnnonces()
+  {
 
-    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) {
+    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) 
+    {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -153,23 +154,23 @@ class AdminController extends Controller
       $motorisation = ($_POST['id_motorisation']);
       $marque = ($_POST['id_marque']);
       $prix = ($_POST['prix']);
-      
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
-          ->setAnnee($annee)
-          ->setKm($km)
-          ->setId_marque($marque)
-          ->setDescription($description)
-          ->setPrix($prix)
-          ->setId_motorisation($motorisation)
-          ->setId_type($type_vehicule);
+                  ->setAnnee($annee)
+                  ->setKm($km)
+                  ->setId_marque($marque)
+                  ->setDescription($description)
+                  ->setPrix($prix)
+                  ->setId_motorisation($motorisation)
+                  ->setId_type($type_vehicule);
       $newAnnonces->create();
       header('Location: /admin');
-  } else {
+    } else 
+    {
       echo 'Veuillez compléter tous les champs';
+    }
   }
-}
 
   //ajouter une photo
   public function ajouterPhoto(int $id){
@@ -242,4 +243,4 @@ class AdminController extends Controller
     $categories = $catprestaModel->findAll();
     return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
-  }
+}
