@@ -1,31 +1,47 @@
-
+<div class="ban" id="ban__messageutilisateur">
+    <h1>Mes Annonces</h1>
+</div>
 <a href="/Admin/ajoutAnnoncesFrom">ajout</a>
-<br>
 
-<?php
+<div class="admin-annonces-grid">
+<?php foreach($annonces as $annonce) : ?>
 
-foreach($annonces as $annonce)
-{ 
-    echo 
+ <div class="admin-annonces">
     
-    $annonce->id. '</br>',
-    $annonce->prix. '</br>', 
-    $annonce->description. '</br>', 
-    $annonce->plaque_immatriculation. '</br>',
-    $annonce->annee. '</br>',
-    $annonce->km. '</br>',
-    $annonce->lib_motorisation. '</br>',
-    $annonce->lib_type. '</br>',
-    $annonce->lib_marque. '</br>';
-    echo '<br>';
+    <div class="admin-annonces__container">
+        <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
+           <input class="input-file" type="file" name="photo" id="photo"  accept="image/png, image/jpeg">
+           <button type="submit">Ajouter photo</button>
+        </form>
+        <div class="admin-annonces__content">
+            <p>marque : <?=$annonce->lib_marque?></p>
+            <p>prix : <?=$annonce->prix?>€</p>
+        </div>
+        <div class="admin-annonces__content-description">
+            <p><?=$annonce->description?></p>
+        </div>
+        <div class="admin-annonces__content">
+            <p>km : <?=$annonce->km?>km</p>
+            <p>annee : <?=$annonce->annee?></p>
+        </div>
+        <div class="admin-annonces__content">
+            <p>motorisation : <?=$annonce->lib_motorisation?></p>
+            <p>type : <?=$annonce->lib_type?></p>
+        </div>
+        <div class="admin-annonces__content-immatriculation">
+            <p>immatriculation : <?=$annonce->plaque_immatriculation?></p>
+        </div>
 
-    ?>
-    <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
-        <input type="file" name="photo" id="photo"  accept="image/png, image/jpeg">
-        <button type="submit">Ajouter photo</button>
-    </form>
+        <div class="admin-annonces__btn">
+            <a href="">Modifier</a>
+            <a href="/admin/supprimerAnnonces/<?=$annonce->id?>">Supprimer</a>
+        </div>
+    </div>
+</div>
+
+
     
+<?php endforeach; ?>
+</div>
     
-<?php
-}?>
 
