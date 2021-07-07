@@ -100,6 +100,7 @@ public function modifierProfiladmin(int $id)
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
+    $vehiculeModifAdmin = new VehiculeModel;
 
     // On hydrate
     $utilisateurModifAdmin
@@ -110,8 +111,7 @@ public function modifierProfiladmin(int $id)
         ->setTel($tel)
         ->setEmail($email);
     $vehiculeModifAdmin
-      ->setId()
-      ->setId_utilisateur($id)
+      ->setId($id)
       ->setId_type($id_type)
       ->setId_motorisation($id_motorisation)
       ->setId_marque($id_marque)
