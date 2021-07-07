@@ -2,6 +2,7 @@
     <h1>Liste utilisateurs</h1>
 </div>
 
+
 <div class="test">
     <?php foreach ($utilisateur as $utilisateurs) : ?>
         <div class="carte_utilisateur">
@@ -59,7 +60,7 @@
                 </div>
 
                 <div class="utilisateur__btn">
-                    <a href="">Modifier</a>
+                    <a href="/admin/modifClientForm/<?=$utilisateurs->id?>">Modifier</a>
                     <a href="/admin/supprimerUtilisateur/<?=$utilisateurs->id?>" onclick="return confirm('Etes-vous sûre ?');">Supprimer</a>
                 </div>
             </div>

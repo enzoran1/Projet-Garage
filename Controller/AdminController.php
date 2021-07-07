@@ -58,7 +58,64 @@ class AdminController extends Controller
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
   }
 
+  //formulaire de modification utilisateur
+  public function modifClientForm($id)
+  {
+    $utilisateurModel = new UtilisateursModel;
+    $requete = $utilisateurModel->requete(
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
+    FROM utilisateur
+    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+    INNER JOIN marque ON vehicule.id_marque = marque.id
+    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+    WHERE utilisateur.id = 
+    ' . $id
+    );
+    $utilisateurs = $requete->fetchAll();
+    //var_dump($utilisateurs);exit;
+    $marqueModel = new MarqueModel;
+    $motorisationModel = new MotorisationModel;
+    $typeVehiculeModel = new TypeVehiculeModel;
+    // on va chercher tout
+    $marques = $marqueModel->findAllOrdre();
+    $motorisations = $motorisationModel->findAll();
+    $types = $typeVehiculeModel->findAll();
 
+    
+    return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
+  }
+//modifier profil utilisateur
+public function modifierProfiladmin(int $id)
+{
+    $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
+    $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
+    $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
+    $tel = strip_tags($_POST['tel'], PDO::PARAM_INT);
+    $email = strip_tags($_POST['email'], PDO::PARAM_STR);
+
+    // On instancie le modèle
+    $utilisateurModifAdmin = new UtilisateursModel;
+
+    // On hydrate
+    $utilisateurModifAdmin
+        ->setId($id)
+        ->setNom($nom)
+        ->setPrenom($prenom)
+        ->setAdresse($adresse)
+        ->setTel($tel)
+        ->setEmail($email);
+
+    // On enregistre
+    $utilisateurModifAdmin->update();
+
+
+    //il faut modifier la session pour rafraichir les valeurs du dashboard
+
+
+    header('Location: /admin');
+    exit; 
+}
   public function message()
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
@@ -206,8 +263,10 @@ class AdminController extends Controller
       } else {
         $message = "Error: " . $_FILES["photo"]["error"];
     }*/
+
     $uploaddir = '../public/image/';
-    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) {
+    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
+    {
       $uploadfile = $uploaddir . $_FILES['photo']['name'];
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
@@ -216,6 +275,10 @@ class AdminController extends Controller
              ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin');
+  }
+
+  public function modfifAnnonces(){
+
   }
 
 

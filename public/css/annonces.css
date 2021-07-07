@@ -256,6 +256,8 @@
     height: 150px;
     margin-left: 5px;
     margin-right: 5px;
+    width: 300px;
+    overflow-wrap: break-word;
     
 }
 .admin-annonces__container form{
