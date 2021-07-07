@@ -104,18 +104,12 @@ class AdminController extends Controller
       // méthode 
       $annonces = $annoncesModel->findAll();
       // render la view
-<<<<<<< HEAD
-      return $this->render('annonces/index', compact('annonces'));
-    }
-  }
-}
-=======
       return $this->render('admin/annonces/index', compact('annonces'));
-      
     }
   }
 
-  public function ajoutAnnoncesFrom(){
+  public function ajoutAnnoncesFrom()
+  {
 
     $marqueModel = new MarqueModel;
     $motorisationModel = new MotorisationModel;
@@ -126,13 +120,14 @@ class AdminController extends Controller
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
 
-    
-    return $this->render('admin/annonces/ajoutAnnonces/index',compact('marques', 'motorisations', 'types'));
+
+    return $this->render('admin/annonces/ajoutAnnonces/index', compact('marques', 'motorisations', 'types'));
   }
 
-  public function ajoutAnnonces(){
+  public function ajoutAnnonces()
+  {
 
-    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type','description','prix'])) {
+    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -145,21 +140,19 @@ class AdminController extends Controller
       //création véhicule
       $newAnnonces = new AnnoncesModel();
       $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
-          ->setAnnee($annee)
-          ->setKm($km)
-          ->setId_marque($marque)
-          ->setDescription($description)
-          ->setPrix($prix)
+        ->setAnnee($annee)
+        ->setKm($km)
+        ->setId_marque($marque)
+        ->setDescription($description)
+        ->setPrix($prix)
 
-          ->setId_motorisation($motorisation)
-          ->setId_type($type_vehicule);
-        
+        ->setId_motorisation($motorisation)
+        ->setId_type($type_vehicule);
+
       $newAnnonces->create();
       header('Location: /admin');
-  } else {
+    } else {
       echo 'Veuillez compléter tous les champs';
+    }
   }
 }
-
-  }
->>>>>>> enzo
