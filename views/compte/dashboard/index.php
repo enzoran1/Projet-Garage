@@ -30,7 +30,7 @@
 
                 </div>
             </div>
-            <<<<<<< HEAD <div id="modal-pub" class="modal hidden">
+            <div id="modal-pub" class="modal hidden">
                 <div class="conteneur-modal">
                     <div class="close">&times;</div>
                     <form class="form__modal" action="/compte/editProfileView" method="post">
@@ -47,7 +47,7 @@
                         </div>
                     </form>
                 </div>
-                =======
+
                 <div class="utilisateur2__flex-paire">
                     <div class="utilisateur2__flex">
                         <p id="utilisateur2_color">Email : </p>
@@ -68,41 +68,40 @@
                 <div class="utilisateur2__btn">
                     <a id="affiche-modal" href="#" onclick="modal()">Modifier</a>
                 </div>
+            </div>
+        </div>
+
+        <div id="modal-pub" class="modal hidden">
+            <div class="conteneur-modal">
+                <div class="close">&times; </div>
+                <form class="form__modal" action="/compte/editProfileView" method="post">
+                    <div class="modal__content">
+                        <label for="">mot de passe</label>
+                        <input type="password" name="password1" id="password1">
+
+                    </div>
+
+                    <div class="utilisateur2__véhicule">
+                        <h3>Véhicules</h3>
+
+                        <a href="compte/afficheVehiculesUtil">voir</a>
+                        <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>
+                    </div>
+            </div>
+            <div class="utilisateur2__btn">
+                <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
+            </div>
+
+        </div>
+
+        <div class="utilisateur2__véhicule">
+            <h3>Véhicules</h3>
+
+            <a href="compte/afficheVehiculesUtil">voir</a>
+            <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>
         </div>
     </div>
 
-    <div id="modal-pub" class="modal hidden">
-        <div class="conteneur-modal">
-            <div class="close">&times; </div>
-            <form class="form__modal" action="/compte/editProfileView" method="post">
-                <div class="modal__content">
-                    <label for="">mot de passe</label>
-                    <input type="password" name="password1" id="password1">
-                    >>>>>>> emilie
-                </div>
-
-                <div class="utilisateur2__véhicule">
-                    <h3>Véhicules</h3>
-
-                    <a href="compte/afficheVehiculesUtil">voir</a>
-                    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>
-                </div>
-        </div>
-        <<<<<<< HEAD <div class="utilisateur2__btn">
-            <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
+    <div class="utilisateur2__btn">
+        <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
     </div>
-    =======
-</div>
-
-<div class="utilisateur2__véhicule">
-    <h3>Véhicules</h3>
-
-    <a href="compte/afficheVehiculesUtil">voir</a>
-    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>
-</div>
-</div>
-
-<div class="utilisateur2__btn">
-    <a id="utilisateur2__btn-color" href="Compte/logout">Deconnexion</a>
-</div>
->>>>>>> emilie
