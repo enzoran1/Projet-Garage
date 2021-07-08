@@ -51,4 +51,9 @@ class CategorieprestationsModel extends Model
 
     return $this;
   }
+
+  public function findOneById(string $id)
+  {
+    return $this->requete("SELECT * FROM $this->table WHERE id = ?", [$id])->fetch();
+  }
 }

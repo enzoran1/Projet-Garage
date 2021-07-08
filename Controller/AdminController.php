@@ -308,7 +308,7 @@ public function modifAnnonces(int $id){
     exit; 
 }
 
-public function ajoutAnnonces(int $id)
+public function ajoutAnnonces()
   {
 
     if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
@@ -322,7 +322,8 @@ public function ajoutAnnonces(int $id)
       $prix = ($_POST['prix']);
       //création véhicule
       $newAnnonces = new AnnoncesModel();
-      $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
+      $newAnnonces
+      ->setPlaque_immatriculation($plaque_immatriculation)
                   ->setAnnee($annee)
                   ->setKm($km)
                   ->setId_marque($marque)
@@ -355,35 +356,8 @@ public function ajoutAnnonces(int $id)
   //ajouter une photo
   public function ajouterPhoto(int $id)
   {
-    /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-        $filename = $_FILES["photo"]["name"];
-        $filetype = $_FILES["photo"]["type"];
-        $filesize = $_FILES["photo"]["size"];
-
-        // Vérifie l'extension du fichier
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
-
-        // Vérifie la taille du fichier - 5Mo maximum
-        $maxsize = 5 * 1024 * 1024;
-        if ($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
-
-        // Vérifie le type MIME du fichier
-        if (in_array($filetype, $allowed)) {
-            // Vérifie si le fichier existe avant de le télécharger.
-            if (file_exists("/image/" . $_FILES["photo"]["name"])) {
-                $message = $_FILES["photo"]["name"] . " existe déjà.";
-            } else {
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "/image/" . $_FILES["photo"]["name"]);
-                $message = "Votre fichier a été téléchargé avec succès.";
-            }
-        } else {
-            $message = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
-        }
-      } else {
-        $message = "Error: " . $_FILES["photo"]["error"];
-    }*/
+  
+       
 
     $uploaddir = '../public/image/';
     if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
@@ -402,7 +376,7 @@ public function ajoutAnnonces(int $id)
 
 
   //Les prestations
-  public function prestations()
+  public function prestations(int $id)
   { 
     if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
     { 
@@ -413,11 +387,18 @@ public function ajoutAnnonces(int $id)
     {
       // instancier le model 
       $prestationModel = new PrestationModel;
+      $categorieModel = new CategorieprestationsModel;
+      $requete = $prestationModel->requete(
+        'SELECT prestation.*
+      FROM prestation
+      WHERE prestation.id_categorie = 
+      '.$id);
       
       // méthode 
       $prestations = $prestationModel->findAll();
+      $categories = $categorieModel->findAll();
       // render la view
-    return $this->render('admin/prestations/index', compact('prestations'));
+    return $this->render('admin/prestations/index'. $id, compact('prestations','categories'));
       
     }
   }
@@ -427,4 +408,32 @@ public function ajoutAnnonces(int $id)
     $categories = $catprestaModel->findAll();
     return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
+
+
+
+  public function ajoutPrestations()
+  {
+
+    if (Form::validate($_POST, ['type','duree','prix','categorie'])) {
+      $type = strip_tags($_POST['type'], PDO::PARAM_STR);
+      $categorie = strip_tags($_POST['categorie'], PDO::PARAM_STR);
+      $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
+      $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
+      
+      //création véhicule
+      $newPrestations = new PrestationModel();
+      $newPrestations
+      ->setId_categorie($categorie)
+                  ->setPrix($prix)
+                  ->setType($type)
+                  ->setDuree($duree);
+      $newPrestations->create();
+      header('Location: /admin/prestations/');
+    } else 
+    {
+      echo 'Veuillez compléter tous les champs';
+    }
+  }
+
+
 }
