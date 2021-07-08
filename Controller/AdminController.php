@@ -49,44 +49,42 @@ class AdminController extends Controller
     order by nom asc'
     );
     $utilisateur = $requete->fetchAll();
-    // on va chercher toutes les utilisateur
-
-    //$utilisateur = $utilisateurModel->findAll();
+    // on va chercher toutes les utilisateur ainsi que les informations de leurs véhicules 
 
     // On génére la vue 
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
   }
 
-  //formulaire de modification utilisateur
+
   public function modifClientForm($id)
+  //formulaire de modification utilisateur
   {
     $utilisateurModel = new UtilisateursModel;
     $requete = $utilisateurModel->requete(
-      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
-    FROM utilisateur
-    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
-    INNER JOIN marque ON vehicule.id_marque = marque.id
-    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
-    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
-    WHERE utilisateur.id = 
-    ' . $id
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, 
+      vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
+      FROM utilisateur
+      INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+      INNER JOIN marque ON vehicule.id_marque = marque.id
+      INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+      INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+      WHERE utilisateur.id = ' . $id
     );
+
+
     $utilisateurs = $requete->fetchAll();
-    //var_dump($utilisateurs);exit;
     $marqueModel = new MarqueModel;
     $motorisationModel = new MotorisationModel;
     $typeVehiculeModel = new TypeVehiculeModel;
-    // on va chercher tout
     $marques = $marqueModel->findAllOrdre();
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
 
-    
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
-//modifier profil utilisateur
-public function modifierProfiladmin(int $id)
-{
+
+  public function modifierProfiladmin(int $id)
+  { // Modification du profil 
     $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
     $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
     $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
@@ -114,13 +112,17 @@ public function modifierProfiladmin(int $id)
 
     header('Location: /admin');
     exit; 
-}
+  }
+
   public function message()
-  {
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+  { // Accessible uniquement pour l'utilisateur admin, affiche les messages envoyés via le forumulaire de contact 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
-    } else {
+    } 
+    else 
+    {
       // instancier le model 
       $messageModel = new MessageModel;
 
@@ -131,27 +133,34 @@ public function modifierProfiladmin(int $id)
     }
   }
 
-  //supprimer message
+
   public function supprimerMessage(int $id)
-  {
+  {   //supprimer un message du formulaire de contact 
+
     $message = new MessageModel;
     $message->delete($id);
+    header('Location: /admin/message/index');
   }
-  //supprimer utilisateur
 
   public function supprimerUtilisateur(int $id)
-  {
-
-    $utilisateurModel = new UtilisateursModel;
-    $vehiculeModel = new VehiculeModel;
-
-    $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
-    $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  {   //supprimer un utilisateur enregistré sur le site 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    { 
+      $utilisateurModel = new UtilisateursModel;
+      $vehiculeModel = new VehiculeModel;
+  
+      $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
+      $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } 
+    else
+    { 
+      // renvoyer une erreur 
+    }
   }
 
   public function supprimerAnnonces(int $id)
-  {
+  { //supprimer une annonce enregistré par l'admin  
     $annoncesModel = new AnnoncesModel;
     $photoModel = new PhotoModel;
     $photoModel->requete('DELETE photo.* FROM photo WHERE id_avendre = ' . $id);
@@ -162,11 +171,13 @@ public function modifierProfiladmin(int $id)
 
 
   public function annonces()
-  {
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
-      // renvoyer une erreur, chercher le code 
+  { // Afficher les annonces 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    {
       return $this->render('main/index');
-    } else {
+    } 
+    else 
+    {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
       $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
@@ -175,7 +186,6 @@ public function modifierProfiladmin(int $id)
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
       order by lib_marque asc');
-      // il faut ajouter la putain de photo :'(  
 
       // méthode 
       $annonces = $requete->fetchAll();
@@ -186,8 +196,7 @@ public function modifierProfiladmin(int $id)
   }
 
   public function ajoutAnnoncesFrom()
-  {
-
+  { // Accèder au formulaire d'ajout d'annonces
     $marqueModel = new MarqueModel;
     $motorisationModel = new MotorisationModel;
     $typeVehiculeModel = new TypeVehiculeModel;
@@ -202,9 +211,10 @@ public function modifierProfiladmin(int $id)
   }
 
   public function ajoutAnnonces()
-  {
-
-    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
+  { // Ajouter une annonce via l'interface admin 
+    if (Form::validate($_POST, 
+    ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) 
+    {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -225,45 +235,16 @@ public function modifierProfiladmin(int $id)
                   ->setId_type($type_vehicule);
       $newAnnonces->create();
       header('Location: /admin');
-    } else 
+    } 
+    else 
     {
       echo 'Veuillez compléter tous les champs';
     }
   }
 
-  //ajouter une photo
+  
   public function ajouterPhoto(int $id)
-  {
-    /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-        $filename = $_FILES["photo"]["name"];
-        $filetype = $_FILES["photo"]["type"];
-        $filesize = $_FILES["photo"]["size"];
-
-        // Vérifie l'extension du fichier
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
-
-        // Vérifie la taille du fichier - 5Mo maximum
-        $maxsize = 5 * 1024 * 1024;
-        if ($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
-
-        // Vérifie le type MIME du fichier
-        if (in_array($filetype, $allowed)) {
-            // Vérifie si le fichier existe avant de le télécharger.
-            if (file_exists("/image/" . $_FILES["photo"]["name"])) {
-                $message = $_FILES["photo"]["name"] . " existe déjà.";
-            } else {
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "/image/" . $_FILES["photo"]["name"]);
-                $message = "Votre fichier a été téléchargé avec succès.";
-            }
-        } else {
-            $message = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
-        }
-      } else {
-        $message = "Error: " . $_FILES["photo"]["error"];
-    }*/
-
+  { //ajouter une photo à une annonce via l'interface admin 
     $uploaddir = '../public/image/';
     if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
     {
@@ -282,9 +263,9 @@ public function modifierProfiladmin(int $id)
   }
 
 
-  //Les prestations
+
   public function prestations()
-  { 
+  {   //Les prestations
     if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
     { 
       // renvoyer une erreur, chercher le code 
