@@ -11,7 +11,7 @@
     <div class="admin-annonces__container">
         <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
            <input class="input-file" type="file" name="photo" id="photo"  accept="image/png, image/jpeg">
-           <button type="submit">Ajouter photo</button>
+           <button type="submit">Envoyer photo</button>
         </form>
         <div class="admin-annonces__content">
             <p>marque : <?=$annonce->lib_marque?></p>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="admin-annonces__btn">
-            <a href="">Modifier</a>
+            <a href="/admin/modifAnnoncesFrom/<?=$annonce->id?>">Modifier</a>
             <a href="/admin/supprimerAnnonces/<?=$annonce->id?>">Supprimer</a>
         </div>
     </div>

@@ -27,6 +27,10 @@ class AdminController extends Controller
     }
   }
 
+
+
+  //les utilisateurs
+
   public function utilisateurs()
   {
 
@@ -93,6 +97,7 @@ class AdminController extends Controller
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
+  
 
     // On hydrate
     $utilisateurModifAdmin
@@ -113,6 +118,32 @@ class AdminController extends Controller
     header('Location: /admin');
     exit; 
   }
+
+  public function supprimerUtilisateur(int $id)
+  {
+
+    $utilisateurModel = new UtilisateursModel;
+    $vehiculeModel = new VehiculeModel;
+
+    $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
+    $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // les messages
 
   public function message()
   { // Accessible uniquement pour l'utilisateur admin, affiche les messages envoyés via le forumulaire de contact 
@@ -142,22 +173,10 @@ class AdminController extends Controller
     header('Location: /admin/message/index');
   }
 
-  public function supprimerUtilisateur(int $id)
-  {   //supprimer un utilisateur enregistré sur le site 
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
-    { 
-      $utilisateurModel = new UtilisateursModel;
-      $vehiculeModel = new VehiculeModel;
-  
-      $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
-      $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
-    } 
-    else
-    { 
-      // renvoyer une erreur 
-    }
-  }
+ 
+
+
+  // les annonces
 
   public function supprimerAnnonces(int $id)
   { //supprimer une annonce enregistré par l'admin  
@@ -195,8 +214,36 @@ class AdminController extends Controller
     }
   }
 
-  public function ajoutAnnoncesFrom()
-  { // Accèder au formulaire d'ajout d'annonces
+public function ajoutAnnoncesFrom()
+  {
+
+    $marqueModel = new MarqueModel;
+    $motorisationModel = new MotorisationModel;
+    $typeVehiculeModel = new TypeVehiculeModel;
+
+    // on va chercher tout
+    $marques = $marqueModel->findAllOrdre();
+    $motorisations = $motorisationModel->findAll();
+    $types = $typeVehiculeModel->findAll();
+
+    return $this->render('admin/annonces/ajoutAnnonces/index', compact('marques', 'motorisations', 'types'));
+  }
+
+ public function modifAnnoncesFrom($id)
+  {
+
+    $annoncesModel = new AnnoncesModel;
+    $requete = $annoncesModel->requete(
+      'SELECT a_vendre.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation
+    FROM a_vendre
+    INNER JOIN marque ON a_vendre.id_marque = marque.id
+    INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+    INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id
+    WHERE a_vendre.id = 
+    '.$id
+    );
+    $annonces = $requete->fetchAll();
+
     $marqueModel = new MarqueModel;
     $motorisationModel = new MotorisationModel;
     $typeVehiculeModel = new TypeVehiculeModel;
@@ -207,14 +254,54 @@ class AdminController extends Controller
     $types = $typeVehiculeModel->findAll();
 
 
-    return $this->render('admin/annonces/ajoutAnnonces/index', compact('marques', 'motorisations', 'types'));
+    return $this->render('admin/annonces/modifAnnonces/index', compact('annonces', 'marques', 'motorisations','types' ));
   }
 
-  public function ajoutAnnonces()
-  { // Ajouter une annonce via l'interface admin 
-    if (Form::validate($_POST, 
-    ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) 
-    {
+public function modifAnnonces(int $id){
+  
+
+    $description = strip_tags($_POST['description'], PDO::PARAM_STR);
+    $marque = strip_tags($_POST['marque'], PDO::PARAM_STR);
+    $motorisation = strip_tags($_POST['motorisation'], PDO::PARAM_STR);
+    $type = strip_tags($_POST['id_type'], PDO::PARAM_STR);
+    $immatriculation = strip_tags($_POST['plaque_immatriculation']);
+    $prix = strip_tags($_POST['prix']);
+    $annee = strip_tags($_POST['annee']);
+    $km = strip_tags($_POST['km']);
+    
+
+    // On instancie le modèle
+    $modifAnnonces = new AnnoncesModel;
+    
+
+    // On hydrate
+    $modifAnnonces
+    ->setId($id)
+    ->setId_marque($marque)
+    ->setId_motorisation($motorisation)
+    ->setId_type($type)
+    ->setKm($km)
+    ->setPrix($prix)
+    ->setPlaque_immatriculation($immatriculation)
+    ->setDescription($description)
+    ->setAnnee($annee);
+  
+      
+
+    // On enregistre
+    $modifAnnonces->update();
+
+
+    //il faut modifier la session pour rafraichir les valeurs du dashboard
+
+
+    header('Location: /admin/annonces/');
+    exit; 
+  }
+
+  public function ajoutAnnonces(int $id)
+  {
+    if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);
       $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -242,7 +329,21 @@ class AdminController extends Controller
     }
   }
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //ajouter une photo
   public function ajouterPhoto(int $id)
   { //ajouter une photo à une annonce via l'interface admin 
     $uploaddir = '../public/image/';
@@ -258,9 +359,7 @@ class AdminController extends Controller
     header('Location: /admin');
   }
 
-  public function modfifAnnonces(){
 
-  }
 
 
 
@@ -279,10 +378,10 @@ class AdminController extends Controller
       // méthode 
       $prestations = $prestationModel->findAll();
       // render la view
-    return $this->render('admin/prestations/index', compact('prestations'));
-      
+    return $this->render('admin/prestations/index', compact('prestations'));  
     }
   }
+  
   public function ajoutPrestationsForm(){
     $catprestaModel = new CategorieprestationsModel;
     // on va chercher tout
