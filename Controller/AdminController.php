@@ -99,7 +99,7 @@ public function modifierProfiladmin(int $id)
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
-    $vehiculeModifAdmin = new VehiculeModel;
+  
 
     // On hydrate
     $utilisateurModifAdmin
@@ -248,7 +248,8 @@ public function ajoutAnnoncesFrom()
     INNER JOIN marque ON a_vendre.id_marque = marque.id
     INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
     INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id
-    '
+    WHERE a_vendre.id = 
+    '.$id
     );
     $annonces = $requete->fetchAll();
 
@@ -303,7 +304,7 @@ public function modifAnnonces(int $id){
     //il faut modifier la session pour rafraichir les valeurs du dashboard
 
 
-    header('Location: /admin');
+    header('Location: /admin/annonces/');
     exit; 
 }
 
