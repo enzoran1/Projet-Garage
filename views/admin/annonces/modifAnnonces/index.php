@@ -1,6 +1,6 @@
 <?php foreach($annonces as $annonce)?>
 
-<form action="/Admin/modifAnnonces/index" class="form4" method="post">
+<form action="/Admin/modifAnnonces/<?=$annonce->id?>" class="form4" method="post">
     <div class="form4__container">
         <div class="form4__flex">
             <div class="form4__content">
