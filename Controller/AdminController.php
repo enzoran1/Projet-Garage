@@ -225,7 +225,7 @@ public function modifierProfiladmin(int $id)
                   ->setId_motorisation($motorisation)
                   ->setId_type($type_vehicule);
       $newAnnonces->create();
-      header('Location: /admin');
+      header('Location: /admin/annonces');
     } else 
     {
       echo 'Veuillez compléter tous les champs';
@@ -235,36 +235,6 @@ public function modifierProfiladmin(int $id)
   //ajouter une photo
   public function ajouterPhoto(int $id)
   {
-    /* if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-        $filename = $_FILES["photo"]["name"];
-        $filetype = $_FILES["photo"]["type"];
-        $filesize = $_FILES["photo"]["size"];
-
-        // Vérifie l'extension du fichier
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
-
-        // Vérifie la taille du fichier - 5Mo maximum
-        $maxsize = 5 * 1024 * 1024;
-        if ($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
-
-        // Vérifie le type MIME du fichier
-        if (in_array($filetype, $allowed)) {
-            // Vérifie si le fichier existe avant de le télécharger.
-            if (file_exists("/image/" . $_FILES["photo"]["name"])) {
-                $message = $_FILES["photo"]["name"] . " existe déjà.";
-            } else {
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "/image/" . $_FILES["photo"]["name"]);
-                $message = "Votre fichier a été téléchargé avec succès.";
-            }
-        } else {
-            $message = "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.";
-        }
-      } else {
-        $message = "Error: " . $_FILES["photo"]["error"];
-    }*/
-
     $uploaddir = '../public/image/';
     if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
     {
@@ -275,7 +245,7 @@ public function modifierProfiladmin(int $id)
     $newPhoto->setLib_photo($uploadfile)
              ->setId_avendre($id);
     $newPhoto->create();
-    header('Location: /admin');
+    header('Location: /admin/annonces');
   }
 
   public function modfifAnnonces(){
