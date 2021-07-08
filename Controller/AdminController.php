@@ -265,7 +265,7 @@ public function ajoutAnnoncesFrom()
     return $this->render('admin/annonces/modifAnnonces/index', compact('annonces', 'marques', 'motorisations','types' ));
   }
 
-public function modifAnnonces(int $id){
+public function modifAnnonces($id){
   
 
     $description = strip_tags($_POST['description'], PDO::PARAM_STR);
