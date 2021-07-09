@@ -356,12 +356,9 @@ public function ajoutAnnonces()
   //ajouter une photo
   public function ajouterPhoto(int $id)
   {
-<<<<<<< HEAD
-=======
   
        
 
->>>>>>> enzo
     $uploaddir = '../public/image/';
     if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
     {
