@@ -1,8 +1,6 @@
 <div class="ban" id="ban__prestation">
-        <h1>Prestations</h1>
-        
-
-    </div>
+    <h1>Prestations</h1>
+</div>
 
 
    

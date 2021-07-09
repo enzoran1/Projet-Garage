@@ -22,19 +22,20 @@ class AdminController extends Controller
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       header('Location: /');
-    } else {
+    } 
+    else 
+    {
       return $this->render('admin/index');
     }
   }
-
-
 
   //les utilisateurs
 
   public function utilisateurs()
   {
 
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
     }
@@ -381,8 +382,9 @@ public function modifAnnonces(int $id){
     return $this->render('admin/prestations/index', compact('prestations'));  
     }
   }
-  
-  public function ajoutPrestationsForm(){
+
+  public function ajoutPrestationsForm()
+  {
     $catprestaModel = new CategorieprestationsModel;
     // on va chercher tout
     $categories = $catprestaModel->findAll();
