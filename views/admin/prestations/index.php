@@ -2,7 +2,7 @@
 <h1>Prestation</h1>
 </div>
 <div>
-    <a href="/Admin/ajoutPrestationsForm">ajout</a>
+    <a href="/Admin/ajoutPrestationsForm">Ajouter prestations</a>
 </div>
 
 <?php foreach($categories as $categorie) : ?>
