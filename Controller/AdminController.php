@@ -342,17 +342,6 @@ public function ajoutAnnonces()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   //ajouter une photo
   public function ajouterPhoto(int $id)
   {
@@ -415,17 +404,17 @@ public function ajoutAnnonces()
       WHERE prestation.id_categorie = 
       '.$id
       );
-      
-      
-      // méthode 
       $prestations = $requete->fetchAll();
-    
+      $categorieModel = new CategorieprestationsModel;
+      $requete = $categorieModel->requete('SELECT *
+      FROM categorie_prestation
+      WHERE id = 
+      '.$id
+      );
+      $categorie = $requete->fetchAll();
       // render la view
-    return $this->render('admin/prestations/prestation/index', compact('prestations'));
-      
+    return $this->render('admin/prestations/prestation/index', compact('prestations','categorie')); 
     }
-
-
   }
 
 
