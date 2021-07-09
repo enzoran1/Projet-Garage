@@ -125,6 +125,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
 .admin-prestation__content{
     display: flex;
     flex-direction: column;
@@ -137,11 +138,13 @@
     margin-top: 25px;
     border-radius: 10px;
 }
+
 .admin-prestation__content p{
     color: white;
     font-weight: bold;
     font-size: 130%;
 }
+
 .admin-prestation__content a{
     color: white;
     text-decoration: none;
