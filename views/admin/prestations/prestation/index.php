@@ -1,6 +1,6 @@
-<?php foreach($categories as $categorie) : ?>
+<?php foreach($categorie as $categories) : ?>
 <div class="ban">
-<h1><?=$categorie->lib_categorie?></h1>
+<h1><?=$categories->lib_categorie?></h1>
 </div>
 <?php endforeach;?>
 
