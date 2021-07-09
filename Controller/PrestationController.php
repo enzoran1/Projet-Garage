@@ -1,15 +1,22 @@
 <?php
 namespace App\Controller;
 
+use App\Models\CategorieprestationsModel;
+
 class PrestationController extends Controller
 {    
     public function index(){
 
-        $this->render('prestation/index');
+      
+          // instancier le model 
         
-    }
-
-    public function prestationVue(){
-        $this->render('prestation/pneu/montageEquilibrage');
+          $categorieModel = new CategorieprestationsModel;
+          
+          // méthode 
+        
+          $categories = $categorieModel->findAll();
+          // render la view
+        return $this->render('/prestation/index', compact('categories'));
+          
     }
 }

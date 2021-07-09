@@ -266,7 +266,7 @@ public function ajoutAnnoncesFrom()
     return $this->render('admin/annonces/modifAnnonces/index', compact('annonces', 'marques', 'motorisations','types' ));
   }
 
-public function modifAnnonces($id){
+public function modifAnnonces(int $id){
   
 
     $description = strip_tags($_POST['description'], PDO::PARAM_STR);
@@ -332,12 +332,23 @@ public function ajoutAnnonces()
                   ->setId_motorisation($motorisation)
                   ->setId_type($type_vehicule);
       $newAnnonces->create();
-      header('Location: /admin/annonces');
+      header('Location: /admin');
     } else 
     {
       echo 'Veuillez compléter tous les champs';
     }
   }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -358,7 +369,7 @@ public function ajoutAnnonces()
     $newPhoto->setLib_photo($uploadfile)
              ->setId_avendre($id);
     $newPhoto->create();
-    header('Location: /admin/annonces');
+    header('Location: /admin');
   }
 
 
@@ -404,17 +415,17 @@ public function ajoutAnnonces()
       WHERE prestation.id_categorie = 
       '.$id
       );
+      
+      
+      // méthode 
       $prestations = $requete->fetchAll();
-      $categorieModel = new CategorieprestationsModel;
-      $requete = $categorieModel->requete('SELECT *
-      FROM categorie_prestation
-      WHERE id = 
-      '.$id
-      );
-      $categorie = $requete->fetchAll();
+    
       // render la view
-    return $this->render('admin/prestations/prestation/index', compact('prestations','categorie')); 
+    return $this->render('admin/prestations/prestation/index', compact('prestations'));
+      
     }
+
+
   }
 
 
@@ -453,52 +464,5 @@ public function ajoutAnnonces()
     }
   }
 
-  public function modifierPrestaForm(int $id)
-  {
-    $prestationModel = new PrestationModel;
-    $requete = $prestationModel->requete(
-      'SELECT prestation.*,categorie_prestation.lib_categorie
-    FROM prestation
-    INNER JOIN categorie_prestation ON prestation.id_categorie = categorie_prestation.id
-    WHERE prestation.id = 
-    '.$id
-    );
-    $prestations = $requete->fetchAll();
 
-    $categorieModel = new CategorieprestationsModel;
-
-    // on va chercher tout
-    $categories = $categorieModel->findAll();
-    return $this->render('admin/prestations/modifPrestation/index', compact('prestations', 'categories' ));
-  }
-
-  public function modifierPresta(int $id)
-  {
-    $type = strip_tags($_POST['type'], PDO::PARAM_STR);
-    $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
-    $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
-    $id_categorie = strip_tags($_POST['categorie'], PDO::PARAM_INT);
-    // On instancie le modèle
-    $prestationModel = new PrestationModel;
-    // On hydrate
-    $prestationModel
-    ->setId($id)
-    ->setId_categorie($id_categorie)
-    ->setType($type)
-    ->setDuree($duree)
-    ->setPrix($prix);
-    // On enregistre
-    $prestationModel->update();
-    //il faut modifier la session pour rafraichir les valeurs du dashboard
-    header('Location: /admin/prestations/');
-    exit; 
-  }
-
-  public function supprimerPresta(int $id)
-  {
-    $prestationModel = new PrestationModel;
-    $prestationModel->requete('DELETE  FROM prestation WHERE id = ' . $id);
-    
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-  }
 }
