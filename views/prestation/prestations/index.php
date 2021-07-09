@@ -17,7 +17,6 @@
         
             <p><?=$prestation->duree?>h</p>
    
-<a href="/Admin/modifierPrestaForm/<?=$prestation->id?>">Modifier</a>
-<a href="/Admin/supprimerPresta/<?=$prestation->id?>">Supprimer</a>
+
 
 <?php endforeach;?>
