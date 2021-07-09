@@ -14,7 +14,10 @@
 
         <img src="/image/admin-message.png" alt="">
         
-        <a href=""<?=$categorie->id?>"><?=$categorie->lib_categorie?></a>
+        <a href="/Prestation/afficherPrestations/<?=$categorie->id?>"><?=$categorie->lib_categorie?></a>
+
+
+
 
     </div>
     </div>
