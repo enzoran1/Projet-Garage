@@ -1,12 +1,13 @@
 <div class="ban" id="ban__admin">
-<h1>Prestation</h1>
+<h1>Prestations</h1>
 </div>
-<div>
+<div class="admin-prestation__btn-modif">
     <a href="/Admin/ajoutPrestationsForm">Ajouter prestations</a>
 </div>
 
-<?php foreach($categories as $categorie) : ?>
 <div class="admin-prestation__container">
+<?php foreach($categories as $categorie) : ?>
+<div class="admin-prestation__center">
 
     <div class="admin-prestation__content">
 
@@ -15,7 +16,9 @@
         <a href="/Admin/prestationsafficher/<?=$categorie->id?>"><?=$categorie->lib_categorie?></a>
 
     </div>
+    </div>
 
-</div>
 
 <?php endforeach; ?>
+
+</div>
