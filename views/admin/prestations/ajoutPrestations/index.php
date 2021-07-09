@@ -1,4 +1,4 @@
-<form action="/Admin/" class="form4" method="post">
+<form action="/admin/ajoutPrestationFormValidate" class="form4" method="post">
     <div class="form4__container">
         <div class="form4__flex">
             <div class="form4__content">

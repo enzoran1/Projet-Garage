@@ -390,4 +390,26 @@ public function modifAnnonces(int $id){
     $categories = $catprestaModel->findAll();
     return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
+
+  public function ajoutPrestationFormValidate()
+  {
+    // Déclaration des variables récupérées par le formulaire 
+    if (Form::validate($_POST, ['type', 'duree', 'prix', 'categorie'])) {
+      $type = strip_tags($_POST['type'], PDO::PARAM_STR);
+      $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
+      $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
+      $categorie = strip_tags($_POST['categorie'], PDO::PARAM_STR);
+
+      // On instancie une nouvelle prestation et on l'hydrate
+      $newPrestation = new PrestationModel;
+      $newPrestation->setType($type)
+                    ->setPrix($prix)
+                    ->setDuree($duree)
+                    ->setId_categorie($categorie);
+
+      // On créer directement la nouvelle prestation avec les setters correspondant 
+      $newPrestation->create();
+      header('Location: /admin');
+    }
+  }
 }
