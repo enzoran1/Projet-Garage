@@ -376,7 +376,7 @@ public function ajoutAnnonces()
 
 
   //Les prestations
-  public function prestations(int $id)
+  public function prestations()
   { 
     if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
     { 
@@ -386,22 +386,51 @@ public function ajoutAnnonces()
     else
     {
       // instancier le model 
-      $prestationModel = new PrestationModel;
+    
       $categorieModel = new CategorieprestationsModel;
+      
+      // méthode 
+    
+      $categories = $categorieModel->findAll();
+      // render la view
+    return $this->render('admin/prestations/index', compact('categories'));
+      
+    }
+  }
+
+  public function prestationsafficher($id){
+
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $prestationModel = new PrestationModel;
       $requete = $prestationModel->requete(
         'SELECT prestation.*
       FROM prestation
       WHERE prestation.id_categorie = 
-      '.$id);
+      '.$id
+      );
+      
       
       // méthode 
-      $prestations = $prestationModel->findAll();
-      $categories = $categorieModel->findAll();
+      $prestations = $requete->fetchAll();
+    
       // render la view
-    return $this->render('admin/prestations/index'. $id, compact('prestations','categories'));
+    return $this->render('admin/prestations/prestation/index', compact('prestations'));
       
     }
+
+
   }
+
+
+
+  
   public function ajoutPrestationsForm(){
     $catprestaModel = new CategorieprestationsModel;
     // on va chercher tout

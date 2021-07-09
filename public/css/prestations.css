@@ -103,6 +103,24 @@
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (min-width:688px){
 
 
@@ -150,6 +168,11 @@
         -o-transition: 1s;
         transition: 1s;
     }
+    
+}
+@media screen and (min-width:799px) {
+    
+
 }
 
 @media screen and (min-width:988px){
@@ -195,6 +218,7 @@
         -o-transition: 1s;
         transition: 1s;
     }
+    
 
 }
 

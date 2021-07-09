@@ -1,32 +1,21 @@
-
-
-<h1>Mes prestations</h1>
-
-<a href="/Admin/ajoutPrestationsForm">Ajouter</a>
-
+<div class="ban" id="ban__admin">
+<h1>Prestation</h1>
+</div>
 <div>
-<?php foreach($categories as $categorie) :?>
-
-<div>
-    <h2><?= $categorie->lib_categorie?></h2>
+    <a href="/Admin/ajoutPrestationsForm"></a>
 </div>
 
-<?php foreach($prestations as $prestation) :?>
+<?php foreach($categories as $categorie) : ?>
+<div class="admin-prestation__container">
 
-<div>
-    <p><?=$prestation->type?></p>
-    <p><?=$prestation->prix?></p>
-    <p><?=$prestation->duree?></p>
-</div>
+    <div class="admin-prestation__content">
 
-<div>
-    <a href="">Modifer</a>
-    <a href="">Supprimer</a>
-</div>
+        <img src="/image/admin-message.png" alt="">
+        
+        <a href="/Admin/prestationsafficher/<?=$categorie->id?>"><?=$categorie->lib_categorie?></a>
+
+    </div>
 
 </div>
 
-
-
-<?php endforeach;?>
-<?php endforeach;?>
+<?php endforeach; ?>
