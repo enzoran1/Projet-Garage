@@ -40,7 +40,7 @@
           
            
             <div class="utilisateur2__btn">
-                <a id="affiche-modal" href="#" onclick="modal()">Modifier</a>
+                <a id="affiche-modal" onclick="modal()">Modifier</a>
             </div>
         </div>
     </div>
@@ -64,11 +64,15 @@
         </div>
     </div>
 
-<div class="utilisateur2__véhicule">
-    <h3>Véhicules</h3>
+<div class="utilisateur2__vehicule">
+    <h3>Ajout de véhicules</h3>
     
-    <a href="compte/afficheVehiculesUtil">voir</a>
-    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a>       
+    
+    <a href="compte/ajoutVehiculeForm"><img src="image\icons8-plus-100.png" alt=""></a> 
+    <div class="utilisateur2__liste-vehicule">
+<h3>Ma liste de véhicules</h3>
+<a href="compte/afficheVehiculesUtil">voir</a>
+</div>      
 </div> 
 </div>
 
