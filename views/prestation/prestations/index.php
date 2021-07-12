@@ -6,20 +6,6 @@
 <?php endforeach;?>
 
 
-
-
-        
-        
-
-   
-
-        
-           
-   
-
-
-
-
 <?php foreach($prestations as $prestation) : ?>
 <div class="utilisateur-prestations-container">
 <div class="utilisateur-prestations-center">
