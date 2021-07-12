@@ -65,13 +65,16 @@
   color: white;
 }
 
-<<<<<<< HEAD
 @media screen and (min-width: 688px) {
   .admin-flex {
     display: flex;
     justify-content: space-around;
-    width: 650px;
+    width: 680px;
     transition: 1s;
+  }
+  .admin__content {
+    width: 200px;
+    height: 280px;
   }
 }
 @media screen and (min-width: 988px) {
@@ -80,62 +83,26 @@
     margin-bottom: 35px;
     transition: 1s;
   }
+  .admin__content {
+    width: 220px;
+    height: 300px;
+  }
 }
 @media screen and (min-width: 1300px) {
   .admin__container {
     display: flex;
-    flex-direction: initial;
+    flex-direction: column;
     justify-content: space-around;
     transition: 1s;
   }
+  .admin-flex {
+    display: flex;
+    justify-content: space-around;
+    width: 1200px;
+    transition: 1s;
+  }
+  .admin__content {
+    width: 240px;
+    height: 300px;
+  }
 }
-=======
-@media screen and (min-width:688px){
-    
-   
-    
-    .admin-flex{
-        display: flex;
-        justify-content: space-around;
-        width: 680px;
-        transition: 1s;
-        
-    }
-    .admin__content{
-        width: 200px;
-        height: 280px;
-    }
-}
-@media screen and (min-width:988px){
-
-    .admin-flex{
-        width: 950px;
-        margin-bottom: 35px;
-        transition: 1s;
-    }
-    .admin__content{
-        width: 220px;
-        height: 300px;
-    }
-
-}
-@media screen and (min-width:1300px){
-    .admin__container{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        transition: 1s;
-    }
-    .admin-flex{
-        display: flex;
-        justify-content: space-around;
-        width: 1200px;
-        transition: 1s;
-        
-    }
-    .admin__content{
-        width: 240px;
-        height: 300px;
-    }
-}
->>>>>>> enzo

@@ -86,12 +86,12 @@ class AdminController extends Controller
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
 
-    
+
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
-//modifier profil utilisateur
-public function modifierProfiladmin(int $id)
-{
+  //modifier profil utilisateur
+  public function modifierProfiladmin(int $id)
+  {
     $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
     $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
     $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
@@ -100,16 +100,16 @@ public function modifierProfiladmin(int $id)
 
     // On instancie le modèle
     $utilisateurModifAdmin = new UtilisateursModel;
-  
+
 
     // On hydrate
     $utilisateurModifAdmin
-        ->setId($id)
-        ->setNom($nom)
-        ->setPrenom($prenom)
-        ->setAdresse($adresse)
-        ->setTel($tel)
-        ->setEmail($email);
+      ->setId($id)
+      ->setNom($nom)
+      ->setPrenom($prenom)
+      ->setAdresse($adresse)
+      ->setTel($tel)
+      ->setEmail($email);
 
     // On enregistre
     $utilisateurModifAdmin->update();
@@ -119,20 +119,18 @@ public function modifierProfiladmin(int $id)
 
 
     header('Location: /admin');
-    exit; 
-}
-public function supprimerUtilisateur(int $id)
-{
+    exit;
+  }
+  public function supprimerUtilisateur(int $id)
+  {
 
-  $utilisateurModel = new UtilisateursModel;
-  $vehiculeModel = new VehiculeModel;
+    $utilisateurModel = new UtilisateursModel;
+    $vehiculeModel = new VehiculeModel;
 
-  $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
-  $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
-}
-
-
+    $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
+    $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
 
 
 
@@ -145,7 +143,9 @@ public function supprimerUtilisateur(int $id)
 
 
 
-// les messages
+
+
+  // les messages
 
   public function message()
   {
@@ -171,7 +171,6 @@ public function supprimerUtilisateur(int $id)
   }
   //supprimer utilisateur
 
- 
 
 
 
@@ -186,7 +185,8 @@ public function supprimerUtilisateur(int $id)
 
 
 
-// les annonces
+
+  // les annonces
 
   public function supprimerAnnonces(int $id)
   {
@@ -194,7 +194,7 @@ public function supprimerUtilisateur(int $id)
     $photoModel = new PhotoModel;
     $photoModel->requete('DELETE photo.* FROM photo WHERE id_avendre = ' . $id);
     $annoncesModel->requete('DELETE a_vendre.* FROM a_vendre WHERE id = ' . $id);
-    
+
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
@@ -223,7 +223,7 @@ public function supprimerUtilisateur(int $id)
     }
   }
 
-public function ajoutAnnoncesFrom()
+  public function ajoutAnnoncesFrom()
   {
 
     $marqueModel = new MarqueModel;
@@ -239,7 +239,7 @@ public function ajoutAnnoncesFrom()
     return $this->render('admin/annonces/ajoutAnnonces/index', compact('marques', 'motorisations', 'types'));
   }
 
- public function modifAnnoncesFrom($id)
+  public function modifAnnoncesFrom($id)
   {
 
     $annoncesModel = new AnnoncesModel;
@@ -250,7 +250,7 @@ public function ajoutAnnoncesFrom()
     INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
     INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id
     WHERE a_vendre.id = 
-    '.$id
+    ' . $id
     );
     $annonces = $requete->fetchAll();
 
@@ -264,11 +264,12 @@ public function ajoutAnnoncesFrom()
     $types = $typeVehiculeModel->findAll();
 
 
-    return $this->render('admin/annonces/modifAnnonces/index', compact('annonces', 'marques', 'motorisations','types' ));
+    return $this->render('admin/annonces/modifAnnonces/index', compact('annonces', 'marques', 'motorisations', 'types'));
   }
 
-public function modifAnnonces($id){
-  
+  public function modifAnnonces($id)
+  {
+
 
     $description = strip_tags($_POST['description'], PDO::PARAM_STR);
     $marque = strip_tags($_POST['marque'], PDO::PARAM_STR);
@@ -278,25 +279,25 @@ public function modifAnnonces($id){
     $prix = strip_tags($_POST['prix']);
     $annee = strip_tags($_POST['annee']);
     $km = strip_tags($_POST['km']);
-    
+
 
     // On instancie le modèle
     $modifAnnonces = new AnnoncesModel;
-    
+
 
     // On hydrate
     $modifAnnonces
-    ->setId($id)
-    ->setId_marque($marque)
-    ->setId_motorisation($motorisation)
-    ->setId_type($type)
-    ->setKm($km)
-    ->setPrix($prix)
-    ->setPlaque_immatriculation($immatriculation)
-    ->setDescription($description)
-    ->setAnnee($annee);
-  
-      
+      ->setId($id)
+      ->setId_marque($marque)
+      ->setId_motorisation($motorisation)
+      ->setId_type($type)
+      ->setKm($km)
+      ->setPrix($prix)
+      ->setPlaque_immatriculation($immatriculation)
+      ->setDescription($description)
+      ->setAnnee($annee);
+
+
 
     // On enregistre
     $modifAnnonces->update();
@@ -306,10 +307,10 @@ public function modifAnnonces($id){
 
 
     header('Location: /admin/annonces/');
-    exit; 
-}
+    exit;
+  }
 
-public function ajoutAnnonces()
+  public function ajoutAnnonces()
   {
 
     if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
@@ -323,8 +324,8 @@ public function ajoutAnnonces()
       $prix = ($_POST['prix']);
       //création véhicule
       $newAnnonces = new AnnoncesModel();
-<<<<<<< HEAD
-      $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
+      $newAnnonces
+        ->setPlaque_immatriculation($plaque_immatriculation)
         ->setAnnee($annee)
         ->setKm($km)
         ->setId_marque($marque)
@@ -333,23 +334,8 @@ public function ajoutAnnonces()
         ->setId_motorisation($motorisation)
         ->setId_type($type_vehicule);
       $newAnnonces->create();
-      header('Location: /admin');
-    } else {
-=======
-      $newAnnonces
-      ->setPlaque_immatriculation($plaque_immatriculation)
-                  ->setAnnee($annee)
-                  ->setKm($km)
-                  ->setId_marque($marque)
-                  ->setDescription($description)
-                  ->setPrix($prix)
-                  ->setId_motorisation($motorisation)
-                  ->setId_type($type_vehicule);
-      $newAnnonces->create();
       header('Location: /admin/annonces');
-    } else 
-    {
->>>>>>> enzo
+    } else {
       echo 'Veuillez compléter tous les champs';
     }
   }
@@ -360,18 +346,17 @@ public function ajoutAnnonces()
   //ajouter une photo
   public function ajouterPhoto(int $id)
   {
-  
-       
+
+
 
     $uploaddir = '../public/image/';
-    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
-    {
+    if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) {
       $uploadfile = $uploaddir . $_FILES['photo']['name'];
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
     $newPhoto = new PhotoModel();
     $newPhoto->setLib_photo($uploadfile)
-             ->setId_avendre($id);
+      ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin/annonces');
   }
@@ -387,65 +372,51 @@ public function ajoutAnnonces()
       return $this->render('main/index');
     } else {
       // instancier le model 
-<<<<<<< HEAD
-      $prestationModel = new PrestationModel;
 
-=======
-    
       $categorieModel = new CategorieprestationsModel;
-      
->>>>>>> enzo
+
       // méthode 
-    
+
       $categories = $categorieModel->findAll();
       // render la view
-<<<<<<< HEAD
-      return $this->render('admin/prestations/index', compact('prestations'));
+      return $this->render('admin/prestations/index', compact('categories'));
     }
   }
-  public function ajoutPrestationsForm()
+
+  public function prestationsafficher($id)
   {
-=======
-    return $this->render('admin/prestations/index', compact('categories'));
-      
-    }
-  }
 
-  public function prestationsafficher($id){
-
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
-    }
-    else
-    {
+    } else {
       // instancier le model 
       $prestationModel = new PrestationModel;
       $requete = $prestationModel->requete(
         'SELECT prestation.*
       FROM prestation
       WHERE prestation.id_categorie = 
-      '.$id
+      ' . $id
       );
       $prestations = $requete->fetchAll();
       $categorieModel = new CategorieprestationsModel;
-      $requete = $categorieModel->requete('SELECT *
+      $requete = $categorieModel->requete(
+        'SELECT *
       FROM categorie_prestation
       WHERE id = 
-      '.$id
+      ' . $id
       );
       $categorie = $requete->fetchAll();
       // render la view
-    return $this->render('admin/prestations/prestation/index', compact('prestations','categorie')); 
+      return $this->render('admin/prestations/prestation/index', compact('prestations', 'categorie'));
     }
   }
 
 
 
-  
-  public function ajoutPrestationsForm(){
->>>>>>> enzo
+
+  public function ajoutPrestationsForm()
+  {
     $catprestaModel = new CategorieprestationsModel;
     // on va chercher tout
     $categories = $catprestaModel->findAll();
@@ -457,23 +428,22 @@ public function ajoutAnnonces()
   public function ajoutPrestations()
   {
 
-    if (Form::validate($_POST, ['type','duree','prix','categorie'])) {
+    if (Form::validate($_POST, ['type', 'duree', 'prix', 'categorie'])) {
       $type = strip_tags($_POST['type'], PDO::PARAM_STR);
       $categorie = strip_tags($_POST['categorie'], PDO::PARAM_STR);
       $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
       $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
-      
+
       //création véhicule
       $newPrestations = new PrestationModel();
       $newPrestations
-      ->setId_categorie($categorie)
-                  ->setPrix($prix)
-                  ->setType($type)
-                  ->setDuree($duree);
+        ->setId_categorie($categorie)
+        ->setPrix($prix)
+        ->setType($type)
+        ->setDuree($duree);
       $newPrestations->create();
       header('Location: /admin/prestations/');
-    } else 
-    {
+    } else {
       echo 'Veuillez compléter tous les champs';
     }
   }
@@ -486,7 +456,7 @@ public function ajoutAnnonces()
     FROM prestation
     INNER JOIN categorie_prestation ON prestation.id_categorie = categorie_prestation.id
     WHERE prestation.id = 
-    '.$id
+    ' . $id
     );
     $prestations = $requete->fetchAll();
 
@@ -494,7 +464,7 @@ public function ajoutAnnonces()
 
     // on va chercher tout
     $categories = $categorieModel->findAll();
-    return $this->render('admin/prestations/modifPrestation/index', compact('prestations', 'categories' ));
+    return $this->render('admin/prestations/modifPrestation/index', compact('prestations', 'categories'));
   }
 
   public function modifierPresta(int $id)
@@ -507,23 +477,23 @@ public function ajoutAnnonces()
     $prestationModel = new PrestationModel;
     // On hydrate
     $prestationModel
-    ->setId($id)
-    ->setId_categorie($id_categorie)
-    ->setType($type)
-    ->setDuree($duree)
-    ->setPrix($prix);
+      ->setId($id)
+      ->setId_categorie($id_categorie)
+      ->setType($type)
+      ->setDuree($duree)
+      ->setPrix($prix);
     // On enregistre
     $prestationModel->update();
     //il faut modifier la session pour rafraichir les valeurs du dashboard
     header('Location: /admin/prestations/');
-    exit; 
+    exit;
   }
 
   public function supprimerPresta(int $id)
   {
     $prestationModel = new PrestationModel;
     $prestationModel->requete('DELETE  FROM prestation WHERE id = ' . $id);
-    
+
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 }
