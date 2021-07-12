@@ -166,52 +166,85 @@
     margin-bottom: 25px;
     margin-top: 25px;
 }
-
-
-
-
-
-
-
-
-.utilisateur-prestations-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.utilisateur-prestations-duree{
-    background-image: url(/image/photo-prestation-pneu.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 70px;
-    width: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-}
-.utilisateur-prestations-content{
+.carte__prestation-center{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.prestation-utilisateur-duree{
+    height: 80px;
+    width: 80px;
+    
+    display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(../image/image-prestation.jpg);
+    background-position: center;
+    background-size: cover;
 }
-.utilisateur-prestations-content-flex{
+.prestation-utilisateur-duree p{
+    color: white;
+    font-size: 110%;
+    font-weight: bold;
+    
+}
+.carte__prestation-utilisateur{
     display: flex;
+    justify-content: center;
+    height: 100px;
+    
+    
+}
+.prestation-utilisateur-type-prix{
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    width: 250px;
+    
+}
+.prestation-utilisateur-type-prix p{
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 90%;
 
 }
-.utilisateur-prestations-center{
-    width: 310px;
+.prestation-utilisateur-prix-btn{
     display: flex;
-
-}
-.utilisateur-prestations-type{
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 250px;
 }
+.prestation-utilisateur-prix-btn a{
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 10%/50%;
+    background-color: #489897;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding: 6px;
+    font-weight: bold;
+}
+.prestation-utilisateur-prix-btn p {
+    font-weight: bold;
+    font-size: 110%;
+    color: #EEC47A;
+}
+.prestation-utilisateur-grid{
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
 
 
 
