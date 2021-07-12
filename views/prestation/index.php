@@ -4,41 +4,25 @@
 
 
    
+<div class="admin-prestation__container">
+<?php foreach($categories as $categorie) : ?>
+<div class="admin-prestation__center">
 
-<div class="prestation-container">
+    <div class="admin-prestation__content">
 
-    <div class="prestation-content">
-        <h2>Pneus</h2>
-        <img src="/image/photo-prestation-pneu.jpg" alt="">
-        <div class="content-prestation">
-        <a href="Prestation/prestationVue">- Montage et équilibrage</a>
-        <a href="">- Permutation</a>
-        <a href="">- Réparation et crevaison</a>
-        <a href="">- Géometrie et parallélisme</a>
-        <a href="">- Gardiennage</a>
+        <img src="/image/icons8-origin-100.png" alt="">
+        <p><?=$categorie->lib_categorie?></p>
+        
+        <a href="/Prestation/afficherPrestations/<?=$categorie->id?>">Accéder</a>
+
+
+
+
     </div>
     </div>
-    <div class="prestation-content">
-        <h2>Vidange & Révision</h2>
-        <img src="/image/photo-prestation-vidange.jpg" alt="">
-        <div class="content-prestation">
-            <a href="">- Montage et équilibrage</a>
-            <a href="">- Permutation</a>
-            <a href="">- Réparation et crevaison</a>
-            <a href="">- Géometrie et parallélisme</a>
-            <a href="">- Gardiennage</a>
-        </div>
-    </div>
-    <div class="prestation-content">
-        <h2>Mécanique & Entretien</h2>
-        <img src="/image/photo-prestation-mecanique.jpg" alt="">
-        <div class="content-prestation">
-            <a href="">- Montage et équilibrage</a>
-            <a href="">- Permutation</a>
-            <a href="">- Réparation et crevaison</a>
-            <a href="">- Géometrie et parallélisme</a>
-            <a href="">- Gardiennage</a>
-        </div>
-    </div>
+
+
+<?php endforeach; ?>
 
 </div>
+    

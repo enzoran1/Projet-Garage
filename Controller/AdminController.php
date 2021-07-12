@@ -258,7 +258,7 @@ public function ajoutAnnoncesFrom()
     return $this->render('admin/annonces/modifAnnonces/index', compact('annonces', 'marques', 'motorisations','types' ));
   }
 
-public function modifAnnonces(int $id){
+public function modifAnnonces($id){
   
 
     $description = strip_tags($_POST['description'], PDO::PARAM_STR);
@@ -300,7 +300,7 @@ public function modifAnnonces(int $id){
     exit; 
   }
 
-  public function ajoutAnnonces(int $id)
+public function ajoutAnnonces()
   {
     if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
@@ -313,7 +313,8 @@ public function modifAnnonces(int $id){
       $prix = ($_POST['prix']);
       //création véhicule
       $newAnnonces = new AnnoncesModel();
-      $newAnnonces->setPlaque_immatriculation($plaque_immatriculation)
+      $newAnnonces
+      ->setPlaque_immatriculation($plaque_immatriculation)
                   ->setAnnee($annee)
                   ->setKm($km)
                   ->setId_marque($marque)
@@ -322,9 +323,8 @@ public function modifAnnonces(int $id){
                   ->setId_motorisation($motorisation)
                   ->setId_type($type_vehicule);
       $newAnnonces->create();
-      header('Location: /admin');
-    } 
-    else 
+      header('Location: /admin/annonces');
+    } else 
     {
       echo 'Veuillez compléter tous les champs';
     }
@@ -333,20 +333,12 @@ public function modifAnnonces(int $id){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   //ajouter une photo
   public function ajouterPhoto(int $id)
-  { //ajouter une photo à une annonce via l'interface admin 
+  {
+  
+       
+
     $uploaddir = '../public/image/';
     if (!empty($_FILES['photo'])  && $_FILES['photo']['error'] == 0) 
     {
@@ -357,7 +349,7 @@ public function modifAnnonces(int $id){
     $newPhoto->setLib_photo($uploadfile)
              ->setId_avendre($id);
     $newPhoto->create();
-    header('Location: /admin');
+    header('Location: /admin/annonces');
   }
 
 
@@ -374,42 +366,130 @@ public function modifAnnonces(int $id){
     else
     {
       // instancier le model 
-      $prestationModel = new PrestationModel;
+    
+      $categorieModel = new CategorieprestationsModel;
       
       // méthode 
-      $prestations = $prestationModel->findAll();
+    
+      $categories = $categorieModel->findAll();
       // render la view
-    return $this->render('admin/prestations/index', compact('prestations'));  
+    return $this->render('admin/prestations/index', compact('categories'));
+      
     }
   }
 
-  public function ajoutPrestationsForm()
-  {
+  public function prestationsafficher($id){
+
+    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
+    { 
+      // renvoyer une erreur, chercher le code 
+      return $this->render('main/index');
+    }
+    else
+    {
+      // instancier le model 
+      $prestationModel = new PrestationModel;
+      $requete = $prestationModel->requete(
+        'SELECT prestation.*
+      FROM prestation
+      WHERE prestation.id_categorie = 
+      '.$id
+      );
+      $prestations = $requete->fetchAll();
+      $categorieModel = new CategorieprestationsModel;
+      $requete = $categorieModel->requete('SELECT *
+      FROM categorie_prestation
+      WHERE id = 
+      '.$id
+      );
+      $categorie = $requete->fetchAll();
+      // render la view
+    return $this->render('admin/prestations/prestation/index', compact('prestations','categorie')); 
+    }
+  }
+
+
+
+  
+  public function ajoutPrestationsForm(){
     $catprestaModel = new CategorieprestationsModel;
     // on va chercher tout
     $categories = $catprestaModel->findAll();
     return $this->render('admin/prestations/ajoutPrestations/index',compact('categories'));
   }
 
-  public function ajoutPrestationFormValidate()
+
+
+  public function ajoutPrestations()
   {
-    // Déclaration des variables récupérées par le formulaire 
-    if (Form::validate($_POST, ['type', 'duree', 'prix', 'categorie'])) {
+
+    if (Form::validate($_POST, ['type','duree','prix','categorie'])) {
       $type = strip_tags($_POST['type'], PDO::PARAM_STR);
-      $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
-      $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
       $categorie = strip_tags($_POST['categorie'], PDO::PARAM_STR);
-
-      // On instancie une nouvelle prestation et on l'hydrate
-      $newPrestation = new PrestationModel;
-      $newPrestation->setType($type)
-                    ->setPrix($prix)
-                    ->setDuree($duree)
-                    ->setId_categorie($categorie);
-
-      // On créer directement la nouvelle prestation avec les setters correspondant 
-      $newPrestation->create();
-      header('Location: /admin');
+      $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
+      $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
+      
+      //création véhicule
+      $newPrestations = new PrestationModel();
+      $newPrestations
+      ->setId_categorie($categorie)
+                  ->setPrix($prix)
+                  ->setType($type)
+                  ->setDuree($duree);
+      $newPrestations->create();
+      header('Location: /admin/prestations/');
+    } else 
+    {
+      echo 'Veuillez compléter tous les champs';
     }
+  }
+
+  public function modifierPrestaForm(int $id)
+  {
+    $prestationModel = new PrestationModel;
+    $requete = $prestationModel->requete(
+      'SELECT prestation.*,categorie_prestation.lib_categorie
+    FROM prestation
+    INNER JOIN categorie_prestation ON prestation.id_categorie = categorie_prestation.id
+    WHERE prestation.id = 
+    '.$id
+    );
+    $prestations = $requete->fetchAll();
+
+    $categorieModel = new CategorieprestationsModel;
+
+    // on va chercher tout
+    $categories = $categorieModel->findAll();
+    return $this->render('admin/prestations/modifPrestation/index', compact('prestations', 'categories' ));
+  }
+
+  public function modifierPresta(int $id)
+  {
+    $type = strip_tags($_POST['type'], PDO::PARAM_STR);
+    $prix = strip_tags($_POST['prix'], PDO::PARAM_INT);
+    $duree = strip_tags($_POST['duree'], PDO::PARAM_INT);
+    $id_categorie = strip_tags($_POST['categorie'], PDO::PARAM_INT);
+    // On instancie le modèle
+    $prestationModel = new PrestationModel;
+    // On hydrate
+    $prestationModel
+    ->setId($id)
+    ->setId_categorie($id_categorie)
+    ->setType($type)
+    ->setDuree($duree)
+    ->setPrix($prix);
+    // On enregistre
+    $prestationModel->update();
+    //il faut modifier la session pour rafraichir les valeurs du dashboard
+    header('Location: /admin/prestations/');
+    exit; 
+  }
+
+  public function supprimerPresta(int $id)
+  {
+    $prestationModel = new PrestationModel;
+    $prestationModel->requete('DELETE  FROM prestation WHERE id = ' . $id);
+    
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 }

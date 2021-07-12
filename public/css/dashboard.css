@@ -122,7 +122,7 @@
     -o-transition: 1s;
     transition: 1s;
 }
-.utilisateur2__véhicule{
+.utilisateur2__vehicule{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -137,7 +137,7 @@
     -o-transition: 1s;
     transition: 1s;
 }
-.utilisateur2__véhicule h3{
+.utilisateur2__vehicule h3{
     color: white;
     margin-bottom: 25px;
     margin-top: 35px;
@@ -145,7 +145,7 @@
     -o-transition: 1s;
     transition: 1s;
 }
-.utilisateur2__véhicule button{
+.utilisateur2__vehicule button{
 
     background-color: #2F3D4A;
     border: none;
@@ -159,7 +159,7 @@
     transition: 1s;
 
 }
-.utilisateur2__véhicule button img{
+.utilisateur2__vehicule button img{
 
     width: 70px;
     height: 70px;
@@ -192,7 +192,35 @@
     background-color: #489897;
 }
 
+.utilisateur2__liste-vehicule{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 45px;
+}
+.utilisateur2__liste-vehicule h3{
+    color: white;
+    margin-bottom: 25px;
+    margin-top: 35px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+.utilisateur2__liste-vehicule a{
 
+    background-color: #489897;
+    text-decoration: none;
+    border-radius: 10%/50%;
+    padding: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: bold;
+    color: white;
+    font-size: 150%;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
 
 
 @media screen and (min-width:688px){

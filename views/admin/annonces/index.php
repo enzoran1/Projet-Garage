@@ -1,7 +1,9 @@
 <div class="ban" id="ban__messageutilisateur">
     <h1>Mes Annonces</h1>
 </div>
-<a href="/Admin/ajoutAnnoncesFrom">ajout</a>
+<div class="annonces-btn-ajout">
+<a href="/Admin/ajoutAnnoncesFrom">Ajout annonces</a>
+</div>
 
 <div class="admin-annonces-grid">
 <?php foreach($annonces as $annonce) : ?>
