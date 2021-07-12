@@ -1,7 +1,7 @@
 
 <h1>Modifier le profil du client</h1>
   
-<?php foreach($utilisateurs as $utilisateur) var_dump($utilisateur->id)?>
+<?php foreach($utilisateurs as $utilisateur)?>
 
 <form action="/Admin/modifierProfiladmin/<?=$utilisateur->id?>" class="form2" method="post">
   <div class="form2__container">
