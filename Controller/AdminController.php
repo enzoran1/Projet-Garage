@@ -198,7 +198,7 @@ public function supprimerUtilisateur(int $id)
   }
 
 
-  public function annonces()
+  public function annonces(int $id)
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
@@ -206,19 +206,26 @@ public function supprimerUtilisateur(int $id)
     } else {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
+      $photoModel = new PhotoModel;
       $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
       FROM a_vendre
       INNER JOIN marque ON a_vendre.id_marque = marque.id
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+    
       order by lib_marque asc');
       // il faut ajouter la putain de photo :'(  
+        // requete pour lié les photo et l'annonce 
+      // $requete2 = $photoModel->requete('SELECT * FROM photo WHERE id_avendre ='.$id)
 
       // méthode 
       $annonces = $requete->fetchAll();
+     
+
+      $photo = $photoModel->findAll();
 
       // render la view
-      return $this->render('admin/annonces/index', compact('annonces'));
+      return $this->render('admin/annonces/index', compact('annonces', 'photo'));
     }
   }
 
@@ -355,11 +362,13 @@ public function ajoutAnnonces()
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
     $newPhoto = new PhotoModel();
-    $newPhoto->setLib_photo($uploadfile)
+    $newPhoto->setLib_photo(str_replace('../public', '',$uploadfile))
              ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin/annonces');
   }
+
+
 
 
 

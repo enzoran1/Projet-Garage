@@ -312,6 +312,10 @@
         display: flex;
         justify-content: center;
     }
+    .prestation-utilisateur-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
     
 }
 @media screen and (min-width:799px) {
