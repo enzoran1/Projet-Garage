@@ -16,9 +16,10 @@
            <?php if(isset($photos[$annonce->id])) {
            
            foreach($photos[$annonce->id] as $photo) :?>
+           <div class="admin-annonces-photo">
             <p><?=$photo->id_avendre?></p>
             <img src="<?=$photo->lib_photo?>" alt="">
-            
+            </div>
             <?php endforeach;
             }?>
            <button type="submit">Envoyer photo</button>
