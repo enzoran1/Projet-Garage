@@ -198,7 +198,7 @@ public function supprimerUtilisateur(int $id)
   }
 
 
-  public function annonces(int $id)
+  public function annonces()
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
@@ -222,10 +222,22 @@ public function supprimerUtilisateur(int $id)
       $annonces = $requete->fetchAll();
      
 
-      $photo = $photoModel->findAll();
+      $photosBdd = $photoModel->findAll();
+
+
+      $photos=[];
+
+      foreach($photosBdd as $photoBdd) {
+        if(!isset($photos[$photoBdd->id_avendre])) {
+          $photos[$photoBdd->id_avendre] = [];
+        }
+        $photos[$photoBdd->id_avendre][] = $photoBdd;
+
+      }
+
 
       // render la view
-      return $this->render('admin/annonces/index', compact('annonces', 'photo'));
+      return $this->render('admin/annonces/index', compact('annonces', 'photos'));
     }
   }
 
