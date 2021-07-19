@@ -283,6 +283,13 @@
   margin-top: 15px;
   cursor: pointer;
 }
+.admin-annonces-photo img{
+
+    max-width: 200px;
+    max-height: 100px;
+
+
+}
 
 @media screen and (min-width: 688px) {
   .form4__container {

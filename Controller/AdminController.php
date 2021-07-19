@@ -207,19 +207,38 @@ class AdminController extends Controller
     } else {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
+      $photoModel = new PhotoModel;
       $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
       FROM a_vendre
       INNER JOIN marque ON a_vendre.id_marque = marque.id
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+    
       order by lib_marque asc');
       // il faut ajouter la putain de photo :'(  
+        // requete pour lié les photo et l'annonce 
+      // $requete2 = $photoModel->requete('SELECT * FROM photo WHERE id_avendre ='.$id)
 
       // méthode 
       $annonces = $requete->fetchAll();
+     
+
+      $photosBdd = $photoModel->findAll();
+
+
+      $photos=[];
+
+      foreach($photosBdd as $photoBdd) {
+        if(!isset($photos[$photoBdd->id_avendre])) {
+          $photos[$photoBdd->id_avendre] = [];
+        }
+        $photos[$photoBdd->id_avendre][] = $photoBdd;
+
+      }
+
 
       // render la view
-      return $this->render('admin/annonces/index', compact('annonces'));
+      return $this->render('admin/annonces/index', compact('annonces', 'photos'));
     }
   }
 
@@ -355,11 +374,18 @@ class AdminController extends Controller
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
     $newPhoto = new PhotoModel();
+<<<<<<< HEAD
     $newPhoto->setLib_photo($uploadfile)
       ->setId_avendre($id);
+=======
+    $newPhoto->setLib_photo(str_replace('../public', '',$uploadfile))
+             ->setId_avendre($id);
+>>>>>>> enzo
     $newPhoto->create();
     header('Location: /admin/annonces');
   }
+
+
 
 
 
