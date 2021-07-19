@@ -20,9 +20,7 @@
            
            foreach($photos[$annonce->id] as $photo) :?>
             
-        <!-- Conteneur des "diapos" -->
         
-          <!-- Première diapo -->
           <div class="element active">
             <img src="<?=$photo->lib_photo?>" />
           </div>
