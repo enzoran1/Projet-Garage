@@ -23,3 +23,7 @@ ajoutPanier.addEventListener("click",(event) =>{
 
 
 
+
+
+
+

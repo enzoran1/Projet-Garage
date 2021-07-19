@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/css/panier.css">
   <link rel="stylesheet" href="/css/annonces.css">
   <link rel="stylesheet" href="/css/pneu.css">
+  
   <title><?= $title ?? '' ?></title>
   <script
     src="https://code.jquery.com/jquery-3.6.0.js"
