@@ -374,13 +374,8 @@ class AdminController extends Controller
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
     $newPhoto = new PhotoModel();
-<<<<<<< HEAD
-    $newPhoto->setLib_photo($uploadfile)
-      ->setId_avendre($id);
-=======
     $newPhoto->setLib_photo(str_replace('../public', '',$uploadfile))
              ->setId_avendre($id);
->>>>>>> enzo
     $newPhoto->create();
     header('Location: /admin/annonces');
   }
