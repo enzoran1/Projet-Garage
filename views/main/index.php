@@ -14,7 +14,11 @@
     <div class="carte__container-content">
       <img src="image/icons8-vol-de-voiture-100.png" alt="">
       <p>Découvrez nos prestations</p>
+<<<<<<< HEAD
       <a href="Prestation/index">Découvrir</a>
+=======
+      <a href="/Prestation">Découvrir</a>
+>>>>>>> enzo
     </div>
     <div class="carte__container-content">
       <img src="image/icons8-liste-de-vérification-100.png" alt="">
