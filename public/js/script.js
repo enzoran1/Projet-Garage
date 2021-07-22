@@ -8,17 +8,6 @@ navButton.addEventListener("click", function(){
 
 
 
-const ajoutPanier = document.querySelector('#panier-ajout');
-const hidden = document.querySelector('.hidden');
-
-
-ajoutPanier.addEventListener("click",(event) =>{
-
-    hidden.classList.toggle("show")
-
-    
-
-})
 
 
 

@@ -9,7 +9,7 @@
 <div class="form__container">
     <div class="form__content">
         <label for="">Votre email :</label>
-        <input type="text" name="email" id="email">
+        <input type="email" name="email" id="email">
     </div>
     <div class="form__content">
         <label for="">Votre mot de passe :</label>
