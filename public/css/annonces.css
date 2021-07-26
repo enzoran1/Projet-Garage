@@ -390,38 +390,107 @@
 
 
 
+.achat-vehicule-grid{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+.achat-vehicule-container{
+  width: 300px;
+  margin-top: 30px;
+}
+.achat-vehicule-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #489897;
+  margin-bottom: 30px;
+}
+.achat-vehicule-image-content img{
+  width: 300px;
+  height: 200px;
+}
+.achat-vehicule-content-marque-prix{
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  padding-top: 20px;
+}
+.achat-vehicule-content-marque-prix p{
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+  font-weight: bold;
+}
+.achat-vehicule-content-type{
+  text-align: left;
+  width: 300px;
+}
+.achat-vehicule-content-type p{
+  text-align: left;
+  width: 300px;
+  margin-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color:#eec47a;
+  font-weight: bold;
+}
+.achat-vehicule-content-km-annee-motorisation{
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.achat-vehicule-content-km-annee-motorisation p{
+  color: #eec47a;
+  font-weight: bold;
 
-.diapo {
-    position: relative;
-    overflow: hidden;
-  }
+}
+.achat-vehicule-content-description{
   
-  #nav-droite,
-  #nav-gauche {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 3em;
-  }
+}
+.achat-vehicule-content-description p{
+  color: white;
+  font-weight: bold;
+  width: 300px;
+  margin-left: 20px;
+}
+.achat-vehicule-btn{
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.achat-vehicule-btn a{
   
-  #nav-droite {
-    right: 20px;
+  padding: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #2f3d4a;
+  color: white;
+  font-weight: bold;
+  border-radius: 10%/50%;
+  text-decoration: none;
+ 
+}
+
+
+@media screen and (min-width: 688px) {
+  .achat-vehicule-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
   }
-  #nav-gauche {
-    left: 20px;
-  }
-  
-  .elements {
+  .achat-vehicule-center{
     display: flex;
-    transition: 1s linear;
+    justify-content: center;
   }
-  
-  .element {
-    flex: 1 0 100%;
-    position: relative;
+}
+@media screen and (min-width: 988px){
+  .achat-vehicule-grid{
+    
+    grid-template-columns: 1fr 1fr 1fr;
+
   }
-  
-  .element > img {
-    width: 100%;
-  }
+}
