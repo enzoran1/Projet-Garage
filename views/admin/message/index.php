@@ -30,13 +30,11 @@
                     <p class="message__overflow"><?= $message->message ?></p>
                 </div>
                 <div class="message__btn">
-                    <a href="/admin/supprimerMessage/<?= $message->id ?>">Supprimer</a>
-                </div>
-            </div>
-            <div class="message__btn">
                 <a href="/admin/supprimerMessage/<?= $message->id ?>" onclick="return confirm('Etes-vous sûre ?');">Supprimer</a>
 
             </div>
+            </div>
+           
         </div>
 </div>
 
