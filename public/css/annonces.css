@@ -407,6 +407,7 @@
   align-items: center;
   background-color: #489897;
   margin-bottom: 30px;
+  height: 250px;
 }
 .achat-vehicule-image-content img{
   width: 300px;
@@ -443,6 +444,7 @@
   justify-content: space-around;
   padding-top: 20px;
   padding-bottom: 20px;
+  
 }
 .achat-vehicule-content-km-annee-motorisation p{
   color: #eec47a;
@@ -492,3 +494,52 @@
 
   }
 }
+
+
+
+.diapo {
+  position: relative;
+  overflow: hidden;
+}
+
+#nav-droite,
+#nav-gauche {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 3em;
+}
+
+#nav-droite {
+  right: 20px;
+}
+#nav-gauche {
+  left: 20px;
+}
+
+.elements {
+  display: flex;
+  transition: 1s linear;
+}
+
+.element {
+  flex: 1 0 100%;
+  position: relative;
+}
+
+.element > img {
+  width: 100%;
+  max-height: 200px;
+  min-height: 200px;
+}
+
+/* .caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 30px;
+} */
