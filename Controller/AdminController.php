@@ -192,7 +192,11 @@ class AdminController extends Controller
 
     $message = new MessageModel;
     $message->delete($id);
+<<<<<<< HEAD
     header('Location: /admin/message/index');
+=======
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+>>>>>>> enzo
   }
 
 

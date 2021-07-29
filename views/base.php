@@ -18,11 +18,7 @@
   <link rel="stylesheet" href="/css/pneu.css">
   
   <title><?= $title ?? '' ?></title>
-  <script
-    src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous">
-</script>
+
 </head>
 
 <body>
@@ -54,7 +50,7 @@
           <a href="">Rendez-vous</a>
         </li>
         <li class="navbar-menu__item">
-          <a href="">Achat véhicules</a>
+          <a href="/Annonces">Achat véhicules</a>
         </li>
         <li class="navbar-menu__item">
           <a href="/Compte">Compte</a>
@@ -85,7 +81,7 @@
           <li class="navbar2__menu-item"><a href="/">Accueil</a></li>
           <li class="navbar2__menu-item"><a href="/prestation">Prestations</a></li>
           <li class="navbar2__menu-item"><a href="">Rendez-vous</a></li>
-          <li class="navbar2__menu-item"><a href="">Achat véhicules</a></li>
+          <li class="navbar2__menu-item"><a href="/Annonces">Achat véhicules</a></li>
           <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
           <?php 
