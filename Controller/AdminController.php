@@ -86,20 +86,12 @@ class AdminController extends Controller
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
 
-<<<<<<< HEAD
-    return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
-  }
-
-  public function modifierProfiladmin(int $id)
-  { // Modification du profil 
-=======
 
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
   //modifier profil utilisateur
   public function modifierProfiladmin(int $id)
   {
->>>>>>> enzo
     $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
     $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
     $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);
@@ -127,17 +119,6 @@ class AdminController extends Controller
 
 
     header('Location: /admin');
-<<<<<<< HEAD
-    exit; 
-  }
-
-  public function supprimerUtilisateur(int $id)
-  {
-
-    $utilisateurModel = new UtilisateursModel;
-    $vehiculeModel = new VehiculeModel;
-
-=======
     exit;
   }
   public function supprimerUtilisateur(int $id)
@@ -146,7 +127,6 @@ class AdminController extends Controller
     $utilisateurModel = new UtilisateursModel;
     $vehiculeModel = new VehiculeModel;
 
->>>>>>> enzo
     $vehiculeModel->requete('DELETE vehicule.* FROM vehicule WHERE id_utilisateur = ' . $id);
     $utilisateurModel->requete('DELETE utilisateur.* FROM utilisateur WHERE id = ' . $id);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -192,17 +172,11 @@ class AdminController extends Controller
 
     $message = new MessageModel;
     $message->delete($id);
-<<<<<<< HEAD
-    header('Location: /admin/message/index');
-=======
     header('Location: ' . $_SERVER['HTTP_REFERER']);
->>>>>>> enzo
   }
 
 
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -216,7 +190,6 @@ class AdminController extends Controller
 
 
 
->>>>>>> enzo
   // les annonces
 
   public function supprimerAnnonces(int $id)
@@ -248,12 +221,9 @@ class AdminController extends Controller
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
     
       order by lib_marque asc');
-<<<<<<< HEAD
-=======
       // il faut ajouter la putain de photo :'(  
         // requete pour lié les photo et l'annonce 
       // $requete2 = $photoModel->requete('SELECT * FROM photo WHERE id_avendre ='.$id)
->>>>>>> enzo
 
       // méthode 
       $annonces = $requete->fetchAll();
@@ -361,11 +331,7 @@ class AdminController extends Controller
 
 
     header('Location: /admin/annonces/');
-<<<<<<< HEAD
-    exit; 
-=======
     exit;
->>>>>>> enzo
   }
 
   public function ajoutAnnonces()
@@ -422,18 +388,11 @@ class AdminController extends Controller
 
 
 
-<<<<<<< HEAD
-  public function prestations()
-  {   //Les prestations
-    if(empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN')
-    { 
-=======
 
   //Les prestations
   public function prestations()
   {
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
->>>>>>> enzo
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
     } else {

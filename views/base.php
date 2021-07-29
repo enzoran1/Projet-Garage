@@ -5,17 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/prestations.css">
-  <link rel="stylesheet" href="/css/connexion.css">
-  <link rel="stylesheet" href="/css/inscription.css">
-  <link rel="stylesheet" href="/css/contact.css">
-  <link rel="stylesheet" href="/css/tableauutilisateur.css">
-  <link rel="stylesheet" href="/css/dashboard.css">
-  <link rel="stylesheet" href="/css/admin.css">
-  <link rel="stylesheet" href="/css/message.css">
-  <link rel="stylesheet" href="/css/panier.css">
-  <link rel="stylesheet" href="/css/annonces.css">
-  <link rel="stylesheet" href="/css/pneu.css">
   
   <title><?= $title ?? '' ?></title>
 
