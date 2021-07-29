@@ -530,8 +530,9 @@
 
 .element > img {
   width: 100%;
-  max-height: 200px;
-  min-height: 200px;
+  height: 250px;
+  object-fit: cover; 
+  
 }
 
 /* .caption {
