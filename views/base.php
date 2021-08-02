@@ -5,17 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/prestations.css">
-  <link rel="stylesheet" href="/css/connexion.css">
-  <link rel="stylesheet" href="/css/inscription.css">
-  <link rel="stylesheet" href="/css/contact.css">
-  <link rel="stylesheet" href="/css/tableauutilisateur.css">
-  <link rel="stylesheet" href="/css/dashboard.css">
-  <link rel="stylesheet" href="/css/admin.css">
-  <link rel="stylesheet" href="/css/message.css">
-  <link rel="stylesheet" href="/css/panier.css">
-  <link rel="stylesheet" href="/css/annonces.css">
-  <link rel="stylesheet" href="/css/pneu.css">
   
   <title><?= $title ?? '' ?></title>
 
@@ -25,7 +14,7 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <a href=""> <img src="/image/logo-nav.png" alt="logo"></a>
+        <a href="/"> <img src="/image/logo-nav.png" alt="logo"></a>
       </div>
       <div class="navbar__container">
         <div class="navbar__container-panier">
@@ -58,7 +47,9 @@
         <li class="navbar-menu__item">
           <a href="/Contact">Contacts</a>
         </li>
+
         <?php 
+        // Ce lien de la barre nav est uniquement disponible pour les utilisateurs admin * 
           if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN'){ ?>
             <li class="navbar-menu__item">
           <a href="/Admin">Admin</a>
@@ -83,6 +74,7 @@
           <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
           <?php 
+          // Ce lien de la barre nav est uniquement disponible pour les utilisateurs admin * 
           if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN'){ ?>
             <li class="navbar2__menu-item">
           <a href="/Admin">Admin</a>
