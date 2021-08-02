@@ -10,17 +10,12 @@ class Db extends PDO{
     private const DBUSER = 'root';
     private const DBPASS = '';
     private const DBNAME = 'garage';
-<<<<<<< HEAD
-    private function __construct(){
-        $_dsn = 'mysql:dbname=' . self::DBNAME . ';host=' . self::DBHOST;
-=======
 
     private function __construct()
     {
         // DSN de connexion
         $_dsn = 'mysql:dbname=' . self::DBNAME . ';host=' . self::DBHOST . ";charset=UTF8";
 
->>>>>>> enzo
         // On appelle le constructeur de la classe PDO
         try {
             parent::__construct($_dsn, self::DBUSER, self::DBPASS);

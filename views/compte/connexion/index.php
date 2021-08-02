@@ -6,12 +6,6 @@
 </div>
 
 <form action="/Compte/login" method="POST" class="form">
-<<<<<<< HEAD
-<div class="form__container">
-    <div class="form__content">
-        <label for="">Votre email :</label>
-        <input type="email" name="email" id="email">
-=======
     <div class="form__container">
         <div class="form__content">
             <label for="email">Votre email :</label>
@@ -27,6 +21,5 @@
         <div class="form__inscription">
             <a href="/Inscription">Pas de compte inscrivez-vous</a>
         </div>
->>>>>>> enzo
     </div>
 </form>
