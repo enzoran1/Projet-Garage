@@ -30,19 +30,19 @@
            </div>
             <div class="achat-vehicule-content">
                 <div class="achat-vehicule-content-marque-prix">
-                <p><?=$annonce->lib_marque?></p>
-                <p><?=$annonce->prix?>€</p>
+                    <p><?=$annonce->lib_marque?></p>
+                    <p><?=$annonce->prix?>€</p>
                 </div>
                 <div class="achat-vehicule-content-type">
-                <p><?=$annonce->lib_type?></p>
+                    <p><?=$annonce->lib_type?></p>
                 </div>
                 <div class="achat-vehicule-content-description">
-                <p><?=$annonce->description?></p>
+                    <p><?=$annonce->description?></p>
                 </div>
                 <div class="achat-vehicule-content-km-annee-motorisation">
-                <p><?=$annonce->km?>km</p>
-                <p><?=$annonce->annee?></p>
-                <p><?=$annonce->lib_motorisation?></p>
+                    <p><?=$annonce->km?>km</p>
+                    <p><?=$annonce->annee?></p>
+                    <p><?=$annonce->lib_motorisation?></p>
                 </div>
                 <div class="achat-vehicule-btn">
                     <a href="">En savoir plus</a>
