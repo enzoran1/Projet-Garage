@@ -1,6 +1,6 @@
 <?php
 
-// le Controlleur qui appelle tout les controlleur pour emilie
+// le Controlleur qui appelle tout les controlleur
 
 namespace App\Controller;
 

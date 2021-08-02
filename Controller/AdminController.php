@@ -23,19 +23,20 @@ class AdminController extends Controller
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       header('Location: /');
-    } else {
+    } 
+    else 
+    {
       return $this->render('admin/index');
     }
   }
-
-
 
   //les utilisateurs
 
   public function utilisateurs()
   {
 
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
     }
@@ -54,34 +55,33 @@ class AdminController extends Controller
     order by nom asc'
     );
     $utilisateur = $requete->fetchAll();
-    // on va chercher toutes les utilisateur
-
-    //$utilisateur = $utilisateurModel->findAll();
+    // on va chercher toutes les utilisateur ainsi que les informations de leurs véhicules 
 
     // On génére la vue 
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
   }
 
-  //formulaire de modification utilisateur
+
   public function modifClientForm($id)
+  //formulaire de modification utilisateur
   {
     $utilisateurModel = new UtilisateursModel;
     $requete = $utilisateurModel->requete(
-      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
-    FROM utilisateur
-    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
-    INNER JOIN marque ON vehicule.id_marque = marque.id
-    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
-    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
-    WHERE utilisateur.id = 
-    ' . $id
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, 
+      vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
+      FROM utilisateur
+      INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+      INNER JOIN marque ON vehicule.id_marque = marque.id
+      INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+      INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+      WHERE utilisateur.id = ' . $id
     );
+
+
     $utilisateurs = $requete->fetchAll();
-    //var_dump($utilisateurs);exit;
     $marqueModel = new MarqueModel;
     $motorisationModel = new MotorisationModel;
     $typeVehiculeModel = new TypeVehiculeModel;
-    // on va chercher tout
     $marques = $marqueModel->findAllOrdre();
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
@@ -148,11 +148,14 @@ class AdminController extends Controller
   // les messages
 
   public function message()
-  {
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
+  { // Accessible uniquement pour l'utilisateur admin, affiche les messages envoyés via le forumulaire de contact 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
-    } else {
+    } 
+    else 
+    {
       // instancier le model 
       $messageModel = new MessageModel;
 
@@ -163,13 +166,14 @@ class AdminController extends Controller
     }
   }
 
-  //supprimer message
+
   public function supprimerMessage(int $id)
-  {
+  {   //supprimer un message du formulaire de contact 
+
     $message = new MessageModel;
     $message->delete($id);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
-  //supprimer utilisateur
 
 
 
@@ -189,7 +193,7 @@ class AdminController extends Controller
   // les annonces
 
   public function supprimerAnnonces(int $id)
-  {
+  { //supprimer une annonce enregistré par l'admin  
     $annoncesModel = new AnnoncesModel;
     $photoModel = new PhotoModel;
     $photoModel->requete('DELETE photo.* FROM photo WHERE id_avendre = ' . $id);
@@ -200,11 +204,13 @@ class AdminController extends Controller
 
 
   public function annonces()
-  {
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
-      // renvoyer une erreur, chercher le code 
+  { // Afficher les annonces 
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
+    {
       return $this->render('main/index');
-    } else {
+    } 
+    else 
+    {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
       $photoModel = new PhotoModel;
@@ -253,7 +259,6 @@ class AdminController extends Controller
     $marques = $marqueModel->findAllOrdre();
     $motorisations = $motorisationModel->findAll();
     $types = $typeVehiculeModel->findAll();
-
 
     return $this->render('admin/annonces/ajoutAnnonces/index', compact('marques', 'motorisations', 'types'));
   }
@@ -331,7 +336,6 @@ class AdminController extends Controller
 
   public function ajoutAnnonces()
   {
-
     if (Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type', 'description', 'prix'])) {
       $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
       $description = strip_tags($_POST['description'], PDO::PARAM_STR);

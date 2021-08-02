@@ -14,20 +14,27 @@
         <form enctype="multipart/form-data" action="/admin/ajouterPhoto/<?=$annonce->id?>" method="POST">
            <input class="input-file" type="file" name="photo" id="photo"  accept="image/png, image/jpeg">
           
-           
+           <div class="diapo">
+           <div class="elements">
            <?php if(isset($photos[$annonce->id])) {
            
-           foreach($photos[$annonce->id] as $photo) :?>
+           foreach($photos[$annonce->id] as $key => $photo) :?>
+             
 
-                       <div class="admin-annonces-photo">
+                       <div class="element <?=$key == 0 ? "active" : ""?>">
                                 <img src="<?= $photo->lib_photo ?>" alt="">
                             </div>
-       
+
+             
        
             
 
             <?php endforeach;
             }?>
+            </div>
+             <i id="nav-gauche" class="las la-chevron-left"><</i>
+             <i id="nav-droite" class="las la-chevron-right">></i>
+           </div>
            
            <button type="submit">Envoyer photo</button>
         </form>
