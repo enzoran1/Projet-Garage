@@ -27,8 +27,6 @@ class Autoloader
         // Le DIR  sert à savoir dans quel dossier se trouve l'autoloader
         $fichier = __DIR__ . '/' . $class . '.php';
         
-        
-
         // on vérifie si le fichier existe
         if(file_exists($fichier))
         {

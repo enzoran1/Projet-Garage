@@ -168,6 +168,7 @@ class AdminController extends Controller
   {
     $message = new MessageModel;
     $message->delete($id);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
   //supprimer utilisateur
 

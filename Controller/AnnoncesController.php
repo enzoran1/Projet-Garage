@@ -3,28 +3,46 @@
 namespace App\Controller;
 
 use App\Models\AnnoncesModel;
+use App\Models\PhotoModel;
 
 class AnnoncesController extends Controller
 {
-    /**
-     * Cette méthode affichera une page listant tout les utilisateurs
-     * 
-     *
-     * @return void
-     */
+   
     public function index()
     {
 
-        //on instancie le modéle correspondant a la table 'utilisitateur
+    // instancier le model 
+    $annoncesModel = new AnnoncesModel;
+    $photoModel = new PhotoModel;
+    $requete = $annoncesModel->requete('SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
+    FROM a_vendre
+    INNER JOIN marque ON a_vendre.id_marque = marque.id
+    INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
+    INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+  
+    order by lib_marque asc');
 
-        $annoncesModel = new AnnoncesModel;
+    $annonces = $requete->fetchAll();
+   
 
-        // on va chercher toutes les utilisateur
+    $photosBdd = $photoModel->findAll();
 
-        $annonces = $annoncesModel->findAll();
+
+    $photos=[];
+
+    foreach($photosBdd as $photoBdd) {
+      if(!isset($photos[$photoBdd->id_avendre])) {
+        $photos[$photoBdd->id_avendre] = [];
+      }
+      $photos[$photoBdd->id_avendre][] = $photoBdd;
+
+    }
 
 
         // On génére la vue 
-        $this->render('annonces/index', compact('annonces'));
+        $this->render('annonces/index', compact('annonces', 'photos'));
     }
 }
+
+
+
