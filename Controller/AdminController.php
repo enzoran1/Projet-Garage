@@ -42,20 +42,21 @@ class AdminController extends Controller
     }
 
     //on instancie le modéle correspondant a la table 'utilisitateur
-
     $utilisateurModel = new UtilisateursModel;
-    $requete = $utilisateurModel->requete(
-      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
-    FROM utilisateur
-    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
-    INNER JOIN marque ON vehicule.id_marque = marque.id
-    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
-    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
-    WHERE utilisateur.role = "ROLE_USER" 
-    order by nom asc'
+    $requete = $utilisateurModel->requete
+    (
+      'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, 
+      vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
+      FROM utilisateur
+      INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+      INNER JOIN marque ON vehicule.id_marque = marque.id
+      INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+      INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+      WHERE utilisateur.role = "ROLE_USER" 
+      order by nom asc'
     );
-    $utilisateur = $requete->fetchAll();
     // on va chercher toutes les utilisateur ainsi que les informations de leurs véhicules 
+    $utilisateur = $requete->fetchAll();
 
     // On génére la vue 
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
@@ -66,7 +67,8 @@ class AdminController extends Controller
   //formulaire de modification utilisateur
   {
     $utilisateurModel = new UtilisateursModel;
-    $requete = $utilisateurModel->requete(
+    $requete = $utilisateurModel->requete
+    (
       'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, 
       vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
       FROM utilisateur
@@ -89,6 +91,7 @@ class AdminController extends Controller
 
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
+
   //modifier profil utilisateur
   public function modifierProfiladmin(int $id)
   {
@@ -121,6 +124,7 @@ class AdminController extends Controller
     header('Location: /admin');
     exit;
   }
+  
   public function supprimerUtilisateur(int $id)
   {
 
