@@ -154,10 +154,9 @@ class CompteController extends Controller
 
             // On génére la vue 
             return $this->render('compte/ajoutVehicule/index', compact('marques', 'motorisations', 'types'));
-        }
-
-        
-        else // sinon, ajout de véhicule de l'utilisateur
+        }        
+        else 
+        // sinon, ajout de véhicule de l'utilisateur
         {
             $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
             $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
@@ -185,14 +184,16 @@ class CompteController extends Controller
         //on instancie le modéle correspondant a la table vehicule
         $vehiculeModel = new VehiculeModel;
         // on va chercher toutes les vehicule de l'utilisateur
-        $requete = $vehiculeModel->requete(
+        $requete = $vehiculeModel->requete
+        (
             'SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
             FROM vehicule
             INNER JOIN marque ON vehicule.id_marque = marque.id
             INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
             INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
             WHERE id_utilisateur = ' . $_SESSION['user']['id']
-                        );
+        );
+        
         $vehicules = $requete->fetchAll();
         // On génére la vue 
         return $this->render('/compte/vehicule', compact('vehicules'));
