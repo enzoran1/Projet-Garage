@@ -36,7 +36,7 @@
           <a href="/Prestation">Prestations</a>
         </li>
         <li class="navbar-menu__item">
-          <a href="">Rendez-vous</a>
+          <a href="/RendezVous">Rendez-vous</a>
         </li>
         <li class="navbar-menu__item">
           <a href="/Annonces">Achat véhicules</a>
@@ -69,7 +69,7 @@
         <ul class="navbar2__menu">
           <li class="navbar2__menu-item"><a href="/">Accueil</a></li>
           <li class="navbar2__menu-item"><a href="/prestation">Prestations</a></li>
-          <li class="navbar2__menu-item"><a href="">Rendez-vous</a></li>
+          <li class="navbar2__menu-item"><a href="Rendezvous">Rendez-vous</a></li>
           <li class="navbar2__menu-item"><a href="/Annonces">Achat véhicules</a></li>
           <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
