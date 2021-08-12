@@ -431,9 +431,9 @@ class AdminController extends Controller
       $categorieModel = new CategorieprestationsModel;
       $requete = $categorieModel->requete(
         'SELECT *
-      FROM categorie_prestation
-      WHERE id = 
-      ' . $id
+        FROM categorie_prestation
+        WHERE id = 
+        ' . $id
       );
       $categorie = $requete->fetchAll();
       // render la view
