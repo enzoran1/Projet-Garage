@@ -4,7 +4,7 @@ namespace App;
 class Autoloader
 {
     // cette fonction permet de lancer le spl qui va détecter le chargement de class
-    // les méthodes statiques va permettre de ne pas instancier la class et d'appeller directement le register()
+    // les méthodes statiques vont permettre de ne pas instancier la class et d'appeller directement le register()
     static function register()
     {
         // la fonction spl permet de détecter automatiquement les instanciation (new) de class si la class n'est pas connu elle 
@@ -34,3 +34,4 @@ class Autoloader
         }
     }
 }
+
