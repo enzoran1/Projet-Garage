@@ -1,3 +1,5 @@
+
+
 const navButton = document.querySelector(".navbar__container-burger");
 const navMenu = document.querySelector(".navbar__menu");
 

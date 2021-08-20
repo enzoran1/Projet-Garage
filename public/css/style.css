@@ -1,6 +1,6 @@
 
 
-* {
+*{
     margin: 0;
     padding: 0;
 }
@@ -294,12 +294,7 @@ body{
 }
 
 
-
-
 /* achat de véhicules  */
-/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
-
 
 a.customButton { 
     background: rgba( 255, 255, 255, 0.25 );
@@ -312,7 +307,23 @@ a.customButton {
     text-decoration: none;
 }
 
-.presentation-container {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.presentation-container{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -320,10 +331,10 @@ a.customButton {
         -ms-flex-pack: center;
             justify-content: center;
     margin-top: 50px;
-    margin-bottom: 50px;    
+    margin-bottom: 50px;
+    
 }
-
-.presentation-container__content {
+.presentation-container__content{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -340,20 +351,18 @@ a.customButton {
     padding: 10px;
     text-align: center;
     color: white;
-}
 
-.presentation-container__content h2 {
+}
+.presentation-container__content h2{
     margin-bottom: 15px;
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
 }
-
-#color {
+#color{
     color: #EEC47A;
 }
-
-.presentation-container__content p {
+.presentation-container__content p{
     font-weight: bold;
     text-align: justify;
     margin-left: 15px;
@@ -361,9 +370,10 @@ a.customButton {
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
+    
 }
 
-@media screen and (min-width:688px) {
+@media screen and (min-width:688px){
     .presentation-container{
         margin-bottom: 0px;
         -webkit-transition: 1s;
@@ -371,21 +381,21 @@ a.customButton {
         transition: 1s;
         
     }
-    .presentation-container__content h2 {
+    .presentation-container__content h2{
         font-size: 230%;
         -webkit-transition: 1s;
         -o-transition: 1s;
         transition: 1s;
     }
-    .presentation-container__content p {
+    .presentation-container__content p{
         font-size: 120%;
         -webkit-transition: 1s;
         -o-transition: 1s;
         transition: 1s;
     }
 }
-@media screen and (min-width:1300px) {
-    .presentation-container__content p {
+@media screen and (min-width:1300px){
+    .presentation-container__content p{
         font-size: 140%;
         padding-left: 50px;
         padding-right: 50px;
@@ -393,7 +403,7 @@ a.customButton {
         -o-transition: 1s;
         transition: 1s;
     }
-    .presentation-container__content h2 {
+    .presentation-container__content h2{
         font-size: 250%;
         -webkit-transition: 1s;
         -o-transition: 1s;
@@ -403,7 +413,33 @@ a.customButton {
 }
 
 
-.carte {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carte{
 
     min-height: 90vh;
     margin: 0;
@@ -423,7 +459,7 @@ a.customButton {
     
 }
 
-.carte__container {
+.carte__container{
     width: 300px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -438,7 +474,7 @@ a.customButton {
         -ms-flex-align: center;
             align-items: center;
 }
-.carte__container:hover .carte__container-content:not(:hover) {
+.carte__container:hover .carte__container-content:not(:hover){
     -webkit-transform: scale(0.9);
         -ms-transform: scale(0.9);
             transform: scale(0.9);
@@ -446,7 +482,7 @@ a.customButton {
 
 }
 
-.carte__container-content {
+.carte__container-content{
 
     display: -webkit-box;
 
@@ -472,13 +508,13 @@ a.customButton {
     border-radius: 5px;
 }
 
-.carte__container-content:hover {
+.carte__container-content:hover{
     -webkit-transform: scale(1);
         -ms-transform: scale(1);
             transform: scale(1);
 }
 
-.carte__container-content img {
+.carte__container-content img{
     width: 80px;
     height: 80px;
     -webkit-transition: 1s;
@@ -486,13 +522,13 @@ a.customButton {
     transition: 1s;
 }
 
-.carte__container-content p {
+.carte__container-content p{
     color: white;
     font-weight: bold;
     font-size: 120%;
 }
 
-.carte__container-content a {
+.carte__container-content a{
     background-color: #2F3D4A ;
     padding: 7px;
     padding-left: 30px;
@@ -508,7 +544,7 @@ a.customButton {
     font-weight: bold;
     transition: 1s;
 }
-.carte__container-content a:hover {
+.carte__container-content a:hover{
     opacity: 1;
     -webkit-transition: 1s;
     -o-transition: 1s;
@@ -516,7 +552,7 @@ a.customButton {
 }
 
 
-@media screen and (min-width:688px) {
+@media screen and (min-width:688px){
 
     .carte__container{
         width: 100vw;
@@ -531,7 +567,7 @@ a.customButton {
             justify-content: space-around;
         
     }
-    .carte__container-content {
+    .carte__container-content{
 
         display: -webkit-box;
 
@@ -558,14 +594,14 @@ a.customButton {
         align-items: center;
         
     }
-    .carte__container-content p {
+    .carte__container-content p{
         
         text-align: center;
     }
     
 }
 
-@media screen and (min-width:988px) {
+@media screen and (min-width:988px){
 
     .carte__container-content{
 
@@ -579,7 +615,7 @@ a.customButton {
 
 }
 
-@media screen and (min-width:1300px) {
+@media screen and (min-width:1300px){
     .carte__container-content{
 
         height: 360px;
@@ -587,20 +623,20 @@ a.customButton {
         
         
     }
-    .carte__container-content img {
+    .carte__container-content img{
         width: 100px;
         height: 100px;
         -webkit-transition: 1s;
         -o-transition: 1s;
         transition: 1s;
     }
-    .carte__container-content p {
+    .carte__container-content p{
         -webkit-transition: 1s;
         -o-transition: 1s;
         transition: 1s;
         font-size: 140%;
     }
-    .carte__container-content a {
+    .carte__container-content a{
         padding: 10px;
         padding-left: 40px;
         padding-right: 40px;
@@ -612,7 +648,7 @@ a.customButton {
 
 }
 
-.footer {
+.footer{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -816,6 +852,7 @@ a.customButton {
     margin-bottom: 40px;
     transition: 1s;
   }
+
   .admin__content img {
     width: 80px;
     height: 80px;
@@ -888,8 +925,6 @@ a.customButton {
       transition: 1s;
     }
     .admin-flex {
-      display: flex;
-      justify-content: space-around;
       width: 1200px;
       transition: 1s;
     }
@@ -1431,8 +1466,8 @@ a.customButton {
   
   .element > img {
     width: 100%;
-    max-height: 200px;
-    min-height: 200px;
+    height: 250px;
+    object-fit: cover;
   }
   
 /* Connexion */
@@ -3535,3 +3570,14 @@ a.customButton {
     }
   }
   
+
+/* Rendez-vous */
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */ 
+
+.agenda__container { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

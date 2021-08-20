@@ -36,7 +36,7 @@
           <a href="/Prestation">Prestations</a>
         </li>
         <li class="navbar-menu__item">
-          <a href="">Rendez-vous</a>
+          <a href="/RendezVous">Rendez-vous</a>
         </li>
         <li class="navbar-menu__item">
           <a href="/Annonces">Achat véhicules</a>
@@ -61,15 +61,15 @@
     <nav class="navbar2">
       <div class="navbar2__flex">
         <div class="navbar2__logo">
-          <img src="/image/logo-nav.png" alt="logo">
-          <a href="">
+          <a href="/"> <img src="/image/logo-nav.png" alt="logo"> </a>
+          <a href="/">
             <p>Garage Jovanic</p>
           </a>
         </div>
         <ul class="navbar2__menu">
           <li class="navbar2__menu-item"><a href="/">Accueil</a></li>
           <li class="navbar2__menu-item"><a href="/prestation">Prestations</a></li>
-          <li class="navbar2__menu-item"><a href="">Rendez-vous</a></li>
+          <li class="navbar2__menu-item"><a href="Rendezvous">Rendez-vous</a></li>
           <li class="navbar2__menu-item"><a href="/Annonces">Achat véhicules</a></li>
           <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
