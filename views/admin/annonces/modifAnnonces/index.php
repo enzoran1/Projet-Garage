@@ -73,7 +73,7 @@
         
         <div class="form4__flex-btn">
             <button type="submit">Envoyer</button>
-            <a href="/compte">Annuler</a>
+            <a href="/admin/annonces">Annuler</a>
             </div>
         </div>
     </div>

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<h1>Véhicules à vendre</h1>
-
-=======
 <div class="ban" id="ban__messageutilisateur">
     <h1>Nos véhicules</h1>
 </div>
@@ -10,28 +6,20 @@
 
 <?php foreach($annonces as $annonce) : ?>
     <div class="achat-vehicule-center">
-    <div class="achat-vehicule-container">
-    <div class="diapo">
-           <div class="elements">
-           <?php if(isset($photos[$annonce->id])) {
-           
-           foreach($photos[$annonce->id] as $key => $photo) :?>
-             
-
-                       <div class="element <?=$key == 0 ? "active" : ""?>">
-                                <img src="<?= $photo->lib_photo ?>" alt="">
-                            </div>
-
-             
-       
-            
-
-            <?php endforeach;
-            }?>
-            </div>
-             <i id="nav-gauche" class="las la-chevron-left"><</i>
-             <i id="nav-droite" class="las la-chevron-right">></i>
-           </div>
+        <div class="achat-vehicule-container">
+            <div class="diapo">
+                <div class="elements">
+                <?php if(isset($photos[$annonce->id])) {
+                foreach($photos[$annonce->id] as $key => $photo) :?>   
+                    <div class="element <?=$key == 0 ? "active" : ""?>">
+                        <img src="<?= $photo->lib_photo ?>" alt="">
+                    </div>
+                <?php endforeach;
+                }?>
+                </div>
+                    <i id="nav-gauche" class="las la-chevron-left"><</i>
+                    <i id="nav-droite" class="las la-chevron-right">></i>
+                </div>
             <div class="achat-vehicule-content">
                 <div class="achat-vehicule-content-marque-prix">
                     <p><?=$annonce->lib_marque?></p>
@@ -52,15 +40,9 @@
                     <a href="">En savoir plus</a>
                 </div>
             </div>
-           
-
-      
-   
-    </div>
-    </div>
-    
+        </div>
+    </div>  
 <?php endforeach; ?>
 </div>
 
     
->>>>>>> enzo

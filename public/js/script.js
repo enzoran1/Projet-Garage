@@ -9,17 +9,6 @@ navButton.addEventListener("click", function(){
 })
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-=======
 const tableauDiapo = [];
 
 window.onload = () => {
@@ -115,4 +104,3 @@ function stopTimer(index){
 function startTimer(index){
     tableauDiapo[index].timer = setInterval(slideNext.bind(null,index), 4000)
 }
->>>>>>> enzo
