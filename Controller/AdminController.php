@@ -47,10 +47,10 @@ class AdminController extends Controller
     $requete = $utilisateurModel->requete(
       'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
     FROM utilisateur
-    INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
-    INNER JOIN marque ON vehicule.id_marque = marque.id
-    INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
-    INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+    LEFT JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+    LEFT JOIN marque ON vehicule.id_marque = marque.id
+    LEFT JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+    LEFT JOIN motorisation ON vehicule.id_motorisation = motorisation.id
     WHERE utilisateur.role = "ROLE_USER" 
     order by nom asc'
     );
@@ -70,10 +70,10 @@ class AdminController extends Controller
       'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, 
       vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
       FROM utilisateur
-      INNER JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
-      INNER JOIN marque ON vehicule.id_marque = marque.id
-      INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
-      INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
+      LEFT JOIN vehicule ON utilisateur.id = vehicule.id_utilisateur
+      LEFT JOIN marque ON vehicule.id_marque = marque.id
+      LEFT JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
+      LEFT JOIN motorisation ON vehicule.id_motorisation = motorisation.id
       WHERE utilisateur.id = ' . $id
     );
 
