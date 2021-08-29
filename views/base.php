@@ -61,8 +61,8 @@
     <nav class="navbar2">
       <div class="navbar2__flex">
         <div class="navbar2__logo">
-          <img src="/image/logo-nav.png" alt="logo">
-          <a href="">
+          <a href="/"> <img src="/image/logo-nav.png" alt="logo"> </a>
+          <a href="/">
             <p>Garage Jovanic</p>
           </a>
         </div>
