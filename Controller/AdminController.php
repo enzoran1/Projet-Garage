@@ -118,7 +118,7 @@ class AdminController extends Controller
     //il faut modifier la session pour rafraichir les valeurs du dashboard
 
 
-    header('Location: /admin');
+    header('Location: /admin/utilisateurs');
     exit;
   }
   public function supprimerUtilisateur(int $id)
@@ -220,7 +220,7 @@ class AdminController extends Controller
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
     
-      order by lib_marque asc');
+      order by id desc');
       // il faut ajouter la putain de photo :'(  
         // requete pour lié les photo et l'annonce 
       // $requete2 = $photoModel->requete('SELECT * FROM photo WHERE id_avendre ='.$id)

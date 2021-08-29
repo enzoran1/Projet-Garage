@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="fr">
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/style.css">
-  
-  <title><?= $title ?? '' ?></title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/style.css">
+
+<title><?= $title ?? '' ?></title>
 
 </head>
 
@@ -48,12 +48,12 @@
           <a href="/Contact">Contacts</a>
         </li>
 
-        <?php 
+        <?php
         // Ce lien de la barre nav est uniquement disponible pour les utilisateurs admin * 
-          if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN'){ ?>
-            <li class="navbar-menu__item">
-          <a href="/Admin">Admin</a>
-        </li>
+        if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN') { ?>
+          <li class="navbar-menu__item">
+            <a href="/Admin">Admin</a>
+          </li>
         <?php  } ?>
       </ul>
     </nav>
@@ -73,14 +73,14 @@
           <li class="navbar2__menu-item"><a href="/Annonces">Achat véhicules</a></li>
           <li class="navbar2__menu-item"><a href="/Compte">Compte</a></li>
           <li class="navbar2__menu-item"><a href="/Contact">Contacts</a></li>
-          <?php 
+          <?php
           // Ce lien de la barre nav est uniquement disponible pour les utilisateurs admin * 
-          if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN'){ ?>
+          if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'ROLE_ADMIN') { ?>
             <li class="navbar2__menu-item">
-          <a href="/Admin">Admin</a>
-        </li>
-        <?php  } ?>
-          
+              <a href="/Admin">Admin</a>
+            </li>
+          <?php  } ?>
+
         </ul>
         <div class="navbar2__panier">
           <a href="/Panier"> <img src="/image/icons8-shopping-cart-48.png" alt="icon shopping"></a>
@@ -90,8 +90,8 @@
   </header>
   <div class="container">
 
-  <?= $contenu ?>
-  
+    <?= $contenu ?>
+
   </div>
   <footer class="footer">
     <div class="footer__top">
@@ -114,9 +114,6 @@
     </div>
   </footer>
   <script src="/js/script.js"></script>
-  <script src="/js/formulaire.js"></script>
-  <script src="/js/modal.js"></script>
-  <script src="/js/ajax/reqajax.js"></script>
 
 </body>
 

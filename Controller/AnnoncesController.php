@@ -20,7 +20,7 @@ class AnnoncesController extends Controller
     INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
     INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
   
-    order by lib_marque asc');
+    order by id desc');
 
     $annonces = $requete->fetchAll();
    
