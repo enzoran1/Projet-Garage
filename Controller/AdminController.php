@@ -23,9 +23,7 @@ class AdminController extends Controller
     if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       header('Location: /');
-    } 
-    else 
-    {
+    } else {
       return $this->render('admin/index');
     }
   }
@@ -35,8 +33,7 @@ class AdminController extends Controller
   public function utilisateurs()
   {
 
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
-    {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
     }
@@ -118,7 +115,7 @@ class AdminController extends Controller
     //il faut modifier la session pour rafraichir les valeurs du dashboard
 
 
-    header('Location: /admin');
+    header('Location: /admin/utilisateurs');
     exit;
   }
   public function supprimerUtilisateur(int $id)
@@ -149,13 +146,10 @@ class AdminController extends Controller
 
   public function message()
   { // Accessible uniquement pour l'utilisateur admin, affiche les messages envoyés via le forumulaire de contact 
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
-    {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       // renvoyer une erreur, chercher le code 
       return $this->render('main/index');
-    } 
-    else 
-    {
+    } else {
       // instancier le model 
       $messageModel = new MessageModel;
 
@@ -205,12 +199,9 @@ class AdminController extends Controller
 
   public function annonces()
   { // Afficher les annonces 
-    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') 
-    {
+    if (empty($_SESSION) || $_SESSION['user']['role'] !== 'ROLE_ADMIN') {
       return $this->render('main/index');
-    } 
-    else 
-    {
+    } else {
       // instancier le model 
       $annoncesModel = new AnnoncesModel;
       $photoModel = new PhotoModel;
@@ -220,26 +211,25 @@ class AdminController extends Controller
       INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
       INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
     
-      order by lib_marque asc');
+      order by id desc');
       // il faut ajouter la putain de photo :'(  
-        // requete pour lié les photo et l'annonce 
+      // requete pour lié les photo et l'annonce 
       // $requete2 = $photoModel->requete('SELECT * FROM photo WHERE id_avendre ='.$id)
 
       // méthode 
       $annonces = $requete->fetchAll();
-     
+
 
       $photosBdd = $photoModel->findAll();
 
 
-      $photos=[];
+      $photos = [];
 
-      foreach($photosBdd as $photoBdd) {
-        if(!isset($photos[$photoBdd->id_avendre])) {
+      foreach ($photosBdd as $photoBdd) {
+        if (!isset($photos[$photoBdd->id_avendre])) {
           $photos[$photoBdd->id_avendre] = [];
         }
         $photos[$photoBdd->id_avendre][] = $photoBdd;
-
       }
 
 
@@ -378,8 +368,8 @@ class AdminController extends Controller
       move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
     }
     $newPhoto = new PhotoModel();
-    $newPhoto->setLib_photo(str_replace('../public', '',$uploadfile))
-             ->setId_avendre($id);
+    $newPhoto->setLib_photo(str_replace('../public', '', $uploadfile))
+      ->setId_avendre($id);
     $newPhoto->create();
     header('Location: /admin/annonces');
   }

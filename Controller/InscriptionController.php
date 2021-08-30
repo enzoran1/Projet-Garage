@@ -17,7 +17,7 @@ class InscriptionController extends Controller
     //inscription
     public function inscription()
     {
-        if (Form::validate($_POST, ['nom', 'prenom', 'adresse', 'tel', 'email', 'mdp', 'mdp2'])) {
+        if (Form::validate($_POST, ['nom', 'prenom', 'adresse', 'tel', 'email', 'mdp'])) {
             $nom = strip_tags($_POST['nom'], PDO::PARAM_STR);
             $prenom = strip_tags($_POST['prenom'], PDO::PARAM_STR);
             $adresse = strip_tags($_POST['adresse'], PDO::PARAM_STR);

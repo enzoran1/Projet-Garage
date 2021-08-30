@@ -4,7 +4,7 @@ namespace App\Models;
 
 class AnnoncesModel extends Model
 {   
-    protected int $id;
+    protected $id;
     protected $prix;
     protected $plaque_immatriculation;
     protected $annee;
