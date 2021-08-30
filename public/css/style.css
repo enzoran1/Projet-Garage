@@ -201,7 +201,7 @@ body{
     background-position: center center;
     
     background-size: cover;
-    height: 50vh;
+    height: 30vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -274,7 +274,7 @@ body{
 }
 @media screen and (min-width:1300px){
     .ban{
-        height: 100vh;
+        height: 50vh;
         -webkit-transition: 1s;
         -o-transition: 1s;
         transition: 1s;
