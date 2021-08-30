@@ -26,7 +26,7 @@ class Db extends PDO{
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e) {
-            die($e->getMessage());
+            die($e->getMessage());    
         }
     }
     //méthode qui vérifie si il y a une instance, si il y en a pas -> créer sinon la retourne
