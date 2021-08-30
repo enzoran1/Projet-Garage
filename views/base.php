@@ -1,13 +1,5 @@
 <!doctype html>
 <html lang="fr">
-<<<<<<< HEAD
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/style.css">
-  
-  <title><?= $title ?? '' ?></title>
-=======
 
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -16,7 +8,6 @@
 
 <title><?= $title ?? '' ?></title>
 
->>>>>>> enzo
 </head>
 
 <body>
@@ -123,6 +114,7 @@
     </div>
   </footer>
   <script src="/js/script.js"></script>
+  <script src="/js/modal.js"></script>
 
 </body>
 
