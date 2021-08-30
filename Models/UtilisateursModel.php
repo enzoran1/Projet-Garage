@@ -22,26 +22,6 @@ class UtilisateursModel extends Model
   }
 
   /**
-   * Get the value of id
-   */
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  /**
-   * Set the value of id
-   *
-   * @return  self
-   */
-  public function setId($id)
-  {
-    $this->id = $id;
-
-    return $this;
-  }
-
-  /**
    * Get the value of nom
    */
   public function getNom()
@@ -57,6 +37,26 @@ class UtilisateursModel extends Model
   public function setNom($nom)
   {
     $this->nom = $nom;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of id
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  /**
+   * Set the value of id
+   *
+   * @return  self
+   */
+  public function setId($id)
+  {
+    $this->id = $id;
 
     return $this;
   }
@@ -164,7 +164,7 @@ class UtilisateursModel extends Model
   /**
    * Get the value of role
    */
-  public function getRole():array
+  public function getRole(): array
   {
     $role = $this->role;
     $role[] = 'ROLE_USER';
@@ -231,12 +231,11 @@ class UtilisateursModel extends Model
       'date_creation' => $this->date_creation
     ];
   }
-// public function deleteUtilisateurAdmin($id){
+  // public function deleteUtilisateurAdmin($id){
 
-//     return $this->requete("DELETE FROM utilisateur , vehicule WHERE utilisateur.id = ? AND vehicule.id_utilisateur = id", [$id]);
+  //     return $this->requete("DELETE FROM utilisateur , vehicule WHERE utilisateur.id = ? AND vehicule.id_utilisateur = id", [$id]);
 
 
-//   }
+  //   }
 
 }
-

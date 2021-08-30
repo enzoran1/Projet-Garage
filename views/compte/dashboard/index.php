@@ -38,7 +38,7 @@
 
 
             <div class="utilisateur2__btn">
-                <a id="affiche-modal" onclick="modal()">Modifier</a>
+                <a id="affiche-modal" href="Compte/editProfileView">Modifier</a>
             </div>
         </div>
     </div>
