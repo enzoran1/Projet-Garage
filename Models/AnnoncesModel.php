@@ -247,7 +247,14 @@ class AnnoncesModel extends Model
         return $this;
     }
 
-
+    public function lesAnnonces(){
+        return $this->requete("SELECT a_vendre.*, marque.lib_marque, motorisation.lib_motorisation, type_vehicule.lib_type
+        FROM a_vendre
+        INNER JOIN marque ON a_vendre.id_marque = marque.id
+        INNER JOIN motorisation ON a_vendre.id_motorisation = motorisation.id 
+        INNER JOIN type_vehicule ON a_vendre.id_type = type_vehicule.id_type
+        order by id desc");
+        }
     }
 
 
