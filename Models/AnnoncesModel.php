@@ -19,9 +19,7 @@ class AnnoncesModel extends Model
 
     public function __construct()
     {
-        
-        $this->table = 'a_vendre';
-        
+        $this->table = 'a_vendre'; 
     }
     /**
      * Get the value of id
