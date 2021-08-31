@@ -201,7 +201,7 @@ body{
     background-position: center center;
     
     background-size: cover;
-    height: 50vh;
+    height: 30vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -274,7 +274,7 @@ body{
 }
 @media screen and (min-width:1300px){
     .ban{
-        height: 100vh;
+        height: 50vh;
         -webkit-transition: 1s;
         -o-transition: 1s;
         transition: 1s;
@@ -834,12 +834,13 @@ a.customButton {
   .admin__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
+    align-items: center;
     margin-top: 50px;
     margin-bottom: 50px;
     transition: 1s;
   }
+
   
   .admin__content {
     display: flex;
