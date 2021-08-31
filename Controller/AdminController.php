@@ -39,7 +39,6 @@ class AdminController extends Controller
     }
 
     //on instancie le modéle correspondant a la table 'utilisitateur
-
     $utilisateurModel = new UtilisateursModel;
     $requete = $utilisateurModel->requete(
       'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.annee, vehicule.plaque_immatriculation, vehicule.km, vehicule.id_utilisateur
@@ -51,8 +50,8 @@ class AdminController extends Controller
     WHERE utilisateur.role = "ROLE_USER" 
     order by nom asc'
     );
-    $utilisateur = $requete->fetchAll();
     // on va chercher toutes les utilisateur ainsi que les informations de leurs véhicules 
+    $utilisateur = $requete->fetchAll();
 
     // On génére la vue 
     $this->render('admin/utilisateurs/index', compact('utilisateur'));
@@ -63,7 +62,8 @@ class AdminController extends Controller
   //formulaire de modification utilisateur
   {
     $utilisateurModel = new UtilisateursModel;
-    $requete = $utilisateurModel->requete(
+    $requete = $utilisateurModel->requete
+    (
       'SELECT utilisateur.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation, vehicule.km, 
       vehicule.annee, vehicule.id_marque, vehicule.id_motorisation, vehicule.id_type, vehicule.id_utilisateur
       FROM utilisateur
@@ -86,6 +86,7 @@ class AdminController extends Controller
 
     return $this->render('admin/utilisateurs/modifClient/index', compact('marques', 'motorisations', 'types', 'utilisateurs'));
   }
+
   //modifier profil utilisateur
   public function modifierProfiladmin(int $id)
   {
@@ -118,6 +119,7 @@ class AdminController extends Controller
     header('Location: /admin/utilisateurs');
     exit;
   }
+  
   public function supprimerUtilisateur(int $id)
   {
 
@@ -417,9 +419,9 @@ class AdminController extends Controller
       $categorieModel = new CategorieprestationsModel;
       $requete = $categorieModel->requete(
         'SELECT *
-      FROM categorie_prestation
-      WHERE id = 
-      ' . $id
+        FROM categorie_prestation
+        WHERE id = 
+        ' . $id
       );
       $categorie = $requete->fetchAll();
       // render la view
