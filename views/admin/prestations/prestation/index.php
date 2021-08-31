@@ -38,5 +38,5 @@ endforeach;?>
         </div>
     <?php endforeach; ?>
 
-    <div class="admin-prestation__afficher-btn"> <a href="/prestation">Retour</a> </div>
+    <div class="admin-prestation__afficher-btn"> <a href="/admin/prestations">Retour</a> </div>
 </div>
