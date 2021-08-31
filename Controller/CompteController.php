@@ -100,57 +100,6 @@ class CompteController extends Controller
         </script> <?php
                 }
 
-<<<<<<< HEAD
-    // affichage du formulaire d'ajotu de véhicule si le formulaire n'est pas déjà complété
-    public function ajoutVehicule()
-    {
-        if (!Form::validate($_POST, ['plaque_immatriculation', 'annee', 'km', 'id_marque', 'id_motorisation', 'id_type']))
-        {
-            $marqueModel = new MarqueModel;
-            $motorisationModel = new MotorisationModel;
-            $typeVehiculeModel = new TypeVehiculeModel;
-
-            // on va chercher tout
-            $marques = $marqueModel->findAllOrdre();
-            $motorisations = $motorisationModel->findAll();
-            $types = $typeVehiculeModel->findAll();
-
-            // On génére la vue 
-            return $this->render('compte/ajoutVehicule/index', compact('marques', 'motorisations', 'types'));
-        }        
-        else 
-        // sinon, ajout de véhicule de l'utilisateur
-        {
-            $plaque_immatriculation = strip_tags($_POST['plaque_immatriculation'], PDO::PARAM_STR);
-            $annee = strip_tags($_POST['annee'], PDO::PARAM_INT);
-            $km = strip_tags($_POST['km'], PDO::PARAM_INT);
-            $type_vehicule = ($_POST['id_type']);
-            $motorisation = ($_POST['id_motorisation']);
-            $marque = ($_POST['id_marque']);
-            $id_utilisateur = $_SESSION['user']['id'];
-            //création véhicule
-            $newVehicule = new VehiculeModel();
-            $newVehicule->setPlaque_immatriculation($plaque_immatriculation)
-                ->setAnnee($annee)
-                ->setKm($km)
-                ->setId_marque($marque)
-                ->setId_motorisation($motorisation)
-                ->setId_type($type_vehicule)
-                ->setId_utilisateur($id_utilisateur);
-            $newVehicule->create();
-            header('Location: /compte');
-        } 
-    }
-
-    public function afficheVehiculesUtil()
-    {
-        //on instancie le modéle correspondant a la table vehicule
-        $vehiculeModel = new VehiculeModel;
-        // on va chercher toutes les vehicule de l'utilisateur
-        $requete = $vehiculeModel->requete
-        (
-            'SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
-=======
                 //modifier profil utilisateur
                 public function modifierProfil()
                 {
@@ -234,29 +183,11 @@ class CompteController extends Controller
                     // on va chercher toutes les vehicule de l'utilisateur
                     $requete = $vehiculeModel->requete(
                         'SELECT vehicule.*,marque.lib_marque, type_vehicule.lib_type, motorisation.lib_motorisation 
->>>>>>> enzo
             FROM vehicule
             INNER JOIN marque ON vehicule.id_marque = marque.id
             INNER JOIN type_vehicule ON vehicule.id_type = type_vehicule.id_type
             INNER JOIN motorisation ON vehicule.id_motorisation = motorisation.id
             WHERE id_utilisateur = ' . $_SESSION['user']['id']
-<<<<<<< HEAD
-        );
-        
-        $vehicules = $requete->fetchAll();
-        // On génére la vue 
-        return $this->render('/compte/vehicule', compact('vehicules'));
-    }
-    
-    //supprimer vehicule
-    public function supprimerVehicule(int $id)
-    {
-        $vehicule = new VehiculeModel;
-        $vehicule->delete($id);
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
-}
-=======
                     );
                     $vehicules = $requete->fetchAll();
                     // On génére la vue 
@@ -271,4 +202,3 @@ class CompteController extends Controller
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
             }
->>>>>>> enzo
